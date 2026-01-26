@@ -1,0 +1,90 @@
+{
+    "gallery": {
+        "scroll": "SCORRI",
+        "inquirePrice": "Richiedi Prezzo"
+    },
+    "modal": {
+        "title": "Richiedi Informazioni sul Prezzo",
+        "fullName": "Nome Completo",
+        "email": "Indirizzo Email",
+        "phone": "Numero di Telefono (Facoltativo)",
+        "message": "Il Tuo Messaggio",
+        "messageHelper": "Raccontaci del tuo interesse per questo capo",
+        "cancel": "Annulla",
+        "send": "Invia Richiesta",
+        "successMessage": "Grazie per la tua richiesta! Ti contatteremo presto.",
+        "errorMessage": "Impossibile inviare la richiesta. Riprova.",
+        "interestedIn": "Sono interessato/a a saperne di più su"
+    },
+    "categories": {
+        "eveningWear": "Abiti da Sera",
+        "cocktail": "Cocktail",
+        "bridal": "Sposa",
+        "dayWear": "Abiti da Giorno"
+    },
+    "items": {
+        "silkElegance": {
+            "title": "Eleganza di Seta",
+            "description": "Abito da sera in seta lavorato a mano con ricamo intricato, caratterizzato da tessuto fluido che cattura movimento e luce."
+        },
+        "velvetDreams": {
+            "title": "Sogni di Velluto",
+            "description": "Lussuoso abito in velluto con silhouette contemporanea, che mette in mostra la ricca texture e la profondità dell'artigianato italiano."
+        },
+        "laceSophistication": {
+            "title": "Raffinatezza di Pizzo",
+            "description": "Delicata creazione in pizzo con linee moderne, che combina tecniche tradizionali con design all'avanguardia."
+        },
+        "chiffonGrace": {
+            "title": "Grazia di Chiffon",
+            "description": "Ensemble etereo in chiffon che si muove come un sussurro, incarnando l'essenza della demi-couture italiana."
+        }
+    },
+    "seo": {
+        "title": "Annalisa Martino | Stilista Italiana Demi-Couture",
+        "description": "Scopri la moda esclusiva demi-couture italiana di Annalisa Martino. Capi di lusso fatti a mano, sartoria su misura ed eleganza senza tempo da Milano.",
+        "ogTitle": "Annalisa Martino | Stilista Italiana Demi-Couture",
+        "ogDescription": "Moda esclusiva demi-couture italiana. Capi di lusso fatti a mano e sartoria su misura da Milano.",
+        "schemaDescription": "Stilista Italiana di Moda Demi-Couture"
+    },
+    "about": {
+        "title": "Su Annalisa Martino | Stilista Italiana Demi-Couture",
+        "description": "Scopri la storia di Annalisa Martino, stilista di moda demi-couture italiana di Milano. Scopri la sua filosofia di design, l'artigianato e la passione per la moda di lusso fatta a mano.",
+        "hero": {
+            "title": "L'Arte dell'Eleganza Italiana",
+            "subtitle": "Creare Bellezza Senza Tempo Attraverso la Demi-Couture"
+        },
+        "biography": {
+            "title": "Un Viaggio Nella Moda",
+            "content": "Nata e cresciuta a Milano, il cuore della moda italiana, Annalisa Martino ha scoperto la sua passione per il design in giovane età. Dopo aver studiato presso prestigiosi istituti di moda e lavorato al fianco di maestri artigiani, ha fondato il proprio atelier dedicato all'arte della demi-couture.\n\nOgni pezzo racconta una storia—un'armoniosa fusione di artigianato tradizionale italiano e design contemporaneo. Le creazioni di Annalisa non sono solo capi d'abbigliamento; sono opere d'arte indossabili, meticolosamente realizzate a mano per celebrare la bellezza unica di ogni donna che le indossa."
+        },
+        "philosophy": {
+            "title": "Filosofia di Design",
+            "content": "La mia filosofia è semplice: la moda dovrebbe essere un'espressione di individualità ed eleganza senza tempo. Credo nel creare pezzi che trascendono le tendenze, concentrandomi invece su un artigianato impeccabile, tessuti lussuosi e la silhouette perfetta.",
+            "quote": "Il vero lusso risiede nei dettagli—la cucitura fatta a mano, il tessuto scelto con cura, il modo in cui un capo si muove con grazia."
+        },
+        "craftsmanship": {
+            "title": "L'Artigianato",
+            "point1": {
+                "title": "Eccellenza Artigianale",
+                "description": "Ogni capo è meticolosamente realizzato a mano, garantendo una qualità senza pari e attenzione ai dettagli."
+            },
+            "point2": {
+                "title": "Eredità Italiana",
+                "description": "Radicato in secoli di tradizione sartoriale italiana, combinando tecniche tradizionali con innovazione moderna."
+            },
+            "point3": {
+                "title": "Materiali Lussuosi",
+                "description": "Solo i migliori tessuti—seta, velluto, pizzo e chiffon—provenienti dai principali fornitori italiani."
+            },
+            "point4": {
+                "title": "Esperienza Su Misura",
+                "description": "Ogni pezzo può essere personalizzato per completare perfettamente il tuo stile individuale e il tuo corpo."
+            }
+        },
+        "cta": {
+            "title": "Esplora la Collezione",
+            "button": "Visualizza Galleria"
+        }
+    }
+}

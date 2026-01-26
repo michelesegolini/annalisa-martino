@@ -1,0 +1,90 @@
+{
+  "gallery": {
+    "scroll": "SCROLL",
+    "inquirePrice": "Inquire Price"
+  },
+  "modal": {
+    "title": "Inquire About Price",
+    "fullName": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number (Optional)",
+    "message": "Your Message",
+    "messageHelper": "Tell us about your interest in this piece",
+    "cancel": "Cancel",
+    "send": "Send Inquiry",
+    "successMessage": "Thank you for your inquiry! We'll be in touch soon.",
+    "errorMessage": "Failed to send your inquiry. Please try again.",
+    "interestedIn": "I am interested in learning more about"
+  },
+  "categories": {
+    "eveningWear": "Evening Wear",
+    "cocktail": "Cocktail",
+    "bridal": "Bridal",
+    "dayWear": "Day Wear"
+  },
+  "items": {
+    "silkElegance": {
+      "title": "Silk Elegance",
+      "description": "Handcrafted silk evening gown with intricate embroidery, featuring flowing fabric that captures movement and light."
+    },
+    "velvetDreams": {
+      "title": "Velvet Dreams",
+      "description": "Luxurious velvet dress with contemporary silhouette, showcasing the rich texture and depth of Italian craftsmanship."
+    },
+    "laceSophistication": {
+      "title": "Lace Sophistication",
+      "description": "Delicate lace creation with modern lines, combining traditional techniques with avant-garde design."
+    },
+    "chiffonGrace": {
+      "title": "Chiffon Grace",
+      "description": "Ethereal chiffon ensemble that moves like a whisper, embodying the essence of Italian demi-couture."
+    }
+  },
+  "seo": {
+    "title": "Annalisa Martino | Italian Demi-Couture Designer",
+    "description": "Explore exclusive Italian demi-couture fashion by Annalisa Martino. Handcrafted luxury garments, bespoke tailoring, and timeless elegance from Milan.",
+    "ogTitle": "Annalisa Martino | Italian Demi-Couture Designer",
+    "ogDescription": "Exclusive Italian demi-couture fashion. Handcrafted luxury garments and bespoke tailoring from Milan.",
+    "schemaDescription": "Italian Demi-Couture Fashion Designer"
+  },
+  "about": {
+    "title": "About Annalisa Martino | Italian Demi-Couture Designer",
+    "description": "Discover the story of Annalisa Martino, an Italian demi-couture fashion designer from Milan. Learn about her design philosophy, craftsmanship, and passion for handcrafted luxury fashion.",
+    "hero": {
+      "title": "The Art of Italian Elegance",
+      "subtitle": "Crafting Timeless Beauty Through Demi-Couture"
+    },
+    "biography": {
+      "title": "A Journey Through Fashion",
+      "content": "Born and raised in Milan, the heart of Italian fashion, Annalisa Martino discovered her passion for design at an early age. After studying at prestigious fashion institutes and working alongside master artisans, she established her own atelier dedicated to the art of demi-couture.\n\nEach piece tells a story—a harmonious blend of traditional Italian craftsmanship and contemporary design. Annalisa's creations are not just garments; they are wearable works of art, meticulously handcrafted to celebrate the unique beauty of every woman who wears them."
+    },
+    "philosophy": {
+      "title": "Design Philosophy",
+      "content": "My philosophy is simple: fashion should be an expression of individuality and timeless elegance. I believe in creating pieces that transcend trends, focusing instead on impeccable craftsmanship, luxurious fabrics, and the perfect silhouette.",
+      "quote": "True luxury lies in the details—the hand-stitched seam, the carefully chosen fabric, the way a garment moves with grace."
+    },
+    "craftsmanship": {
+      "title": "The Craft",
+      "point1": {
+        "title": "Handcrafted Excellence",
+        "description": "Every garment is meticulously crafted by hand, ensuring unparalleled quality and attention to detail."
+      },
+      "point2": {
+        "title": "Italian Heritage",
+        "description": "Rooted in centuries of Italian tailoring tradition, combining time-honored techniques with modern innovation."
+      },
+      "point3": {
+        "title": "Luxurious Materials",
+        "description": "Only the finest fabrics—silk, velvet, lace, and chiffon—sourced from premier Italian suppliers."
+      },
+      "point4": {
+        "title": "Bespoke Experience",
+        "description": "Each piece can be customized to perfectly complement your individual style and body."
+      }
+    },
+    "cta": {
+      "title": "Explore the Collection",
+      "button": "View Gallery"
+    }
+  }
+}

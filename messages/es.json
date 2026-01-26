@@ -1,0 +1,90 @@
+{
+    "gallery": {
+        "scroll": "DESPLAZAR",
+        "inquirePrice": "Consultar Precio"
+    },
+    "modal": {
+        "title": "Consultar sobre el Precio",
+        "fullName": "Nombre Completo",
+        "email": "Correo Electrónico",
+        "phone": "Número de Teléfono (Opcional)",
+        "message": "Tu Mensaje",
+        "messageHelper": "Cuéntanos sobre tu interés en esta pieza",
+        "cancel": "Cancelar",
+        "send": "Enviar Consulta",
+        "successMessage": "¡Gracias por tu consulta! Nos pondremos en contacto pronto.",
+        "errorMessage": "Error al enviar tu consulta. Por favor, inténtalo de nuevo.",
+        "interestedIn": "Estoy interesado/a en obtener más información sobre"
+    },
+    "categories": {
+        "eveningWear": "Vestidos de Noche",
+        "cocktail": "Cóctel",
+        "bridal": "Novia",
+        "dayWear": "Vestidos de Día"
+    },
+    "items": {
+        "silkElegance": {
+            "title": "Elegancia de Seda",
+            "description": "Vestido de noche de seda hecho a mano con bordado intrincado, con tela fluida que captura movimiento y luz."
+        },
+        "velvetDreams": {
+            "title": "Sueños de Terciopelo",
+            "description": "Lujoso vestido de terciopelo con silueta contemporánea, mostrando la rica textura y profundidad de la artesanía italiana."
+        },
+        "laceSophistication": {
+            "title": "Sofisticación de Encaje",
+            "description": "Delicada creación de encaje con líneas modernas, combinando técnicas tradicionales con diseño vanguardista."
+        },
+        "chiffonGrace": {
+            "title": "Gracia de Gasa",
+            "description": "Conjunto etéreo de gasa que se mueve como un susurro, encarnando la esencia de la demi-couture italiana."
+        }
+    },
+    "seo": {
+        "title": "Annalisa Martino | Diseñadora Italiana de Demi-Couture",
+        "description": "Explora la moda exclusiva demi-couture italiana de Annalisa Martino. Prendas de lujo hechas a mano, sastrería a medida y elegancia atemporal desde Milán.",
+        "ogTitle": "Annalisa Martino | Diseñadora Italiana de Demi-Couture",
+        "ogDescription": "Moda exclusiva demi-couture italiana. Prendas de lujo hechas a mano y sastrería a medida desde Milán.",
+        "schemaDescription": "Diseñadora Italiana de Moda Demi-Couture"
+    },
+    "about": {
+        "title": "Sobre Annalisa Martino | Diseñadora Italiana Demi-Couture",
+        "description": "Descubre la historia de Annalisa Martino, una diseñadora de moda demi-couture italiana de Milán. Conoce su filosofía de diseño, artesanía y pasión por la moda de lujo hecha a mano.",
+        "hero": {
+            "title": "El Arte de la Elegancia Italiana",
+            "subtitle": "Creando Belleza Atemporal a Través de la Demi-Couture"
+        },
+        "biography": {
+            "title": "Un Viaje a Través de la Moda",
+            "content": "Nacida y criada en Milán, el corazón de la moda italiana, Annalisa Martino descubrió su pasión por el diseño a una edad temprana. Después de estudiar en prestigiosos institutos de moda y trabajar junto a maestros artesanos, estableció su propio atelier dedicado al arte de la demi-couture.\n\nCada pieza cuenta una historia—una armoniosa mezcla de artesanía tradicional italiana y diseño contemporáneo. Las creaciones de Annalisa no son solo prendas; son obras de arte portátiles, meticulosamente hechas a mano para celebrar la belleza única de cada mujer que las lleva."
+        },
+        "philosophy": {
+            "title": "Filosofía de Diseño",
+            "content": "Mi filosofía es simple: la moda debe ser una expresión de individualidad y elegancia atemporal. Creo en crear piezas que trascienden las tendencias, centrándome en cambio en una artesanía impecable, telas lujosas y la silueta perfecta.",
+            "quote": "El verdadero lujo reside en los detalles—la costura hecha a mano, la tela cuidadosamente elegida, la forma en que una prenda se mueve con gracia."
+        },
+        "craftsmanship": {
+            "title": "La Artesanía",
+            "point1": {
+                "title": "Excelencia Artesanal",
+                "description": "Cada prenda está meticulosamente elaborada a mano, asegurando una calidad y atención al detalle incomparables."
+            },
+            "point2": {
+                "title": "Herencia Italiana",
+                "description": "Arraigada en siglos de tradición de sastrería italiana, combinando técnicas tradicionales con innovación moderna."
+            },
+            "point3": {
+                "title": "Materiales Lujosos",
+                "description": "Solo las mejores telas—seda, terciopelo, encaje y gasa—provenientes de proveedores italianos de primera calidad."
+            },
+            "point4": {
+                "title": "Experiencia a Medida",
+                "description": "Cada pieza puede ser personalizada para complementar perfectamente tu estilo individual y cuerpo."
+            }
+        },
+        "cta": {
+            "title": "Explora la Colección",
+            "button": "Ver Galería"
+        }
+    }
+}

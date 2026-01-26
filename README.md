@@ -1,36 +1,150 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AnnalisaMartino Portfolio Website
+
+Premium portfolio website for Italian fashion designer Annalisa Martino, featuring a stunning VirtualGallery with video backgrounds, mobile-first design, and comprehensive SEO optimization.
+
+## Features
+
+- ✨ **VirtualGallery**: Horizontal snap-scroll gallery with video backgrounds
+- 🎨 **Premium Design**: Material UI with elegant typography and glassmorphism effects
+- 📱 **Mobile-First**: Fully responsive design optimized for all devices
+- 🔍 **SEO Optimized**: Comprehensive meta-tags and structured data for search engines
+- 💬 **Contact Modal**: Elegant inquiry form with validation
+- 🎭 **Sanity.io CMS**: Integration ready for content management
+
+## Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **UI Library**: Material UI v5
+- **CMS**: Sanity.io
+- **Styling**: CSS Modules + Global CSS
+- **Fonts**: Cormorant Garamond + Inter (Google Fonts)
+- **TypeScript**: Full type safety
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
+- Node.js 18+ installed
+- npm or yarn package manager
+
+### Installation
+
+1. Clone the repository:
+\`\`\`bash
+git clone https://github.com/yourusername/annalisa-martino.git
+cd annalisa-martino
+\`\`\`
+
+2. Install dependencies:
+\`\`\`bash
+npm install
+\`\`\`
+
+3. Create environment file:
+\`\`\`bash
+cp .env.example .env.local
+\`\`\`
+
+4. Update `.env.local` with your Sanity project credentials (optional for development)
+
+5. Run the development server:
+\`\`\`bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+\`\`\`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+6. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+\`\`\`
+annalisa-martino/
+├── app/                      # Next.js App Router
+│   ├── layout.tsx           # Root layout with SEO
+│   ├── page.tsx             # Homepage with VirtualGallery
+│   └── api/
+│       └── contact/         # Contact form API endpoint
+├── components/
+│   └── gallery/
+│       ├── VirtualGallery.tsx    # Main gallery component
+│       └── InquireModal.tsx      # Contact modal
+├── lib/
+│   ├── sanity/              # Sanity.io configuration
+│   └── theme.ts             # Material UI theme
+├── styles/
+│   └── globals.css          # Global styles
+├── types/
+│   └── index.ts             # TypeScript types
+└── public/                  # Static assets
+\`\`\`
 
-## Learn More
+## Videos & Assets
 
-To learn more about Next.js, take a look at the following resources:
+The VirtualGallery uses video backgrounds. Place your video files in the \`public/videos/\` directory. Supported formats:
+- MP4 (recommended)
+- WebM
+- OGG
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Update the video URLs in \`lib/sanity/queries.ts\` or configure them in your Sanity CMS.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## SEO Configuration
 
-## Deploy on Vercel
+The website is optimized for ranking as an "Italian Demi-Couture Designer" with:
+- Comprehensive meta-tags
+- Open Graph and Twitter Card support
+- Structured data (Schema.org FashionDesigner)
+- Sitemap generation
+- Robots.txt
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Update SEO settings in \`app/layout.tsx\`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Sanity.io Setup (Optional)
+
+1. Create a new Sanity project at [sanity.io](https://www.sanity.io/)
+2. Define schemas for gallery items
+3. Update \`NEXT_PUBLIC_SANITY_PROJECT_ID\` in \`.env.local\`
+4. Replace mock data calls with actual Sanity queries in \`lib/sanity/queries.ts\`
+
+## Deployment
+
+### Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Import project in [Vercel](https://vercel.com)
+3. Add environment variables
+4. Deploy!
+
+### Other Platforms
+
+Build the production bundle:
+\`\`\`bash
+npm run build
+npm start
+\`\`\`
+
+## Scripts
+
+- \`npm run dev\` - Start development server
+- \`npm run build\` - Build for production
+- \`npm start\` - Start production server
+- \`npm run lint\` - Run ESLint
+
+## Customization
+
+### Colors & Typography
+
+Customize the Material UI theme in \`lib/theme.ts\`:
+- Color palette
+- Typography (fonts, sizes, weights)
+- Component styles
+
+### Gallery Items
+
+Update mock gallery data in \`lib/sanity/queries.ts\` or connect to Sanity CMS.
+
+## License
+
+© 2026 Annalisa Martino. All rights reserved.
+
+## Support
+
+For support, email info@annalisamartino.com

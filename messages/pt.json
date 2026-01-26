@@ -1,0 +1,90 @@
+{
+    "gallery": {
+        "scroll": "ROLAR",
+        "inquirePrice": "Consultar Preço"
+    },
+    "modal": {
+        "title": "Consultar sobre o Preço",
+        "fullName": "Nome Completo",
+        "email": "Endereço de Email",
+        "phone": "Número de Telefone (Opcional)",
+        "message": "Sua Mensagem",
+        "messageHelper": "Conte-nos sobre seu interesse nesta peça",
+        "cancel": "Cancelar",
+        "send": "Enviar Consulta",
+        "successMessage": "Obrigado pela sua consulta! Entraremos em contato em breve.",
+        "errorMessage": "Falha ao enviar sua consulta. Por favor, tente novamente.",
+        "interestedIn": "Estou interessado/a em saber mais sobre"
+    },
+    "categories": {
+        "eveningWear": "Vestidos de Noite",
+        "cocktail": "Coquetel",
+        "bridal": "Noiva",
+        "dayWear": "Vestidos de Dia"
+    },
+    "items": {
+        "silkElegance": {
+            "title": "Elegância de Seda",
+            "description": "Vestido de noite de seda feito à mão com bordado intrincado, apresentando tecido fluido que captura movimento e luz."
+        },
+        "velvetDreams": {
+            "title": "Sonhos de Veludo",
+            "description": "Luxuoso vestido de veludo com silhueta contemporânea, mostrando a rica textura e profundidade do artesanato italiano."
+        },
+        "laceSophistication": {
+            "title": "Sofisticação de Renda",
+            "description": "Delicada criação de renda com linhas modernas, combinando técnicas tradicionais com design vanguardista."
+        },
+        "chiffonGrace": {
+            "title": "Graça de Chiffon",
+            "description": "Conjunto etéreo de chiffon que se move como um sussurro, incorporando a essência da demi-couture italiana."
+        }
+    },
+    "seo": {
+        "title": "Annalisa Martino | Designer Italiana de Demi-Couture",
+        "description": "Explore a moda exclusiva demi-couture italiana de Annalisa Martino. Peças de luxo feitas à mão, alfaiataria sob medida e elegância atemporal de Milão.",
+        "ogTitle": "Annalisa Martino | Designer Italiana de Demi-Couture",
+        "ogDescription": "Moda exclusiva demi-couture italiana. Peças de luxo feitas à mão e alfaiataria sob medida de Milão.",
+        "schemaDescription": "Designer Italiana de Moda Demi-Couture"
+    },
+    "about": {
+        "title": "Sobre Annalisa Martino | Designer Italiana Demi-Couture",
+        "description": "Descubra a história de Annalisa Martino, uma designer de moda demi-couture italiana de Milão. Conheça sua filosofia de design, artesanato e paixão pela moda de luxo feita à mão.",
+        "hero": {
+            "title": "A Arte da Elegância Italiana",
+            "subtitle": "Criando Beleza Atemporal Através da Demi-Couture"
+        },
+        "biography": {
+            "title": "Uma Jornada Pela Moda",
+            "content": "Nascida e criada em Milão, o coração da moda italiana, Annalisa Martino descobriu sua paixão pelo design desde cedo. Depois de estudar em prestigiados institutos de moda e trabalhar ao lado de mestres artesãos, ela estabeleceu seu próprio atelier dedicado à arte da demi-couture.\n\nCada peça conta uma história—uma mistura harmoniosa de artesanato tradicional italiano e design contemporâneo. As criações de Annalisa não são apenas roupas; são obras de arte vestíveis, meticulosamente feitas à mão para celebrar a beleza única de cada mulher que as veste."
+        },
+        "philosophy": {
+            "title": "Filosofia de Design",
+            "content": "Minha filosofia é simples: a moda deve ser uma expressão de individualidade e elegância atemporal. Acredito em criar peças que transcendem tendências, focando em vez disso em artesanato impecável, tecidos luxuosos e a silhueta perfeita.",
+            "quote": "O verdadeiro luxo reside nos detalhes—a costura feita à mão, o tecido cuidadosamente escolhido, a maneira como uma peça se move com graça."
+        },
+        "craftsmanship": {
+            "title": "O Artesanato",
+            "point1": {
+                "title": "Excelência Artesanal",
+                "description": "Cada peça é meticulosamente feita à mão, garantindo qualidade incomparável e atenção aos detalhes."
+            },
+            "point2": {
+                "title": "Herança Italiana",
+                "description": "Enraizada em séculos de tradição de alfaiataria italiana, combinando técnicas tradicionais com inovação moderna."
+            },
+            "point3": {
+                "title": "Materiais Luxuosos",
+                "description": "Apenas os melhores tecidos—seda, veludo, renda e chiffon—provenientes de fornecedores italianos de primeira linha."
+            },
+            "point4": {
+                "title": "Experiência Sob Medida",
+                "description": "Cada peça pode ser personalizada para complementar perfeitamente seu estilo individual e corpo."
+            }
+        },
+        "cta": {
+            "title": "Explore a Coleção",
+            "button": "Ver Galeria"
+        }
+    }
+}
