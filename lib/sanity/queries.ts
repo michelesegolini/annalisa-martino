@@ -9,6 +9,7 @@ export async function getGalleryItems(): Promise<GalleryItem[]> {
     "videoUrl": video.asset->url,
     "posterImage": posterImage.asset->url,
     category,
+    collection,
     featured
   }`;
 
@@ -29,6 +30,7 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
     const messages = require(`../../messages/${locale}.json`);
 
     return [
+        // Red Carpet Collection
         {
             id: '1',
             title: messages.items.silkElegance.title,
@@ -36,6 +38,7 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
             videoUrl: '/videos/placeholder-1.mp4',
             posterImage: '/images/poster-1.jpg',
             category: messages.categories.eveningWear,
+            collection: messages.collections.redCarpet.title,
             featured: true,
         },
         {
@@ -45,8 +48,11 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
             videoUrl: '/videos/placeholder-2.mp4',
             posterImage: '/images/poster-2.jpg',
             category: messages.categories.cocktail,
+            collection: messages.collections.redCarpet.title,
             featured: true,
         },
+
+        // Magna Grecia Collection
         {
             id: '3',
             title: messages.items.laceSophistication.title,
@@ -54,6 +60,7 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
             videoUrl: '/videos/placeholder-3.mp4',
             posterImage: '/images/poster-3.jpg',
             category: messages.categories.bridal,
+            collection: messages.collections.magnaGrecia.title,
             featured: false,
         },
         {
@@ -62,9 +69,32 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
             description: messages.items.chiffonGrace.description,
             videoUrl: '/videos/placeholder-4.mp4',
             posterImage: '/images/poster-4.jpg',
-            category: messages.categories.dayWear,
+            category: messages.categories.ceremony,
+            collection: messages.collections.magnaGrecia.title,
             featured: false,
         },
+
+        // Moda Mediterranea Collection
+        {
+            id: '5',
+            title: "Azure Horizon",
+            description: "Inspired by the Tyrrhenian sea, this fluid silk dress captures the essence of Mediterranean summer.",
+            videoUrl: '/videos/placeholder-1.mp4',
+            posterImage: '/images/poster-1.jpg',
+            category: messages.categories.resort,
+            collection: messages.collections.modaMediterranea.title,
+            featured: true,
+        },
+        {
+            id: '6',
+            title: "Golden Hour",
+            description: "A tribute to the warm sunset light reflecting on ancient stones.",
+            videoUrl: '/videos/placeholder-2.mp4',
+            posterImage: '/images/poster-2.jpg',
+            category: messages.categories.party18,
+            collection: messages.collections.modaMediterranea.title,
+            featured: false,
+        }
     ];
 }
 

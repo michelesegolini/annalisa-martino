@@ -22,7 +22,7 @@ const Navigation: React.FC = () => {
     const pathname = usePathname();
     const params = useParams();
     const currentLocale = params.locale as string;
-    const t = useTranslations('gallery');
+    const t = useTranslations('navigation');
 
     const handleLanguageChange = (newLocale: string) => {
         router.replace(pathname, { locale: newLocale });
@@ -34,8 +34,10 @@ const Navigation: React.FC = () => {
     };
 
     const menuItems = [
-        { label: 'Gallery', href: `/${currentLocale}` },
-        { label: 'About', href: `/${currentLocale}/about` },
+        { label: t('gallery'), href: `/${currentLocale}` },
+        { label: t('about'), href: `/${currentLocale}/about` },
+        { label: t('collections'), href: `/${currentLocale}/collections` },
+        { label: t('contact'), href: `/${currentLocale}/contact` },
     ];
 
     return (

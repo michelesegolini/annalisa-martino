@@ -5,6 +5,7 @@ export interface GalleryItem {
   videoUrl: string;
   posterImage?: string;
   category: string;
+  collection: string;
   featured?: boolean;
 }
 

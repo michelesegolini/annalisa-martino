@@ -1,90 +1,122 @@
 {
-    "gallery": {
-        "scroll": "DÉFILER",
-        "inquirePrice": "Demander le Prix"
+  "navigation": {
+    "gallery": "Galerie",
+    "about": "À Propos",
+    "collections": "Collections",
+    "contact": "Contact"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Contactez-nous pour du sur-mesure",
+    "instagram": "Suivre sur Instagram",
+    "email": "Nous écrire"
+  },
+  "gallery": {
+    "scroll": "DÉFILER",
+    "inquirePrice": "Demander le Prix",
+    "filterAll": "Tout",
+    "viewCollection": "Voir la Collection"
+  },
+  "modal": {
+    "title": "Se Renseigner sur le Prix",
+    "fullName": "Nom Complet",
+    "email": "Adresse Email",
+    "phone": "Numéro de Téléphone (Facultatif)",
+    "message": "Votre Message",
+    "messageHelper": "Parlez-nous de votre intérêt pour cette pièce",
+    "cancel": "Annuler",
+    "send": "Envoyer la Demande",
+    "successMessage": "Merci pour votre demande ! Nous vous contacterons bientôt.",
+    "errorMessage": "Échec de l'envoi de votre demande. Veuillez réessayer.",
+    "interestedIn": "Je suis intéressé(e) d'en savoir plus sur"
+  },
+  "categories": {
+    "eveningWear": "Robes de Soirée",
+    "cocktail": "Cocktail",
+    "bridal": "Mariée",
+    "dayWear": "Robes de Jour",
+    "ceremony": "Cérémonie",
+    "party18": "18ème Anniversaire",
+    "resort": "Resort & Maillots"
+  },
+  "collections": {
+    "title": "Collections",
+    "modaMediterranea": {
+      "title": "Mode Méditerranéenne",
+      "description": "Inspirée par les couleurs et les textures de la côte méditerranéenne, cette collection incarne une élégance sans effort."
     },
-    "modal": {
-        "title": "Se Renseigner sur le Prix",
-        "fullName": "Nom Complet",
-        "email": "Adresse Email",
-        "phone": "Numéro de Téléphone (Facultatif)",
-        "message": "Votre Message",
-        "messageHelper": "Parlez-nous de votre intérêt pour cette pièce",
-        "cancel": "Annuler",
-        "send": "Envoyer la Demande",
-        "successMessage": "Merci pour votre demande ! Nous vous contacterons bientôt.",
-        "errorMessage": "Échec de l'envoi de votre demande. Veuillez réessayer.",
-        "interestedIn": "Je suis intéressé(e) d'en savoir plus sur"
+    "magnaGrecia": {
+      "title": "Grande-Grèce",
+      "description": "Un hommage à la beauté classique et aux racines anciennes, avec des silhouettes sculpturales et des drapés intemporels."
     },
-    "categories": {
-        "eveningWear": "Robes de Soirée",
-        "cocktail": "Cocktail",
-        "bridal": "Mariée",
-        "dayWear": "Robes de Jour"
-    },
-    "items": {
-        "silkElegance": {
-            "title": "Élégance de Soie",
-            "description": "Robe de soirée en soie faite à la main avec broderie complexe, présentant un tissu fluide qui capture le mouvement et la lumière."
-        },
-        "velvetDreams": {
-            "title": "Rêves de Velours",
-            "description": "Luxueuse robe en velours avec silhouette contemporaine, mettant en valeur la riche texture et la profondeur de l'artisanat italien."
-        },
-        "laceSophistication": {
-            "title": "Sophistication de Dentelle",
-            "description": "Création délicate en dentelle aux lignes modernes, alliant techniques traditionnelles et design avant-gardiste."
-        },
-        "chiffonGrace": {
-            "title": "Grâce de Mousseline",
-            "description": "Ensemble éthéré en mousseline qui se déplace comme un murmure, incarnant l'essence de la demi-couture italienne."
-        }
-    },
-    "seo": {
-        "title": "Annalisa Martino | Créatrice Italienne de Demi-Couture",
-        "description": "Découvrez la mode exclusive demi-couture italienne d'Annalisa Martino. Vêtements de luxe faits à la main, couture sur mesure et élégance intemporelle de Milan.",
-        "ogTitle": "Annalisa Martino | Créatrice Italienne de Demi-Couture",
-        "ogDescription": "Mode exclusive demi-couture italienne. Vêtements de luxe faits à la main et couture sur mesure de Milan.",
-        "schemaDescription": "Créatrice Italienne de Mode Demi-Couture"
-    },
-    "about": {
-        "title": "À Propos d'Annalisa Martino | Créatrice Italienne Demi-Couture",
-        "description": "Découvrez l'histoire d'Annalisa Martino, une créatrice de mode demi-couture italienne de Milan. Découvrez sa philosophie de design, son artisanat et sa passion pour la mode de luxe faite à la main.",
-        "hero": {
-            "title": "L'Art de l'Élégance Italienne",
-            "subtitle": "Créer une Beauté Intemporelle à Travers la Demi-Couture"
-        },
-        "biography": {
-            "title": "Un Voyage à Travers la Mode",
-            "content": "Née et élevée à Milan, le cœur de la mode italienne, Annalisa Martino a découvert sa passion pour le design dès son plus jeune âge. Après avoir étudié dans des instituts de mode prestigieux et travaillé aux côtés de maîtres artisans, elle a établi son propre atelier dédié à l'art de la demi-couture.\n\nChaque pièce raconte une histoire—un mélange harmonieux d'artisanat traditionnel italien et de design contemporain. Les créations d'Annalisa ne sont pas que des vêtements ; ce sont des œuvres d'art portables, méticuleusement faites à la main pour célébrer la beauté unique de chaque femme qui les porte."
-        },
-        "philosophy": {
-            "title": "Philosophie de Design",
-            "content": "Ma philosophie est simple : la mode doit être une expression d'individualité et d'élégance intemporelle. Je crois en la création de pièces qui transcendent les tendances, en me concentrant plutôt sur un artisanat impeccable, des tissus luxueux et la silhouette parfaite.",
-            "quote": "Le véritable luxe réside dans les détails—la couture faite à la main, le tissu soigneusement choisi, la façon dont un vêtement se déplace avec grâce."
-        },
-        "craftsmanship": {
-            "title": "L'Artisanat",
-            "point1": {
-                "title": "Excellence Artisanale",
-                "description": "Chaque vêtement est méticuleusement fabriqué à la main, assurant une qualité inégalée et une attention aux détails."
-            },
-            "point2": {
-                "title": "Héritage Italien",
-                "description": "Enraciné dans des siècles de tradition de tailleur italien, combinant techniques traditionnelles et innovation moderne."
-            },
-            "point3": {
-                "title": "Matériaux Luxueux",
-                "description": "Uniquement les meilleurs tissus—soie, velours, dentelle et mousseline—provenant de fournisseurs italiens de premier plan."
-            },
-            "point4": {
-                "title": "Expérience Sur Mesure",
-                "description": "Chaque pièce peut être personnalisée pour compléter parfaitement votre style individuel et votre corps."
-            }
-        },
-        "cta": {
-            "title": "Explorez la Collection",
-            "button": "Voir la Galerie"
-        }
+    "redCarpet": {
+      "title": "Tapis Rouge",
+      "description": "Des robes spectaculaires conçues pour marquer les esprits, parfaites pour les galas et les événements exclusifs."
     }
+  },
+  "items": {
+    "silkElegance": {
+      "title": "Élégance de Soie",
+      "description": "Robe de soirée en soie faite à la main avec broderie complexe, présentant un tissu fluide qui capture le mouvement et la lumière."
+    },
+    "velvetDreams": {
+      "title": "Rêves de Velours",
+      "description": "Luxueuse robe en velours avec silhouette contemporaine, mettant en valeur la riche texture et la profondeur de l'artisanat italien."
+    },
+    "laceSophistication": {
+      "title": "Sophistication de Dentelle",
+      "description": "Création délicate en dentelle aux lignes modernes, alliant techniques traditionnelles et design avant-gardiste."
+    },
+    "chiffonGrace": {
+      "title": "Grâce de Mousseline",
+      "description": "Ensemble éthéré en mousseline qui se déplace comme un murmure, incarnant l'essence de la demi-couture italienne."
+    }
+  },
+  "seo": {
+    "title": "Annalisa Martino | Créatrice Italienne de Demi-Couture",
+    "description": "Découvrez la mode exclusive demi-couture italienne d'Annalisa Martino. Vêtements de luxe faits à la main, couture sur mesure et élégance intemporelle de Milan.",
+    "ogTitle": "Annalisa Martino | Créatrice Italienne de Demi-Couture",
+    "ogDescription": "Mode exclusive demi-couture italienne. Vêtements de luxe faits à la main et couture sur mesure de Milan.",
+    "schemaDescription": "Créatrice Italienne de Mode Demi-Couture"
+  },
+  "about": {
+    "title": "À Propos d'Annalisa Martino | Créatrice Italienne Demi-Couture",
+    "description": "Découvrez l'histoire d'Annalisa Martino, une créatrice de mode demi-couture italienne de Milan. Découvrez sa philosophie de design, son artisanat et sa passion pour la mode de luxe faite à la main.",
+    "hero": {
+      "title": "L'Art de l'Élégance Italienne",
+      "subtitle": "Créer une Beauté Intemporelle à Travers la Demi-Couture"
+    },
+    "biography": {
+      "title": "Un Voyage à Travers la Mode",
+      "content": "Née et élevée à Milan, le cœur de la mode italienne, Annalisa Martino a découvert sa passion pour le design dès son plus jeune âge. Après avoir étudié dans des instituts de mode prestigieux et travaillé aux côtés de maîtres artisans, elle a établi son propre atelier dédié à l'art de la demi-couture.\n\nChaque pièce raconte une histoire—un mélange harmonieux d'artisanat traditionnel italien et de design contemporain. Les créations d'Annalisa ne sont pas que des vêtements ; ce sont des œuvres d'art portables, méticuleusement faites à la main pour célébrer la beauté unique de chaque femme qui les porte."
+    },
+    "philosophy": {
+      "title": "Philosophie de Design",
+      "content": "Ma philosophie est simple : la mode doit être une expression d'individualité et d'élégance intemporelle. Je crois en la création de pièces qui transcendent les tendances, en me concentrant plutôt sur un artisanat impeccable, des tissus luxueux et la silhouette parfaite.",
+      "quote": "Le véritable luxe réside dans les détails—a couture faite à la main, le tissu soigneusement choisi, la façon dont un vêtement se déplace avec grâce."
+    },
+    "craftsmanship": {
+      "title": "L'Artisanat",
+      "point1": {
+        "title": "Excellence Artisanale",
+        "description": "Chaque vêtement est méticuleusement fabriqué à la main, assurant une qualité inégalée et une attention aux détails."
+      },
+      "point2": {
+        "title": "Héritage Italien",
+        "description": "Enraciné dans des siècles de tradition de tailleur italien, combinant techniques traditionnelles et innovation moderne."
+      },
+      "point3": {
+        "title": "Matériaux Luxueux",
+        "description": "Uniquement les meilleurs tissus—soie, velours, dentelle et mousseline—provenant de fournisseurs italiens de premier plan."
+      },
+      "point4": {
+        "title": "Expérience Sur Mesure",
+        "description": "Chaque pièce peut être personnalisée pour compléter parfaitement votre style individuel et votre corps."
+      }
+    },
+    "cta": {
+      "title": "Explorez la Collection",
+      "button": "Voir la Galerie"
+    }
+  }
 }

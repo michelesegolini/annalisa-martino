@@ -1,7 +1,21 @@
 {
+  "navigation": {
+    "gallery": "Gallery",
+    "about": "About",
+    "collections": "Collections",
+    "contact": "Contact"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Get in touch for bespoke inquiries",
+    "instagram": "Follow on Instagram",
+    "email": "Email Us"
+  },
   "gallery": {
     "scroll": "SCROLL",
-    "inquirePrice": "Inquire Price"
+    "inquirePrice": "Inquire Price",
+    "filterAll": "All",
+    "viewCollection": "View Collection"
   },
   "modal": {
     "title": "Inquire About Price",
@@ -20,7 +34,25 @@
     "eveningWear": "Evening Wear",
     "cocktail": "Cocktail",
     "bridal": "Bridal",
-    "dayWear": "Day Wear"
+    "dayWear": "Day Wear",
+    "ceremony": "Ceremony",
+    "party18": "18th Birthday",
+    "resort": "Resort & Swimwear"
+  },
+  "collections": {
+    "title": "Collections",
+    "modaMediterranea": {
+      "title": "Mediterranean Fashion",
+      "description": "Inspired by the colors and textures of the Mediterranean coast, this collection embodies effortless elegance."
+    },
+    "magnaGrecia": {
+      "title": "Magna Grecia",
+      "description": "A tribute to classical beauty and ancient roots, featuring statuesque silhouettes and timeless drapery."
+    },
+    "redCarpet": {
+      "title": "Red Carpet",
+      "description": "Show-stopping gowns designed to make a statement, perfect for galas and exclusive events."
+    }
   },
   "items": {
     "silkElegance": {

@@ -1,7 +1,21 @@
 {
+    "navigation": {
+        "gallery": "Galleria",
+        "about": "Chi Sono",
+        "collections": "Collezioni",
+        "contact": "Contatti"
+    },
+    "contact": {
+        "title": "Contatti",
+        "subtitle": "Contattaci per richieste su misura",
+        "instagram": "Segui su Instagram",
+        "email": "Scrivici"
+    },
     "gallery": {
         "scroll": "SCORRI",
-        "inquirePrice": "Richiedi Prezzo"
+        "inquirePrice": "Richiedi Prezzo",
+        "filterAll": "Tutti",
+        "viewCollection": "Vedi Collezione"
     },
     "modal": {
         "title": "Richiedi Informazioni sul Prezzo",
@@ -20,7 +34,25 @@
         "eveningWear": "Abiti da Sera",
         "cocktail": "Cocktail",
         "bridal": "Sposa",
-        "dayWear": "Abiti da Giorno"
+        "dayWear": "Abiti da Giorno",
+        "ceremony": "Cerimonia",
+        "party18": "18° Compleanno",
+        "resort": "Resort & Costumi"
+    },
+    "collections": {
+        "title": "Collezioni",
+        "modaMediterranea": {
+            "title": "Moda Mediterranea",
+            "description": "Ispirata ai colori e alle texture della costa mediterranea, questa collezione incarna un'eleganza disinvolta."
+        },
+        "magnaGrecia": {
+            "title": "Magna Grecia",
+            "description": "Un tributo alla bellezza classica e alle radici antiche, con silhouette statuarie e drappeggi senza tempo."
+        },
+        "redCarpet": {
+            "title": "Red Carpet",
+            "description": "Abiti spettacolari progettati per lasciare il segno, perfetti per eventi di gala ed esclusivi."
+        }
     },
     "items": {
         "silkElegance": {
