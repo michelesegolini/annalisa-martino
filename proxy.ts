@@ -9,7 +9,7 @@ const routing = {
 
 const intlMiddleware = createMiddleware(routing);
 
-export function proxy(request: NextRequest) {
+export default function proxy(request: NextRequest) {
     return intlMiddleware(request);
 }
 
