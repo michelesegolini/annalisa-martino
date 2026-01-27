@@ -1,26 +1,8 @@
-import { client } from './client';
 import { GalleryItem } from '@/types';
+import { fetchGalleryItems as fetchFromSheets } from '@/lib/google-sheets';
 
-export async function getGalleryItems(): Promise<GalleryItem[]> {
-    const query = `*[_type == "galleryItem"] | order(featured desc, _createdAt desc) {
-    "id": _id,
-    title,
-    description,
-    "videoUrl": video.asset->url,
-    "posterImage": posterImage.asset->url,
-    category,
-    collection,
-    featured
-  }`;
-
-    try {
-        const items = await client.fetch(query);
-        return items;
-    } catch (error) {
-        console.error('Error fetching gallery items:', error);
-        // Return mock data for development
-        return getMockGalleryItems('en');
-    }
+export async function getGalleryItems(locale: string = 'en'): Promise<GalleryItem[]> {
+    return await fetchFromSheets(locale);
 }
 
 // Mock data for development/demo purposes

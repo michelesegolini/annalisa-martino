@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import VirtualGallery from '@/components/gallery/VirtualGallery';
-import { getMockGalleryItems } from '@/lib/sanity/queries';
+import { getGalleryItems } from '@/lib/sanity/queries';
 import { routing } from '@/i18n/routing';
 
 export function generateStaticParams() {
@@ -23,9 +23,8 @@ export default async function Home({
   // Enable static rendering
   setRequestLocale(locale);
 
-  // In production, this would fetch from Sanity
-  // For now, using mock data
-  const galleryItems = getMockGalleryItems(locale);
+  // Fetch items from Google Sheets
+  const galleryItems = await getGalleryItems(locale);
 
   return (
     <main>

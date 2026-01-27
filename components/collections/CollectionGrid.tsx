@@ -53,7 +53,7 @@ const CollectionGrid: React.FC<CollectionGridProps> = ({ items, onItemClick }) =
                                 }}
                             />
                         </Box>
-                        <CardContent sx={{ px: 0, py: 2 }}>
+                        <CardContent sx={{ px: 2, py: 2 }}>
                             <Typography
                                 variant="overline"
                                 sx={{ color: 'primary.main', letterSpacing: '0.1em' }}

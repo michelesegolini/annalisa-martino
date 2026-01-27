@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { Container, Typography, Box } from '@mui/material';
 import { GalleryItem } from '@/types';
 import CollectionGrid from './CollectionGrid';
-import FilterBar from './FilterBar';
+
 import InquireModal from '@/components/gallery/InquireModal';
 
 interface CollectionDetailProps {
@@ -14,21 +14,8 @@ interface CollectionDetailProps {
 }
 
 const CollectionDetail: React.FC<CollectionDetailProps> = ({ title, description, items }) => {
-    const [activeCategory, setActiveCategory] = useState<string | null>(null);
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
-
-    // Extract unique categories from items
-    const categories = useMemo(() => {
-        const cats = new Set(items.map(item => item.category));
-        return Array.from(cats);
-    }, [items]);
-
-    // Filter items
-    const filteredItems = useMemo(() => {
-        if (!activeCategory) return items;
-        return items.filter(item => item.category === activeCategory);
-    }, [items, activeCategory]);
 
     const handleItemClick = (item: GalleryItem) => {
         setSelectedItem(item);
@@ -75,15 +62,10 @@ const CollectionDetail: React.FC<CollectionDetailProps> = ({ title, description,
                     </Typography>
                 </Box>
 
-                {/* Filters */}
-                <FilterBar
-                    categories={categories}
-                    activeCategory={activeCategory}
-                    onFilterChange={setActiveCategory}
-                />
+
 
                 {/* Grid */}
-                <CollectionGrid items={filteredItems} onItemClick={handleItemClick} />
+                <CollectionGrid items={items} onItemClick={handleItemClick} />
 
                 {/* Modal */}
                 <InquireModal

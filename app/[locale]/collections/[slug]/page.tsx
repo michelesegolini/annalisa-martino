@@ -2,7 +2,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 
 import { getGalleryItems } from '@/lib/sanity/queries';
-import { setRequestLocale, getTranslations } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import CollectionDetail from '@/components/collections/CollectionDetail';
 
 interface Props {
@@ -13,8 +13,14 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-    // In a real app, we would fetch slugs from Sanity
-    const slugs = ['moda-mediterranea', 'magna-grecia', 'red-carpet'];
+    const allItems = await getGalleryItems('en'); // Use default locale for static generation of slugs
+    const collections = new Set(allItems.map(item => item.collection || 'Uncategorized'));
+
+    // Create slugs from collections
+    const slugs = Array.from(collections).map(name =>
+        name.toLowerCase().replace(/[^a-z0-9]+/g, '-')
+    );
+
     const locales = ['en', 'it', 'es', 'pt', 'fr'];
 
     const params = [];
@@ -29,32 +35,27 @@ export async function generateStaticParams() {
 export default async function CollectionPage({ params }: Props) {
     const { locale, slug } = await params;
     setRequestLocale(locale);
-    const t = await getTranslations('collections');
 
-    // Map slug to collection keys in translation file
-    const slugToKey: Record<string, string> = {
-        'moda-mediterranea': 'modaMediterranea',
-        'magna-grecia': 'magnaGrecia',
-        'red-carpet': 'redCarpet'
-    };
+    // Fetch all items from the sheet
+    const allItems = await getGalleryItems(locale);
 
-    const collectionKey = slugToKey[slug];
-    if (!collectionKey) {
+    // Find the collection that matches the slug
+    // We recreate the slug logic to find the original collection name
+    const collectionName = allItems
+        .map(item => item.collection || 'Uncategorized')
+        .find(name => name.toLowerCase().replace(/[^a-z0-9]+/g, '-') === slug);
+
+    if (!collectionName) {
         notFound();
     }
 
-    const collectionTitle = t(`${collectionKey}.title`);
-    const collectionDescription = t(`${collectionKey}.description`);
-
-    // Fetch all items and filter by collection title
-    // Note: In a real app, we would filter in the query itself
-    const allItems = await getGalleryItems();
-    const collectionItems = allItems.filter(item => item.collection === collectionTitle);
+    // Filter items for this collection
+    const collectionItems = allItems.filter(item => (item.collection || 'Uncategorized') === collectionName);
 
     return (
         <CollectionDetail
-            title={collectionTitle}
-            description={collectionDescription}
+            title={collectionName}
+            description="" // Description not in sheet
             items={collectionItems}
         />
     );

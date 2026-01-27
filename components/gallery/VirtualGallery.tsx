@@ -64,7 +64,11 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                                 muted
                                 loop
                                 playsInline
-                                poster={item.posterImage || 'https://placehold.co/1920x1080?text=Video+Poster'}
+                                poster={item.posterImage || 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80'}
+                                onError={(e) => {
+                                    // Fallback if video fails to load
+                                    (e.target as HTMLVideoElement).style.display = 'none';
+                                }}
                                 sx={{
                                     position: 'absolute',
                                     top: 0,
@@ -75,7 +79,7 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                                     zIndex: 0
                                 }}
                             >
-                                <source src={item.videoUrl} type="video/mp4" />
+                                {item.videoUrl && <source src={item.videoUrl} type="video/mp4" />}
                                 Your browser does not support the video tag.
                             </Box>
 
@@ -106,7 +110,8 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                                     animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards'
                                 }}>
                                     {/* Category Label */}
-                                    <Typography
+                                    {/* Category Label - Hidden per user request */}
+                                    {/* <Typography
                                         variant="overline"
                                         sx={{
                                             color: 'primary.main',
@@ -119,7 +124,7 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                                         }}
                                     >
                                         {item.category}
-                                    </Typography>
+                                    </Typography> */}
 
                                     {/* Title */}
                                     <Typography
