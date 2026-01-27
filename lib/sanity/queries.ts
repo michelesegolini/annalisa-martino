@@ -12,8 +12,8 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     const messages = require(`../../messages/${locale}.json`);
 
-    // Sample video for placeholder
-    const PLACEHOLDER_VIDEO = 'https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4';
+    // Sample video
+    const SAMPLE_VIDEO = 'https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4';
 
     return [
         // Red Carpet Collection
@@ -21,7 +21,7 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
             id: '1',
             title: messages.items.silkElegance.title,
             description: messages.items.silkElegance.description,
-            videoUrl: PLACEHOLDER_VIDEO,
+            videoUrl: SAMPLE_VIDEO,
             posterImage: '/images/fashion-item-1.png',
             category: messages.categories.eveningWear,
             collection: messages.collections.redCarpet.title,
@@ -31,7 +31,7 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
             id: '2',
             title: messages.items.velvetDreams.title,
             description: messages.items.velvetDreams.description,
-            videoUrl: PLACEHOLDER_VIDEO,
+            videoUrl: SAMPLE_VIDEO,
             posterImage: '/images/fashion-item-2.png',
             category: messages.categories.cocktail,
             collection: messages.collections.redCarpet.title,
@@ -43,7 +43,7 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
             id: '3',
             title: messages.items.laceSophistication.title,
             description: messages.items.laceSophistication.description,
-            videoUrl: PLACEHOLDER_VIDEO,
+            videoUrl: SAMPLE_VIDEO,
             posterImage: '/images/fashion-item-3.png',
             category: messages.categories.bridal,
             collection: messages.collections.magnaGrecia.title,
@@ -53,7 +53,7 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
             id: '4',
             title: messages.items.chiffonGrace.title,
             description: messages.items.chiffonGrace.description,
-            videoUrl: PLACEHOLDER_VIDEO,
+            videoUrl: SAMPLE_VIDEO,
             posterImage: '/images/fashion-item-4.png',
             category: messages.categories.ceremony,
             collection: messages.collections.magnaGrecia.title,
@@ -65,7 +65,7 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
             id: '5',
             title: messages.items.azureHorizon.title,
             description: messages.items.azureHorizon.description,
-            videoUrl: PLACEHOLDER_VIDEO,
+            videoUrl: SAMPLE_VIDEO,
             posterImage: '/images/fashion-item-5.png',
             category: messages.categories.resort,
             collection: messages.collections.modaMediterranea.title,
@@ -75,7 +75,7 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
             id: '6',
             title: messages.items.goldenHour.title,
             description: messages.items.goldenHour.description,
-            videoUrl: PLACEHOLDER_VIDEO,
+            videoUrl: SAMPLE_VIDEO,
             posterImage: '/images/fashion-item-6.png',
             category: messages.categories.party18,
             collection: messages.collections.modaMediterranea.title,

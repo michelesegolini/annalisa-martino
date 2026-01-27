@@ -36,7 +36,7 @@ const CollectionCard: React.FC<CollectionCardProps> = ({ title, description, ima
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    backgroundImage: `url(${image || 'https://placehold.co/1200x800?text=Collection'})`,
+                    backgroundImage: `url(${image || '/images/fashion-item-1.png'})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     transition: 'transform 0.8s ease',
