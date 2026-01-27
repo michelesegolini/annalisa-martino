@@ -47,7 +47,7 @@ const InquireModal: React.FC<InquireModalProps> = ({ open, onClose, item }) => {
             setSuccess(false);
             setError('');
         }
-    }, [item, open]);
+    }, [item, open, t]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;

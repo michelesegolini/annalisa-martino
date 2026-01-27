@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Box, Button, tabsClasses } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { useTranslations } from 'next-intl';
 
 interface FilterBarProps {

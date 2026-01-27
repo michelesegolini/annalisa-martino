@@ -32,7 +32,7 @@ export default async function AboutPage({
   const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as any)) {
+  if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
     notFound();
   }
 
@@ -108,19 +108,18 @@ export default async function AboutPage({
         >
           <Typography
             variant="h1"
-            className="animate-fade-in"
             sx={{
               color: 'primary.main',
               mb: 2,
               fontSize: { xs: '2.5rem', md: '4rem' },
               textShadow: '0 4px 20px rgba(212, 175, 55, 0.3)',
+              animation: 'fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards',
             }}
           >
             {t('hero.title')}
           </Typography>
           <Typography
             variant="h4"
-            className="animate-fade-in"
             sx={{
               color: 'text.primary',
               fontFamily: 'Inter',
@@ -128,7 +127,7 @@ export default async function AboutPage({
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
               fontSize: { xs: '0.9rem', md: '1.2rem' },
-              animation: 'fadeIn 0.8s 0.2s both',
+              animation: 'fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both',
             }}
           >
             {t('hero.subtitle')}
@@ -178,12 +177,14 @@ export default async function AboutPage({
         }}
       >
         <Box
-          className="glass"
           sx={{
             p: { xs: 4, md: 6 },
             borderRadius: 1,
             position: 'relative',
             overflow: 'hidden',
+            background: 'rgba(26, 26, 26, 0.8)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(212, 175, 55, 0.2)',
             '&::before': {
               content: '""',
               position: 'absolute',
@@ -191,7 +192,7 @@ export default async function AboutPage({
               left: 0,
               width: '4px',
               height: '100%',
-              background: 'linear-gradient(180deg, var(--color-gold) 0%, var(--color-gold-dark) 100%)',
+              background: 'linear-gradient(180deg, #D4AF37 0%, #B8941F 100%)',
             },
           }}
         >
@@ -229,7 +230,7 @@ export default async function AboutPage({
               borderColor: 'primary.main',
             }}
           >
-            "{t('philosophy.quote')}"
+            &quot;{t('philosophy.quote')}&quot;
           </Typography>
         </Box>
       </Container>
@@ -255,13 +256,15 @@ export default async function AboutPage({
         </Typography>
         <Grid container spacing={{ xs: 3, md: 4 }}>
           {craftPoints.map((point, index) => (
-            <Grid size={{ xs: 12, sm: 6 }} key={index}>
+            <Grid size={{ xs: 12, sm: 6 }} key={index} component="div">
               <Card
-                className="glass"
                 sx={{
                   height: '100%',
-                  transition: 'all var(--transition-base)',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                   cursor: 'default',
+                  background: 'rgba(26, 26, 26, 0.8)',
+                  backdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(212, 175, 55, 0.2)',
                   '&:hover': {
                     transform: 'translateY(-8px)',
                     boxShadow: '0 12px 40px rgba(212, 175, 55, 0.2)',

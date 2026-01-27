@@ -9,7 +9,7 @@ import { notFound } from 'next/navigation';
 import theme from '@/lib/theme';
 import { routing } from '@/i18n/routing';
 import Navigation from '@/components/layout/Navigation';
-import "../../styles/globals.css";
+
 
 const cormorant = Cormorant_Garamond({
   weight: ['400', '500', '600', '700'],
@@ -127,7 +127,7 @@ export default async function RootLayout({
   const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as any)) {
+  if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
     notFound();
   }
 

@@ -27,6 +27,7 @@ export async function getGalleryItems(): Promise<GalleryItem[]> {
 export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
     // In a real app, this would come from Sanity with locale-specific fields
     // For now, we'll use the translation keys to get localized content
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const messages = require(`../../messages/${locale}.json`);
 
     // Sample video for placeholder

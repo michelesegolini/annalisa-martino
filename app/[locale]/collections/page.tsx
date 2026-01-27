@@ -53,7 +53,7 @@ export default async function CollectionsPage({ params }: { params: Promise<{ lo
                         gridTemplateColumns: { xs: '1fr', md: '1fr' },
                         gap: 4
                     }}>
-                        {collections.map((collection, index) => (
+                        {collections.map((collection) => (
                             <Box key={collection.id}>
                                 <CollectionCard {...collection} />
                             </Box>

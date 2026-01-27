@@ -1,6 +1,6 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+
 import { getGalleryItems } from '@/lib/sanity/queries';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import CollectionDetail from '@/components/collections/CollectionDetail';

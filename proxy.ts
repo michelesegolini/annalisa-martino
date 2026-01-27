@@ -39,7 +39,7 @@ export default function middleware(request: NextRequest) {
 
             // Find first supported locale
             for (const browserLang of browserLanguages) {
-                if (locales.includes(browserLang.code as any)) {
+                if (locales.includes(browserLang.code as (typeof locales)[number])) {
                     detectedLocale = browserLang.code;
                     break;
                 }

@@ -79,6 +79,79 @@ const theme = createTheme({
         },
     },
     components: {
+        MuiCssBaseline: {
+            styleOverrides: (themeParam) => `
+        :root {
+          --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        html {
+          scroll-behavior: smooth;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+        body {
+          background-color: ${themeParam.palette.background.default};
+          color: ${themeParam.palette.text.primary};
+          font-family: ${themeParam.typography.fontFamily};
+          line-height: 1.7;
+          overflow-x: hidden;
+        }
+        ::-webkit-scrollbar {
+          width: 8px;
+          height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+          background: #1A1A1A; /* theme.palette.background.paper assuming it matches */
+        }
+        ::-webkit-scrollbar-thumb {
+          background: ${themeParam.palette.primary.dark};
+          border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background: ${themeParam.palette.primary.main};
+        }
+        ::selection {
+          background-color: ${themeParam.palette.primary.main};
+          color: ${themeParam.palette.common.black};
+        }
+        a, button {
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        *:focus-visible {
+          outline: 2px solid ${themeParam.palette.primary.main};
+          outline-offset: 4px;
+        }
+        img {
+          max-width: 100%;
+          height: auto;
+          display: block;
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+          from { transform: translateX(-100%); }
+          to { transform: translateX(0); }
+        }
+        @keyframes shimmer {
+          0% { background-position: -1000px 0; }
+          100% { background-position: 1000px 0; }
+        }
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+        @keyframes slideRight {
+          0%, 100% { transform: translateX(0); }
+          50% { transform: translateX(10px); }
+        }
+      `,
+        },
         MuiButton: {
             styleOverrides: {
                 root: {
