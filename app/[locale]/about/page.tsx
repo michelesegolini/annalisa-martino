@@ -90,7 +90,7 @@ export default async function AboutPage({
         }}
       >
         <Image
-          src="/annalisa-martino.png"
+          src="/annalisa-martino.jpg"
           alt="Annalisa Martino"
           fill
           priority
