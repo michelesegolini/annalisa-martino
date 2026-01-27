@@ -3,7 +3,7 @@
 import React from 'react';
 import { useParams } from 'next/navigation';
 import { useRouter, usePathname } from '@/i18n/routing';
-import { Locale, locales } from '@/i18n/config';
+import { Locale, locales } from '@/lib/constants';
 import { useTranslations } from 'next-intl';
 import {
     Select,

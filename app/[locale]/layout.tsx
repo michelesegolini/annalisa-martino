@@ -7,9 +7,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import theme from '@/lib/theme';
-import { routing } from '@/i18n/routing';
 import Navigation from '@/components/layout/Navigation';
-import { Locale, i18nConfig } from '@/i18n/config';
+import { Locale, i18nConfig } from '@/lib/constants';
 
 
 const cormorant = Cormorant_Garamond({
@@ -26,7 +25,7 @@ const inter = Inter({
 });
 
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
+  return i18nConfig.locales.map((locale) => ({ locale }));
 }
 
 export async function generateMetadata({
@@ -128,7 +127,7 @@ export default async function RootLayout({
   const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
+  if (!i18nConfig.locales.includes(locale as any)) {
     notFound();
   }
 

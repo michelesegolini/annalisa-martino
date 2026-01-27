@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { getGalleryItems } from '@/lib/sanity/queries';
 import { setRequestLocale } from 'next-intl/server';
 import CollectionDetail from '@/components/collections/CollectionDetail';
-import { i18nConfig, Locale } from '@/i18n/config';
+import { i18nConfig, Locale } from '@/lib/constants';
 
 interface Props {
     params: Promise<{

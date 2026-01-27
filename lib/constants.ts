@@ -9,3 +9,7 @@ export const i18nConfig = {
 };
 
 export type Locale = (typeof locales)[number];
+
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://annalisamartino.com';
+export const SITE_NAME = 'Annalisa Martino';
+export const DESIGNER_NAME = 'Annalisa Martino';

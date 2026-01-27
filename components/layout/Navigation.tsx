@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, Divider } from '@mui/material';
 import { useParams } from 'next/navigation';
 import { useRouter, usePathname, Link } from '@/i18n/routing';
-import { Locale, locales } from '@/i18n/config';
+import { Locale, locales } from '@/lib/constants';
 import { useTranslations } from 'next-intl';
 
 const languageFlags: Record<string, string> = {

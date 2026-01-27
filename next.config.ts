@@ -4,7 +4,7 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    /* No rewrites/redirects here, handled by proxy.ts */
+    // Current Next.js 16 configuration
 };
 
 export default withNextIntl(nextConfig);

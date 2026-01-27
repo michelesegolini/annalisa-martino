@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import VirtualGallery from '@/components/gallery/VirtualGallery';
 import { getGalleryItems } from '@/lib/sanity/queries';
-import { i18nConfig, Locale } from '@/i18n/config';
+import { i18nConfig, Locale } from '@/lib/constants';
 
 export function generateStaticParams() {
   return i18nConfig.locales.map((locale) => ({ locale }));
