@@ -1,9 +1,15 @@
 import createMiddleware from 'next-intl/middleware';
 import { routing } from './i18n/routing';
+import { NextRequest } from 'next/server';
 
-export default createMiddleware(routing);
+const handleRequest = createMiddleware(routing);
+
+export default function proxy(request: NextRequest) {
+    console.log('Proxy request:', request.nextUrl.pathname);
+    return handleRequest(request);
+}
 
 export const config = {
-    // Matcher ignoring internal paths and static files
-    matcher: ['/((?!api|_next|_vercel|test-static|.*\\..*).*)']
+    // Simple explicit matcher to avoid negative lookahead complexity
+    matcher: ['/', '/(en|it|es|pt|fr)/:path*']
 };
