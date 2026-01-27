@@ -5,7 +5,7 @@ export const config = {
     matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
 };
 
-export default function proxy(request: NextRequest) {
+export function proxy(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
     // Handle root redirect
@@ -13,7 +13,5 @@ export default function proxy(request: NextRequest) {
         return NextResponse.redirect(new URL('/it', request.url));
     }
 
-    // Handle other locale-less paths if needed, 
-    // but for now, we pass everything else through
     return NextResponse.next();
 }
