@@ -1,13 +1,10 @@
 import createMiddleware from 'next-intl/middleware';
-import { routing } from './i18n/routing';
-import { NextRequest } from 'next/server';
+import { defineRouting } from 'next-intl/routing';
+import { i18nConfig } from './lib/constants';
 
-const handleRequest = createMiddleware(routing);
+const routing = defineRouting(i18nConfig);
 
-export default function proxy(request: NextRequest) {
-    console.log('Proxy request:', request.nextUrl.pathname);
-    return handleRequest(request);
-}
+export default createMiddleware(routing);
 
 // Standard matcher to ensure all paths are caught/ignored correctly
 export const config = {
