@@ -1,21 +1,7 @@
 import Papa from 'papaparse';
-import { unstable_cache } from 'next/cache';
 import { GalleryItem } from '@/types';
 
 const GOOGLE_SHEET_URL = 'https://docs.google.com/spreadsheets/d/1NpLpI74uK1f2VjhZya1Jezuwq73Rw2CrpA2Q4-NJkfI/export?format=csv&gid=0';
-
-// Cached fetch for Google Sheets CSV data
-const getCachedSheetData = unstable_cache(
-    async () => {
-        const response = await fetch(GOOGLE_SHEET_URL);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch Google Sheet: ${response.statusText}`);
-        }
-        return response.text();
-    },
-    ['google-sheets-data'],
-    { revalidate: 60 } // Revalidate every 60 seconds
-);
 
 // High-Fashion & Runway placeholder images (Verified Stable)
 // Note: If any fail, the UI onError handler should fallback to a local default or color.
@@ -82,10 +68,10 @@ const PLACEHOLDER_DESCRIPTIONS_BY_LOCALE: Record<string, string[]> = {
         "Esta impresionante pieza presenta detalles intrincados y una silueta que celebra la feminidad moderna.",
         "La sofisticación atemporal se encuentra con el estilo contemporáneo en esta exquisita creación.",
         "Diseñado para los audaces y hermosos, este artículo hace una declaración donde quiera que vayas.",
-        "Experimenta el lujo de telas premium y sastrería experta con esta adición única a tu guardarropa.",
+        "Experimente el lujo de telas premium y sastrería experta con esta adición única a tu guardarropa.",
         "Una mezcla perfecta de comodidad y estilo, esta pieza es esencial para la fashionista exigente.",
         "Capturando la esencia de la alta moda, este diseño es tanto innovador como clásico.",
-        "Irradia confianza y encanto con esta prenda bellamente construida.",
+        "Irradia confianza y encanto con esta prenda bellamente construída.",
         "Una elección elegante para ocasiones especiales, reflejando un profundo compromiso con la calidad y la belleza.",
         "Sofisticado, chic y sin esfuerzo elegante – un verdadero testamento de excelencia sartorial."
     ],
@@ -126,8 +112,13 @@ const getDeterministicItem = <T>(list: T[], seed: string): T => {
 
 export async function fetchGalleryItems(locale: string = 'en'): Promise<GalleryItem[]> {
     try {
-        // Use cached fetch for static generation compatibility
-        const csvText = await getCachedSheetData();
+        const response = await fetch(GOOGLE_SHEET_URL, {
+            cache: 'no-store' // We will force dynamic in page.tsx instead
+        });
+        if (!response.ok) {
+            throw new Error(`Failed to fetch Google Sheet: ${response.statusText}`);
+        }
+        const csvText = await response.text();
 
         const result = Papa.parse<string[]>(csvText, {
             header: false, // We use index-based access since headers might vary
