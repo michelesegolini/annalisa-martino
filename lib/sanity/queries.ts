@@ -1,8 +1,8 @@
 import { GalleryItem } from '@/types';
-import { fetchGalleryItems as fetchFromSheets } from '@/lib/google-sheets';
+import { fetchGalleryItems as fetchFromGallery } from '@/lib/gallery';
 
 export async function getGalleryItems(locale: string = 'en'): Promise<GalleryItem[]> {
-    return await fetchFromSheets(locale);
+    return await fetchFromGallery(locale);
 }
 
 // Mock data for development/demo purposes

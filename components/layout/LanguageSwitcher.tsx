@@ -2,7 +2,9 @@
 
 import React from 'react';
 import { useParams } from 'next/navigation';
-import { useRouter, usePathname, routing } from '@/i18n/routing';
+import { useRouter, usePathname } from '@/i18n/routing';
+import { Locale, locales } from '@/i18n/config';
+import { useTranslations } from 'next-intl';
 import {
     Select,
     MenuItem,
@@ -70,7 +72,7 @@ const LanguageSwitcher: React.FC = () => {
                     },
                 }}
             >
-                {routing.locales.map((locale) => (
+                {locales.map((locale: Locale) => (
                     <MenuItem
                         key={locale}
                         value={locale}

@@ -9,6 +9,7 @@ import { notFound } from 'next/navigation';
 import theme from '@/lib/theme';
 import { routing } from '@/i18n/routing';
 import Navigation from '@/components/layout/Navigation';
+import { Locale, i18nConfig } from '@/i18n/config';
 
 
 const cormorant = Cormorant_Garamond({
@@ -36,7 +37,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'seo' });
 
-  const localeMap: Record<string, string> = {
+  const localeMap: Record<Locale, string> = {
     en: 'en_US',
     it: 'it_IT',
     es: 'es_ES',
@@ -78,8 +79,8 @@ export async function generateMetadata({
     },
     openGraph: {
       type: 'website',
-      locale: localeMap[locale] || 'it_IT',
-      alternateLocale: Object.values(localeMap).filter((l) => l !== localeMap[locale]),
+      locale: localeMap[locale as Locale],
+      alternateLocale: Object.values(localeMap).filter((l) => l !== localeMap[locale as Locale]),
       url: `https://annalisamartino.com/${locale}`,
       title: t('ogTitle'),
       description: t('ogDescription'),

@@ -2,10 +2,10 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import VirtualGallery from '@/components/gallery/VirtualGallery';
 import { getGalleryItems } from '@/lib/sanity/queries';
-import { routing } from '@/i18n/routing';
+import { i18nConfig, Locale } from '@/i18n/config';
 
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
+  return i18nConfig.locales.map((locale) => ({ locale }));
 }
 
 export default async function Home({
@@ -16,7 +16,7 @@ export default async function Home({
   const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
+  if (!i18nConfig.locales.includes(locale as Locale)) {
     notFound();
   }
 

@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { getGalleryItems } from '@/lib/sanity/queries';
 import { setRequestLocale } from 'next-intl/server';
 import CollectionDetail from '@/components/collections/CollectionDetail';
+import { i18nConfig, Locale } from '@/i18n/config';
 
 interface Props {
     params: Promise<{
@@ -13,18 +14,16 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-    const allItems = await getGalleryItems('en'); // Use default locale for static generation of slugs
-    const collections = new Set(allItems.map(item => item.collection || 'Uncategorized'));
+    const allItems = await getGalleryItems(i18nConfig.defaultLocale);
+    const collections = new Set(allItems.map(item => item.collection || 'Collection'));
 
     // Create slugs from collections
     const slugs = Array.from(collections).map(name =>
         name.toLowerCase().replace(/[^a-z0-9]+/g, '-')
     );
 
-    const locales = ['en', 'it', 'es', 'pt', 'fr'];
-
     const params = [];
-    for (const locale of locales) {
+    for (const locale of i18nConfig.locales) {
         for (const slug of slugs) {
             params.push({ locale, slug });
         }
