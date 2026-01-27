@@ -1,7 +1,21 @@
 import Papa from 'papaparse';
+import { unstable_cache } from 'next/cache';
 import { GalleryItem } from '@/types';
 
 const GOOGLE_SHEET_URL = 'https://docs.google.com/spreadsheets/d/1NpLpI74uK1f2VjhZya1Jezuwq73Rw2CrpA2Q4-NJkfI/export?format=csv&gid=0';
+
+// Cached fetch for Google Sheets CSV data
+const getCachedSheetData = unstable_cache(
+    async () => {
+        const response = await fetch(GOOGLE_SHEET_URL);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch Google Sheet: ${response.statusText}`);
+        }
+        return response.text();
+    },
+    ['google-sheets-data'],
+    { revalidate: 60 } // Revalidate every 60 seconds
+);
 
 // High-Fashion & Runway placeholder images (Verified Stable)
 // Note: If any fail, the UI onError handler should fallback to a local default or color.
@@ -112,14 +126,8 @@ const getDeterministicItem = <T>(list: T[], seed: string): T => {
 
 export async function fetchGalleryItems(locale: string = 'en'): Promise<GalleryItem[]> {
     try {
-        const response = await fetch(GOOGLE_SHEET_URL, {
-            cache: 'force-cache',
-            next: { revalidate: 60 }
-        });
-        if (!response.ok) {
-            throw new Error(`Failed to fetch Google Sheet: ${response.statusText}`);
-        }
-        const csvText = await response.text();
+        // Use cached fetch for static generation compatibility
+        const csvText = await getCachedSheetData();
 
         const result = Papa.parse<string[]>(csvText, {
             header: false, // We use index-based access since headers might vary
