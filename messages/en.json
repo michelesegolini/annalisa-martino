@@ -57,19 +57,27 @@
   "items": {
     "silkElegance": {
       "title": "Silk Elegance",
-      "description": "Handcrafted silk evening gown with intricate embroidery, featuring flowing fabric that captures movement and light."
+      "description": "A crimson symphony of hand-woven silk, draped to accentuate fluidity and grace. This evening gown features artisanal embroidery that catches the light like scattered rubies."
     },
     "velvetDreams": {
       "title": "Velvet Dreams",
-      "description": "Luxurious velvet dress with contemporary silhouette, showcasing the rich texture and depth of Italian craftsmanship."
+      "description": "A midnight-black velvet masterpiece boasting sharp, architectural shoulders and a plunging back. A modern reinterpretation of Italian noir elegance."
     },
     "laceSophistication": {
       "title": "Lace Sophistication",
-      "description": "Delicate lace creation with modern lines, combining traditional techniques with avant-garde design."
+      "description": "Ethereal white lace meets avant-garde structure. This bridal gown layers intricate floral motifs over a sheer, corseted bodice for a romantic yet bold statement."
     },
     "chiffonGrace": {
       "title": "Chiffon Grace",
-      "description": "Ethereal chiffon ensemble that moves like a whisper, embodying the essence of Italian demi-couture."
+      "description": "Pastel chiffon layers cascade in a dreamlike silhouette. Designed for movement, this dress mimics the soft caress of a summer breeze."
+    },
+    "azureHorizon": {
+      "title": "Azure Horizon",
+      "description": "A vibrant azure silk gown inspired by the depth of the Mediterranean. It flows effortlessly, perfect for a luxurious seaside resort escape."
+    },
+    "goldenHour": {
+      "title": "Golden Hour",
+      "description": "A dazzling metallic sequin dress that captures the warmth of a sunset. Designed for the woman who shines brightest when the sun goes down."
     }
   },
   "seo": {

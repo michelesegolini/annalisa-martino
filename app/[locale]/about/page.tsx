@@ -1,10 +1,9 @@
 import { notFound } from 'next/navigation';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
-import { routing } from '@/i18n/routing';
+import { routing, Link } from '@/i18n/routing';
 import { Box, Container, Typography, Button, Grid, Card, CardContent } from '@mui/material';
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -323,7 +322,7 @@ export default async function AboutPage({
         >
           {t('cta.title')}
         </Typography>
-        <Link href={`/${locale}`} style={{ textDecoration: 'none' }}>
+        <Link href="/" style={{ textDecoration: 'none' }}>
           <Button
             variant="contained"
             color="primary"

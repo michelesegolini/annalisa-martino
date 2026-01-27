@@ -57,19 +57,27 @@
     "items": {
         "silkElegance": {
             "title": "Eleganza di Seta",
-            "description": "Abito da sera in seta lavorato a mano con ricamo intricato, caratterizzato da tessuto fluido che cattura movimento e luce."
+            "description": "Una sinfonia cremisi di seta tessuta a mano, drappeggiata per accentuare fluidità e grazia. Questo abito da sera presenta ricami artigianali che catturano la luce come rubini sparsi."
         },
         "velvetDreams": {
             "title": "Sogni di Velluto",
-            "description": "Lussuoso abito in velluto con silhouette contemporanea, che mette in mostra la ricca texture e la profondità dell'artigianato italiano."
+            "description": "Un capolavoro in velluto nero notte con spalle architettoniche e schiena scoperta. Una reinterpretazione moderna dell'eleganza noir italiana."
         },
         "laceSophistication": {
             "title": "Raffinatezza di Pizzo",
-            "description": "Delicata creazione in pizzo con linee moderne, che combina tecniche tradizionali con design all'avanguardia."
+            "description": "L'etereo pizzo bianco incontra una struttura all'avanguardia. Questo abito da sposa sovrappone intricati motivi floreali a un corpetto trasparente per un'affermazione romantica ma audace."
         },
         "chiffonGrace": {
             "title": "Grazia di Chiffon",
-            "description": "Ensemble etereo in chiffon che si muove come un sussurro, incarnando l'essenza della demi-couture italiana."
+            "description": "Strati di chiffon pastello scendono in una silhouette onirica. Progettato per il movimento, questo abito imita la dolce carezza di una brezza estiva."
+        },
+        "azureHorizon": {
+            "title": "Orizzonte Azzurro",
+            "description": "Un vibrante abito in seta azzurra ispirato alla profondità del Mediterraneo. Scorre senza sforzo, perfetto per una fuga esclusiva in un resort marittimo."
+        },
+        "goldenHour": {
+            "title": "Ora d'Oro",
+            "description": "Uno sfolgorante abito in paillettes metalliche che cattura il calore del tramonto. Disegnato per la donna che brilla di più quando il sole tramonta."
         }
     },
     "seo": {

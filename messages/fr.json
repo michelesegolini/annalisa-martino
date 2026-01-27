@@ -57,19 +57,27 @@
   "items": {
     "silkElegance": {
       "title": "Élégance de Soie",
-      "description": "Robe de soirée en soie faite à la main avec broderie complexe, présentant un tissu fluide qui capture le mouvement et la lumière."
+      "description": "Une symphonie cramoisie de soie tissée à la main, drapée pour accentuer la fluidité et la grâce. Cette robe de soirée présente des broderies artisanales qui captent la lumière comme des rubis éparpillés."
     },
     "velvetDreams": {
       "title": "Rêves de Velours",
-      "description": "Luxueuse robe en velours avec silhouette contemporaine, mettant en valeur la riche texture et la profondeur de l'artisanat italien."
+      "description": "Un chef-d'œuvre en velours noir de minuit aux épaules architecturales et au dos nu. Une réinterprétation moderne de l'élégance noire italienne."
     },
     "laceSophistication": {
       "title": "Sophistication de Dentelle",
-      "description": "Création délicate en dentelle aux lignes modernes, alliant techniques traditionnelles et design avant-gardiste."
+      "description": "La dentelle blanche éthérée rencontre une structure avant-gardiste. Cette robe de mariée superpose des motifs floraux complexes sur un corsage transparent pour une déclaration romantique mais audacieuse."
     },
     "chiffonGrace": {
       "title": "Grâce de Mousseline",
-      "description": "Ensemble éthéré en mousseline qui se déplace comme un murmure, incarnant l'essence de la demi-couture italienne."
+      "description": "Des couches de mousseline pastel tombent en une silhouette onirique. Conçue pour le mouvement, cette robe imite la douce caresse d'une brise d'été."
+    },
+    "azureHorizon": {
+      "title": "Horizon Azur",
+      "description": "Une robe en soie azur vibrante inspirée par la profondeur de la Méditerranée. Elle coule sans effort, parfaite pour une escapade de luxe dans une station balnéaire."
+    },
+    "goldenHour": {
+      "title": "Heure Dorée",
+      "description": "Une robe éblouissante à paillettes métalliques qui capture la chaleur du coucher du soleil. Conçue pour la femme qui brille le plus lorsque le soleil se couche."
     }
   },
   "seo": {

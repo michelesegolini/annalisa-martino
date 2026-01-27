@@ -64,7 +64,7 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                                 muted
                                 loop
                                 playsInline
-                                poster={item.posterImage || 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80'}
+                                poster={item.posterImage || '/images/fashion-item-1.png'}
                                 onError={(e) => {
                                     // Fallback if video fails to load
                                     (e.target as HTMLVideoElement).style.display = 'none';

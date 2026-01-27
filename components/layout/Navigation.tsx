@@ -33,10 +33,10 @@ const Navigation: React.FC = () => {
     };
 
     const menuItems = [
-        { label: t('gallery'), href: `/${currentLocale}` },
-        { label: t('about'), href: `/${currentLocale}/about` },
-        { label: t('collections'), href: `/${currentLocale}/collections` },
-        { label: t('contact'), href: `/${currentLocale}/contact` },
+        { label: t('gallery'), href: '/' },
+        { label: t('about'), href: '/about' },
+        { label: t('collections'), href: '/collections' },
+        { label: t('contact'), href: '/contact' },
     ];
 
     return (

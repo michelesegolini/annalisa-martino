@@ -57,19 +57,27 @@
   "items": {
     "silkElegance": {
       "title": "Elegância de Seda",
-      "description": "Vestido de noite de seda feito à mão com bordado intrincado, apresentando tecido fluido que captura movimento e luz."
+      "description": "Uma sinfonia carmesim de seda tecida à mão, drapeada para acentuar a fluidez e a graça. Este vestido de noite apresenta bordados artesanais que capturam a luz como rubis espalhados."
     },
     "velvetDreams": {
       "title": "Sonhos de Veludo",
-      "description": "Luxuoso vestido de veludo com silhueta contemporânea, mostrando a rica textura e profundidade do artesanato italiano."
+      "description": "Uma obra-prima de veludo preto meia-noite com ombros arquitetônicos e costas nuas. Uma reinterpretação moderna da elegância noir italiana."
     },
     "laceSophistication": {
       "title": "Sofisticação de Renda",
-      "description": "Delicada criação de renda com linhas modernas, combinando técnicas tradicionais com design vanguardista."
+      "description": "A renda branca etérea encontra uma estrutura vanguardista. Este vestido de noiva sobrepõe intrincados motivos florais sobre um corpete transparente para uma declaração romântica, mas ousada."
     },
     "chiffonGrace": {
       "title": "Graça de Chiffon",
-      "description": "Conjunto etéreo de chiffon que se move como um sussurro, incorporando a essência da demi-couture italiana."
+      "description": "Camadas de chiffon pastel caem em uma silhueta onírica. Projetado para o movimento, este vestido imita a suave carícia de uma brisa de verão."
+    },
+    "azureHorizon": {
+      "title": "Horizonte Azul",
+      "description": "Um vibrante vestido de seda azul inspirado na profundidade do Mediterrâneo. Flui sem esforço, perfeito para uma escapada de luxo em um resort à beira-mar."
+    },
+    "goldenHour": {
+      "title": "Hora Dourada",
+      "description": "Um deslumbrante vestido de lantejoulas metálicas que captura o calor do pôr do sol. Projetado para a mulher que brilha mais quando o sol se põe."
     }
   },
   "seo": {

@@ -57,19 +57,27 @@
   "items": {
     "silkElegance": {
       "title": "Elegancia de Seda",
-      "description": "Vestido de noche de seda hecho a mano con bordado intrincado, con tela fluida que captura movimiento y luz."
+      "description": "Una sinfonía carmesí de seda tejida a mano, drapeada para acentuar la fluidez y la gracia. Este vestido de noche presenta bordados artesanales que captan la luz como rubíes esparcidos."
     },
     "velvetDreams": {
       "title": "Sueños de Terciopelo",
-      "description": "Lujoso vestido de terciopelo con silueta contemporánea, mostrando la rica textura y profundidad de la artesanía italiana."
+      "description": "Una obra maestra de terciopelo negro medianoche con hombros arquitectónicos y espalda descubierta. Una reinterpretación moderna de la elegancia noir italiana."
     },
     "laceSophistication": {
       "title": "Sofisticación de Encaje",
-      "description": "Delicada creación de encaje con líneas modernas, combinando técnicas tradicionales con diseño vanguardista."
+      "description": "El etéreo encaje blanco se encuentra con una estructura vanguardista. Este vestido de novia superpone intrincados motivos florales sobre un corpiño transparente para una declaración romántica pero audaz."
     },
     "chiffonGrace": {
       "title": "Gracia de Gasa",
-      "description": "Conjunto etéreo de gasa que se mueve como un susurro, encarnando la esencia de la demi-couture italiana."
+      "description": "Capas de gasa pastel caen en una silueta onírica. Diseñado para el movimiento, este vestido imita la suave caricia de una brisa de verano."
+    },
+    "azureHorizon": {
+      "title": "Horizonte Azul",
+      "description": "Un vibrante vestido de seda azul inspirado en la profundidad del Mediterráneo. Fluye sin esfuerzo, perfecto para una escapada de lujo a un resort junto al mar."
+    },
+    "goldenHour": {
+      "title": "Hora Dorada",
+      "description": "Un deslumbrante vestido de lentejuelas metálicas que captura la calidez del atardecer. Diseñado para la mujer que brilla más cuando se pone el sol."
     }
   },
   "seo": {

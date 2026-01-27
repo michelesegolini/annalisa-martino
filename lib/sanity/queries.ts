@@ -13,7 +13,7 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
     const messages = require(`../../messages/${locale}.json`);
 
     // Sample video for placeholder
-    const PLACEHOLDER_VIDEO = 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4';
+    const PLACEHOLDER_VIDEO = 'https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4';
 
     return [
         // Red Carpet Collection
@@ -22,7 +22,7 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
             title: messages.items.silkElegance.title,
             description: messages.items.silkElegance.description,
             videoUrl: PLACEHOLDER_VIDEO,
-            posterImage: '/images/poster-1.jpg',
+            posterImage: '/images/fashion-item-1.png',
             category: messages.categories.eveningWear,
             collection: messages.collections.redCarpet.title,
             featured: true,
@@ -32,7 +32,7 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
             title: messages.items.velvetDreams.title,
             description: messages.items.velvetDreams.description,
             videoUrl: PLACEHOLDER_VIDEO,
-            posterImage: '/images/poster-2.jpg',
+            posterImage: '/images/fashion-item-2.png',
             category: messages.categories.cocktail,
             collection: messages.collections.redCarpet.title,
             featured: true,
@@ -44,7 +44,7 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
             title: messages.items.laceSophistication.title,
             description: messages.items.laceSophistication.description,
             videoUrl: PLACEHOLDER_VIDEO,
-            posterImage: '/images/poster-3.jpg',
+            posterImage: '/images/fashion-item-3.png',
             category: messages.categories.bridal,
             collection: messages.collections.magnaGrecia.title,
             featured: false,
@@ -54,7 +54,7 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
             title: messages.items.chiffonGrace.title,
             description: messages.items.chiffonGrace.description,
             videoUrl: PLACEHOLDER_VIDEO,
-            posterImage: 'https://placehold.co/600x900?text=Poster+4', // Fixed missing image
+            posterImage: '/images/fashion-item-4.png',
             category: messages.categories.ceremony,
             collection: messages.collections.magnaGrecia.title,
             featured: false,
@@ -63,20 +63,20 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
         // Moda Mediterranea Collection
         {
             id: '5',
-            title: "Azure Horizon",
-            description: "Inspired by the Tyrrhenian sea, this fluid silk dress captures the essence of Mediterranean summer.",
+            title: messages.items.azureHorizon.title,
+            description: messages.items.azureHorizon.description,
             videoUrl: PLACEHOLDER_VIDEO,
-            posterImage: '/images/poster-1.jpg',
+            posterImage: '/images/fashion-item-5.png',
             category: messages.categories.resort,
             collection: messages.collections.modaMediterranea.title,
             featured: true,
         },
         {
             id: '6',
-            title: "Golden Hour",
-            description: "A tribute to the warm sunset light reflecting on ancient stones.",
+            title: messages.items.goldenHour.title,
+            description: messages.items.goldenHour.description,
             videoUrl: PLACEHOLDER_VIDEO,
-            posterImage: '/images/poster-2.jpg',
+            posterImage: '/images/fashion-item-6.png',
             category: messages.categories.party18,
             collection: messages.collections.modaMediterranea.title,
             featured: false,
