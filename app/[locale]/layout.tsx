@@ -87,8 +87,8 @@ export async function generateMetadata({
       images: [
         {
           url: '/annalisa-martino.png',
-          width: 800,
-          height: 600,
+          width: 1024,
+          height: 1024,
           alt: 'Annalisa Martino',
         },
       ],
@@ -149,7 +149,7 @@ export default async function RootLayout({
               name: 'Annalisa Martino',
               description: t('schemaDescription'),
               url: 'https://annalisamartino.com',
-              image: 'https://annalisamartino.com/annalisa-martino.png',
+              image: `${process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : 'https://annalisamartino.com'}/annalisa-martino.png`,
               address: {
                 '@type': 'PostalAddress',
                 addressCountry: 'IT',
