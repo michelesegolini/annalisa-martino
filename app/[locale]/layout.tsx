@@ -86,10 +86,10 @@ export async function generateMetadata({
       siteName: 'Annalisa Martino',
       images: [
         {
-          url: 'https://placehold.co/1200x630.png?text=Annalisa+Martino',
-          width: 1200,
-          height: 630,
-          alt: 'Annalisa Martino Fashion Portfolio',
+          url: '/annalisa-martino.png',
+          width: 800,
+          height: 600,
+          alt: 'Annalisa Martino',
         },
       ],
     },
@@ -97,7 +97,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: t('ogTitle'),
       description: t('ogDescription'),
-      images: ['https://placehold.co/1200x630.png?text=Annalisa+Martino'],
+      images: ['/annalisa-martino.png'],
       creator: '@annalisamartino',
     },
     robots: {
@@ -149,7 +149,7 @@ export default async function RootLayout({
               name: 'Annalisa Martino',
               description: t('schemaDescription'),
               url: 'https://annalisamartino.com',
-              image: 'https://placehold.co/1200x630.png?text=Annalisa+Martino',
+              image: 'https://annalisamartino.com/annalisa-martino.png',
               address: {
                 '@type': 'PostalAddress',
                 addressCountry: 'IT',

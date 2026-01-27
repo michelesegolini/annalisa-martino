@@ -175,7 +175,7 @@ const Navigation: React.FC = () => {
                                 fontWeight: 500,
                             }}
                         >
-                            Language
+                            {t('language')}
                         </Box>
                         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                             {locales.map((locale) => (

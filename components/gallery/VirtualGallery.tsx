@@ -57,31 +57,47 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                             alignItems: 'center',
                             justifyContent: 'center'
                         }}>
-                            {/* Video Background */}
-                            <Box
-                                component="video"
-                                autoPlay
-                                muted
-                                loop
-                                playsInline
-                                poster={item.posterImage || '/images/fashion-item-1.png'}
-                                onError={(e) => {
-                                    // Fallback if video fails to load
-                                    (e.target as HTMLVideoElement).style.display = 'none';
-                                }}
-                                sx={{
-                                    position: 'absolute',
-                                    top: 0,
-                                    left: 0,
-                                    width: '100%',
-                                    height: '100%',
-                                    objectFit: 'cover',
-                                    zIndex: 0
-                                }}
-                            >
-                                {item.videoUrl && <source src={item.videoUrl} type="video/mp4" />}
-                                Your browser does not support the video tag.
-                            </Box>
+                            {/* Media Background (Video or Image) */}
+                            {item.videoUrl ? (
+                                <Box
+                                    component="video"
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                    poster={item.posterImage || '/images/fashion-item-1.png'}
+                                    onError={(e) => {
+                                        (e.target as HTMLVideoElement).style.display = 'none';
+                                    }}
+                                    sx={{
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: 0,
+                                        width: '100%',
+                                        height: '100%',
+                                        objectFit: 'cover',
+                                        zIndex: 0
+                                    }}
+                                >
+                                    <source src={item.videoUrl} type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </Box>
+                            ) : (
+                                <Box
+                                    component="img"
+                                    src={item.posterImage || item.imageUrl || '/images/fashion-item-1.png'}
+                                    alt={item.title}
+                                    sx={{
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: 0,
+                                        width: '100%',
+                                        height: '100%',
+                                        objectFit: 'cover',
+                                        zIndex: 0
+                                    }}
+                                />
+                            )}
 
                             {/* Gradient Overlay */}
                             <Box sx={{
