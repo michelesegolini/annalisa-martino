@@ -65,7 +65,7 @@ export async function generateMetadata({
     authors: [{ name: 'Annalisa Martino' }],
     creator: 'Annalisa Martino',
     publisher: 'Annalisa Martino',
-    metadataBase: new URL('https://annalisamartino.com'),
+    metadataBase: new URL(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://annalisamartino.com'),
     alternates: {
       canonical: `/${locale}`,
       languages: {
