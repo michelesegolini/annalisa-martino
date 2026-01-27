@@ -2,14 +2,13 @@
 
 import React from 'react';
 import { useParams } from 'next/navigation';
-import { useRouter, usePathname } from '@/i18n/routing';
+import { useRouter, usePathname, routing } from '@/i18n/routing';
 import {
     Select,
     MenuItem,
     Box,
     SelectChangeEvent,
 } from '@mui/material';
-import { locales } from '@/i18n';
 
 const languageNames: Record<string, string> = {
     en: '🇬🇧 English',
@@ -71,7 +70,7 @@ const LanguageSwitcher: React.FC = () => {
                     },
                 }}
             >
-                {locales.map((locale) => (
+                {routing.locales.map((locale) => (
                     <MenuItem
                         key={locale}
                         value={locale}

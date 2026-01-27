@@ -3,10 +3,9 @@
 import React, { useState } from 'react';
 import { Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText, Divider } from '@mui/material';
 import { useParams } from 'next/navigation';
-import { useRouter, usePathname } from '@/i18n/routing';
+import { useRouter, usePathname, routing } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { locales } from '@/i18n';
 
 const languageFlags: Record<string, string> = {
     en: '🇬🇧',
@@ -179,7 +178,7 @@ const Navigation: React.FC = () => {
                             Language
                         </Box>
                         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                            {locales.map((locale) => (
+                            {routing.locales.map((locale) => (
                                 <IconButton
                                     key={locale}
                                     onClick={() => handleLanguageChange(locale)}
