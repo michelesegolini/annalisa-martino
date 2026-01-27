@@ -1,34 +1,20 @@
-import { notFound } from 'next/navigation';
-import { setRequestLocale } from 'next-intl/server';
-import VirtualGallery from '@/components/gallery/VirtualGallery';
-import { getGalleryItems } from '@/lib/sanity/queries';
-import { routing } from '@/i18n/routing';
-
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
+  return [
+    { locale: 'en' },
+    { locale: 'it' },
+    { locale: 'es' },
+    { locale: 'pt' },
+    { locale: 'fr' }
+  ];
 }
 
-export default async function Home({
-  params
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+export default async function TestPage({ params }) {
   const { locale } = await params;
-
-  // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
-    notFound();
-  }
-
-  // Enable static rendering
-  setRequestLocale(locale);
-
-  // Fetch items from Google Sheets
-  const galleryItems = await getGalleryItems(locale);
-
   return (
-    <main>
-      <VirtualGallery items={galleryItems} />
-    </main>
+    <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
+      <h1>Routing Test</h1>
+      <p>Locale detected: <strong>{locale}</strong></p>
+      <p>Deployment version: {new Date().toISOString()}</p>
+    </div>
   );
 }
