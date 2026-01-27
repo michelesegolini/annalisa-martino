@@ -4,8 +4,6 @@ import VirtualGallery from '@/components/gallery/VirtualGallery';
 import { getGalleryItems } from '@/lib/sanity/queries';
 import { routing } from '@/i18n/routing';
 
-export const dynamic = 'force-dynamic';
-
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }

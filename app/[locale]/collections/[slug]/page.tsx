@@ -5,8 +5,6 @@ import { getGalleryItems } from '@/lib/sanity/queries';
 import { setRequestLocale } from 'next-intl/server';
 import CollectionDetail from '@/components/collections/CollectionDetail';
 
-export const dynamic = 'force-dynamic';
-
 interface Props {
     params: Promise<{
         locale: string;
