@@ -112,7 +112,10 @@ const getDeterministicItem = <T>(list: T[], seed: string): T => {
 
 export async function fetchGalleryItems(locale: string = 'en'): Promise<GalleryItem[]> {
     try {
-        const response = await fetch(GOOGLE_SHEET_URL, { next: { revalidate: 60 } });
+        const response = await fetch(GOOGLE_SHEET_URL, {
+            cache: 'force-cache',
+            next: { revalidate: 60 }
+        });
         if (!response.ok) {
             throw new Error(`Failed to fetch Google Sheet: ${response.statusText}`);
         }
