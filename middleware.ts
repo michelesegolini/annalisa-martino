@@ -9,7 +9,7 @@ export default function proxy(request: NextRequest) {
     return handleRequest(request);
 }
 
+// Standard matcher to ensure all paths are caught/ignored correctly
 export const config = {
-    // Simple explicit matcher to avoid negative lookahead complexity
-    matcher: ['/', '/(en|it|es|pt|fr)/:path*']
+    matcher: ['/((?!api|_next|_vercel|test-static|.*\\..*).*)']
 };
