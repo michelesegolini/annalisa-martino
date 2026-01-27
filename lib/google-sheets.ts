@@ -1,7 +1,9 @@
 import Papa from 'papaparse';
 import { unstable_cache } from 'next/cache';
+import { GalleryItem } from '@/types';
 
-export interface GalleryItem {
+// Internal interface for raw sheet data or intermediate processing
+interface SheetGalleryItem {
     id: string;
     title: string;
     description_en: string;
@@ -14,7 +16,7 @@ export interface GalleryItem {
     isVertical: boolean;
     rowSpan: number;
     colSpan: number;
-    videoUrl?: string; // Optional field for video
+    videoUrl?: string;
 }
 
 const GOOGLE_SHEET_URL = 'https://docs.google.com/spreadsheets/d/1Xl2N8dCgnJdQ0wM9Fw2Wv8skD870BXZO3fX9U0vS8b0/pub?output=csv';
@@ -49,11 +51,11 @@ const PLACEHOLDER_DESCRIPTIONS: Record<string, string[]> = {
         "Texturas delicadas se encuentran con precisión estructural en esta pieza distintiva.",
         "Una exploración de luz y sombra, definiendo la silueta.",
         "Artesanía atemporal encarnada en cada detalle.",
-        "Un susurro de lujo, diseñado para la musa contemporánea.",
+        "Un sussurro de lujo, diseñado para la musa contemporánea.",
         "Líneas fluidas e inspiración arquitectónica se fusionan a la perfección."
     ],
     fr: [
-        "Une étude du mouvement et de la forme, capturant l'essence de l'élégance moderne.",
+        "Une étude du mouvement et de la forme, capturant l'essence de l'élégance moderna.",
         "Des textures délicates rencontrent une précision structurelle dans cette pièce signature.",
         "Une exploration de l'ombre et de la lumière, définissant la silhouette.",
         "Un savoir-faire intemporel incarné dans chaque détail.",
@@ -77,7 +79,7 @@ const getPlaceholderDescription = (seed: number, locale: string): string => {
     return descriptions[index];
 };
 
-// Helper check for local images (same as before)
+// Helper check for local images
 const processImageUrl = (url: string): string => {
     if (!url) return '';
     if (url.startsWith('http') || url.startsWith('https')) return url;
@@ -103,21 +105,15 @@ const getCachedSheetData = unstable_cache(
 
             const csvText = await response.text();
 
-            return new Promise<GalleryItem[]>((resolve, reject) => {
+            return new Promise<SheetGalleryItem[]>((resolve, reject) => {
                 Papa.parse(csvText, {
                     header: true,
                     complete: (results) => {
                         const items = results.data
-                            .map((row: any, index: number) => {
-                                // ... existing mapping logic ...
-                                // We need to duplicate the mapping logic here or extract it
-                                // For safety, I'll allow the parse to finish then map outside
-                                return row;
-                            })
                             .filter((row: any) => row.Title && row.Image); // Basic validation
 
                         // Fix mapping
-                        const mappedItems: GalleryItem[] = items.map((row: any, index: number) => {
+                        const mappedItems: SheetGalleryItem[] = items.map((row: any, index: number) => {
                             const isVideo = isVideoUrl(row.Image);
                             // Generate description seed based on title length
                             const seed = (row.Title?.length || 0) + index;
@@ -130,7 +126,7 @@ const getCachedSheetData = unstable_cache(
                                 description_es: row.Description_es || getPlaceholderDescription(seed, 'es'),
                                 description_fr: row.Description_fr || getPlaceholderDescription(seed, 'fr'),
                                 description_pt: row.Description_pt || getPlaceholderDescription(seed, 'pt'),
-                                category: row.Category,
+                                category: row.Category || 'Collection',
                                 imageUrl: processImageUrl(row.Image), // Use helper
                                 isVertical: row.IsVertical === 'TRUE',
                                 rowSpan: parseInt(row.RowSpan) || 1,
@@ -156,6 +152,17 @@ const getCachedSheetData = unstable_cache(
 );
 
 export async function fetchGalleryItems(locale: string = 'en'): Promise<GalleryItem[]> {
-    // Use the cached function
-    return await getCachedSheetData();
+    const rawItems = await getCachedSheetData();
+
+    // Map to the type expected by the application
+    return rawItems.map(item => ({
+        id: item.id,
+        title: item.title,
+        description: item[`description_${locale}` as keyof typeof item] as string || item.description_en,
+        category: item.category,
+        videoUrl: item.videoUrl || '',
+        posterImage: item.imageUrl,
+        collection: 'Collection', // Default value as expected by type
+        featured: true
+    }));
 }
