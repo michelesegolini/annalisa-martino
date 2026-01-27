@@ -85,7 +85,7 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                             ) : (
                                 <Box
                                     component="img"
-                                    src={item.posterImage || item.imageUrl || '/images/fashion-item-1.png'}
+                                    src={item.posterImage || '/images/fashion-item-1.png'}
                                     alt={item.title}
                                     sx={{
                                         position: 'absolute',
