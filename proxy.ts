@@ -21,7 +21,7 @@ export default function middleware(request: NextRequest) {
     if (pathname === '/' || (!pathnameHasLocale && !pathname.includes('.'))) {
         // Get browser language from Accept-Language header
         const acceptLanguage = request.headers.get('accept-language');
-        let detectedLocale = defaultLocale; // Fallback to Italian
+        let detectedLocale: string = defaultLocale; // Fallback to Italian
 
         if (acceptLanguage) {
             // Parse the Accept-Language header

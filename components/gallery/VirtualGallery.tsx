@@ -39,7 +39,7 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                                 muted
                                 loop
                                 playsInline
-                                poster={item.posterImage}
+                                poster={item.posterImage || 'https://placehold.co/1920x1080?text=Video+Poster'}
                             >
                                 <source src={item.videoUrl} type="video/mp4" />
                                 Your browser does not support the video tag.

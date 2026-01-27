@@ -255,7 +255,7 @@ export default async function AboutPage({
         </Typography>
         <Grid container spacing={{ xs: 3, md: 4 }}>
           {craftPoints.map((point, index) => (
-            <Grid item xs={12} sm={6} key={index}>
+            <Grid size={{ xs: 12, sm: 6 }} key={index}>
               <Card
                 className="glass"
                 sx={{

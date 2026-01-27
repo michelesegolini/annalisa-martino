@@ -29,13 +29,16 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
     // For now, we'll use the translation keys to get localized content
     const messages = require(`../../messages/${locale}.json`);
 
+    // Sample video for placeholder
+    const PLACEHOLDER_VIDEO = 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4';
+
     return [
         // Red Carpet Collection
         {
             id: '1',
             title: messages.items.silkElegance.title,
             description: messages.items.silkElegance.description,
-            videoUrl: '/videos/placeholder-1.mp4',
+            videoUrl: PLACEHOLDER_VIDEO,
             posterImage: '/images/poster-1.jpg',
             category: messages.categories.eveningWear,
             collection: messages.collections.redCarpet.title,
@@ -45,7 +48,7 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
             id: '2',
             title: messages.items.velvetDreams.title,
             description: messages.items.velvetDreams.description,
-            videoUrl: '/videos/placeholder-2.mp4',
+            videoUrl: PLACEHOLDER_VIDEO,
             posterImage: '/images/poster-2.jpg',
             category: messages.categories.cocktail,
             collection: messages.collections.redCarpet.title,
@@ -57,7 +60,7 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
             id: '3',
             title: messages.items.laceSophistication.title,
             description: messages.items.laceSophistication.description,
-            videoUrl: '/videos/placeholder-3.mp4',
+            videoUrl: PLACEHOLDER_VIDEO,
             posterImage: '/images/poster-3.jpg',
             category: messages.categories.bridal,
             collection: messages.collections.magnaGrecia.title,
@@ -67,8 +70,8 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
             id: '4',
             title: messages.items.chiffonGrace.title,
             description: messages.items.chiffonGrace.description,
-            videoUrl: '/videos/placeholder-4.mp4',
-            posterImage: '/images/poster-4.jpg',
+            videoUrl: PLACEHOLDER_VIDEO,
+            posterImage: 'https://placehold.co/600x900?text=Poster+4', // Fixed missing image
             category: messages.categories.ceremony,
             collection: messages.collections.magnaGrecia.title,
             featured: false,
@@ -79,7 +82,7 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
             id: '5',
             title: "Azure Horizon",
             description: "Inspired by the Tyrrhenian sea, this fluid silk dress captures the essence of Mediterranean summer.",
-            videoUrl: '/videos/placeholder-1.mp4',
+            videoUrl: PLACEHOLDER_VIDEO,
             posterImage: '/images/poster-1.jpg',
             category: messages.categories.resort,
             collection: messages.collections.modaMediterranea.title,
@@ -89,7 +92,7 @@ export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
             id: '6',
             title: "Golden Hour",
             description: "A tribute to the warm sunset light reflecting on ancient stones.",
-            videoUrl: '/videos/placeholder-2.mp4',
+            videoUrl: PLACEHOLDER_VIDEO,
             posterImage: '/images/poster-2.jpg',
             category: messages.categories.party18,
             collection: messages.collections.modaMediterranea.title,

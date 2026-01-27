@@ -39,7 +39,7 @@ const CollectionGrid: React.FC<CollectionGridProps> = ({ items, onItemClick }) =
                         <Box sx={{ overflow: 'hidden', position: 'relative', paddingTop: '150%' /* 2:3 aspect ratio */ }}>
                             <CardMedia
                                 component="img"
-                                image={item.posterImage || item.videoUrl} // Fallback to poster or video placeholder
+                                image={item.posterImage || 'https://placehold.co/600x900?text=No+Image'} // Fallback to placeholder
                                 alt={item.title}
                                 className="item-image"
                                 sx={{
