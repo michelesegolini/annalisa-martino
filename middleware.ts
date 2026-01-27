@@ -1,12 +1,15 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { routing } from './i18n/routing';
+
+// Hardcoded logic to avoid Edge Runtime crashes due to external dependencies
+const locales = ['en', 'it', 'es', 'pt', 'fr'];
+const defaultLocale = 'it';
 
 export function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
     // 1. Check if path starts with a locale
-    const pathnameHasLocale = routing.locales.some(
+    const pathnameHasLocale = locales.some(
         (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
     );
 
@@ -23,8 +26,7 @@ export function middleware(request: NextRequest) {
     }
 
     // 3. Redirect root to default locale
-    const locale = routing.defaultLocale;
-    request.nextUrl.pathname = `/${locale}${pathname}`;
+    request.nextUrl.pathname = `/${defaultLocale}${pathname}`;
     return NextResponse.redirect(request.nextUrl);
 }
 
