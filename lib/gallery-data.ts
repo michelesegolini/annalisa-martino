@@ -14,71 +14,314 @@ export interface HardcodedGalleryItem {
     isVertical: boolean;
     rowSpan: number;
     colSpan: number;
+    price: string;
 }
 
 export const GALLERY_DATA: HardcodedGalleryItem[] = [
     {
         id: "1",
-        title: "Eleganza di Seta",
+        title: "Aura",
         descriptions: {
-            en: "Handcrafted silk evening gown with intricate embroidery, featuring fluid fabric that captures movement and light.",
-            it: "Abito da sera in seta lavorato a mano con ricamo intricato, caratterizzato da tessuto fluido che cattura movimento e luce.",
-            es: "Vestido de noche de seda hecho a mano con bordados intrincados, con una tela fluida che captura el movimiento y la luz.",
-            fr: "Robe du soir en soie faite à la main avec des broderies complexes, dotée d'un tissu fluide qui capte le mouvement et la lumière.",
-            pt: "Vestido de noite em seda feito à mão com bordados intrínsecos, com tecido fluido que capta o movimento e a luz."
+            en: "Exclusive creation from the Magna Grecia collection.",
+            it: "Creazione esclusiva dalla collezione Magna Grecia.",
+            es: "Creación exclusiva de la colección Magna Grecia.",
+            fr: "Création exclusive de la collection Magna Grecia.",
+            pt: "Criação exclusiva da coleção Magna Grecia."
         },
-        category: "Evening Wear",
-        imageUrl: "https://placehold.co/1200x1600.png?text=Silk+Elegance",
+        category: "Magna Grecia",
+        imageUrl: "https://placehold.co/1200x1600.png?text=Aura",
+        price: "2.800€",
         isVertical: true,
         rowSpan: 2,
         colSpan: 1
     },
     {
         id: "2",
-        title: "Sogni di Velluto",
+        title: "Lyra",
         descriptions: {
-            en: "Luxurious velvet gown with a contemporary silhouette, showcasing the rich texture and depth of Italian craftsmanship.",
-            it: "Lussuoso abito in velluto con silhouette contemporanea, che mette in mostra la ricca texture e la profondità dell'artigianato italiano.",
-            es: "Lujoso vestido de terciopelo con una silueta contemporánea, que muestra la rica textura y profundidad de la artesanía italiana.",
-            fr: "Robe luxueuse en velours à la silhouette contemporaine, mettant en valeur la texture riche et la profondeur de l'artisanat italien.",
-            pt: "Luxuoso vestido de veludo com silhueta contemporânea, exibindo a rica textura e profundidade do artesanato italiano."
+            en: "Exclusive creation from the Red Carpet collection.",
+            it: "Creazione esclusiva dalla collezione Red Carpet.",
+            es: "Creación exclusiva de la colección Red Carpet.",
+            fr: "Création exclusive de la collection Red Carpet.",
+            pt: "Criação exclusiva da coleção Red Carpet."
         },
-        category: "Cocktail",
-        imageUrl: "https://placehold.co/1200x800.png?text=Velvet+Dreams",
+        category: "Red Carpet",
+        imageUrl: "https://placehold.co/1200x800.png?text=Lyra",
+        price: "5.000€",
         isVertical: false,
         rowSpan: 1,
         colSpan: 1
     },
     {
         id: "3",
-        title: "Raffinatezza di Pizzo",
+        title: "Iris",
         descriptions: {
-            en: "Delicate lace creation with modern lines, combining traditional techniques with avant-garde design.",
-            it: "Delicata creazione in pizzo con linee moderne, che combina tecniche tradizionali con design all'avanguardia.",
-            es: "Delicada creación de encaje con líneas modernas, que combina técnicas tradicionales con un diseño vanguardista.",
-            fr: "Délicate création en dentelle aux lignes modernes, alliant techniques traditionnelles et design d'avant-garde.",
-            pt: "Delicada criação de renda com linhas modernas, combinando técnicas tradicionais com design de vanguarda."
+            en: "Exclusive creation from the Mediterranea collection.",
+            it: "Creazione esclusiva dalla collezione Mediterranea.",
+            es: "Creación exclusiva de la colección Mediterranea.",
+            fr: "Création exclusive de la collection Mediterranea.",
+            pt: "Criação exclusiva da coleção Mediterranea."
         },
-        category: "Bridal",
-        imageUrl: "https://placehold.co/1200x1600.png?text=Lace+Sophistication",
+        category: "Mediterranea",
+        imageUrl: "https://placehold.co/1200x1600.png?text=Iris",
+        price: "3.700€",
         isVertical: true,
         rowSpan: 2,
         colSpan: 1
     },
     {
         id: "4",
-        title: "Grazia di Chiffon",
+        title: "Musa",
         descriptions: {
-            en: "Ethereal chiffon ensemble that moves like a whisper, embodying the essence of Italian demi-couture.",
-            it: "Ensemble etereo in chiffon che si muove come un sussurro, incarnando l'essenza della demi-couture italiana.",
-            es: "Conjunto de gasa etérea que se mueve como un susurro, encarnando la esencia de la demi-couture italiana.",
-            fr: "Ensemble en mousseline éthéré qui bouge comme un murmure, incarnant l'essence de la demi-couture italienne.",
-            pt: "Conjunto etéreo de chiffon que se move como um sussurro, incorporando a essência da demi-couture italiana."
+            en: "Exclusive creation from the Magna Grecia collection.",
+            it: "Creazione esclusiva dalla collezione Magna Grecia.",
+            es: "Creación exclusiva de la colección Magna Grecia.",
+            fr: "Création exclusive de la collection Magna Grecia.",
+            pt: "Criação exclusiva da coleção Magna Grecia."
         },
-        category: "Ceremony",
-        imageUrl: "https://placehold.co/1200x800.png?text=Chiffon+Grace",
+        category: "Magna Grecia",
+        imageUrl: "https://placehold.co/1200x1600.png?text=Musa",
+        price: "2.700€",
+        isVertical: true,
+        rowSpan: 2,
+        colSpan: 1
+    },
+    {
+        id: "5",
+        title: "Alba",
+        descriptions: {
+            en: "Exclusive creation from the Red Carpet collection.",
+            it: "Creazione esclusiva dalla collezione Red Carpet.",
+            es: "Creación exclusiva de la colección Red Carpet.",
+            fr: "Création exclusive de la collection Red Carpet.",
+            pt: "Criação exclusiva da coleção Red Carpet."
+        },
+        category: "Red Carpet",
+        imageUrl: "https://placehold.co/1200x1600.png?text=Alba",
+        price: "2.700€",
+        isVertical: true,
+        rowSpan: 2,
+        colSpan: 1
+    },
+    {
+        id: "6",
+        title: "Lune",
+        descriptions: {
+            en: "Exclusive creation from the Red Carpet collection.",
+            it: "Creazione esclusiva dalla collezione Red Carpet.",
+            es: "Creación exclusiva de la colección Red Carpet.",
+            fr: "Création exclusive de la collection Red Carpet.",
+            pt: "Criação exclusiva da coleção Red Carpet."
+        },
+        category: "Red Carpet",
+        imageUrl: "https://placehold.co/1200x800.png?text=Lune",
+        price: "5.000€",
         isVertical: false,
         rowSpan: 1,
         colSpan: 2
+    },
+    {
+        id: "7",
+        title: "Soul",
+        descriptions: {
+            en: "Exclusive creation from the Magna Grecia collection.",
+            it: "Creazione esclusiva dalla collezione Magna Grecia.",
+            es: "Creación exclusiva de la colección Magna Grecia.",
+            fr: "Création exclusive de la collection Magna Grecia.",
+            pt: "Criação exclusiva da coleção Magna Grecia."
+        },
+        category: "Magna Grecia",
+        imageUrl: "https://placehold.co/1200x1600.png?text=Soul",
+        price: "4.200€",
+        isVertical: true,
+        rowSpan: 2,
+        colSpan: 1
+    },
+    {
+        id: "8",
+        title: "Aria",
+        descriptions: {
+            en: "Exclusive creation from the Mediterranea collection.",
+            it: "Creazione esclusiva dalla collezione Mediterranea.",
+            es: "Creación exclusiva de la colección Mediterranea.",
+            fr: "Création exclusive de la collection Mediterranea.",
+            pt: "Criação exclusiva da coleção Mediterranea."
+        },
+        category: "Mediterranea",
+        imageUrl: "https://placehold.co/1200x800.png?text=Aria",
+        price: "4.100€",
+        isVertical: false,
+        rowSpan: 1,
+        colSpan: 1
+    },
+    {
+        id: "9",
+        title: "Diva",
+        descriptions: {
+            en: "Exclusive creation from the Red Carpet collection.",
+            it: "Creazione esclusiva dalla collezione Red Carpet.",
+            es: "Creación exclusiva de la colección Red Carpet.",
+            fr: "Création exclusive de la collection Red Carpet.",
+            pt: "Criação exclusiva da coleção Red Carpet."
+        },
+        category: "Red Carpet",
+        imageUrl: "https://placehold.co/1200x1600.png?text=Diva",
+        price: "7.500€",
+        isVertical: true,
+        rowSpan: 2,
+        colSpan: 1
+    },
+    {
+        id: "10",
+        title: "Icon",
+        descriptions: {
+            en: "Exclusive creation from the Red Carpet collection.",
+            it: "Creazione esclusiva dalla collezione Red Carpet.",
+            es: "Creación exclusiva de la colección Red Carpet.",
+            fr: "Création exclusive de la collection Red Carpet.",
+            pt: "Criação exclusiva da coleção Red Carpet."
+        },
+        category: "Red Carpet",
+        imageUrl: "https://placehold.co/1200x1600.png?text=Icon",
+        price: "5.500€",
+        isVertical: true,
+        rowSpan: 2,
+        colSpan: 1
+    },
+    {
+        id: "11",
+        title: "Ritual",
+        descriptions: {
+            en: "Exclusive creation from the Red Carpet collection.",
+            it: "Creazione esclusiva dalla collezione Red Carpet.",
+            es: "Creación exclusiva de la colección Red Carpet.",
+            fr: "Création exclusive de la collection Red Carpet.",
+            pt: "Criação exclusiva da coleção Red Carpet."
+        },
+        category: "Red Carpet",
+        imageUrl: "https://placehold.co/1200x1600.png?text=Ritual",
+        price: "4.500€",
+        isVertical: true,
+        rowSpan: 2,
+        colSpan: 1
+    },
+    {
+        id: "12",
+        title: "Noir",
+        descriptions: {
+            en: "Exclusive creation from the Red Carpet collection.",
+            it: "Creazione esclusiva dalla collezione Red Carpet.",
+            es: "Creación exclusiva de la colección Red Carpet.",
+            fr: "Création exclusive de la collection Red Carpet.",
+            pt: "Criação exclusiva da coleção Red Carpet."
+        },
+        category: "Red Carpet",
+        imageUrl: "https://placehold.co/1200x800.png?text=Noir",
+        price: "4.200€",
+        isVertical: false,
+        rowSpan: 1,
+        colSpan: 1
+    },
+    {
+        id: "13",
+        title: "Essenza",
+        descriptions: {
+            en: "Exclusive creation from the Red Carpet collection.",
+            it: "Creazione esclusiva dalla collezione Red Carpet.",
+            es: "Creación exclusiva de la collezione Red Carpet.",
+            fr: "Création exclusive de la collection Red Carpet.",
+            pt: "Criação exclusiva da coleção Red Carpet."
+        },
+        category: "Red Carpet",
+        imageUrl: "https://placehold.co/1200x1600.png?text=Essenza",
+        price: "5.550€",
+        isVertical: true,
+        rowSpan: 2,
+        colSpan: 1
+    },
+    {
+        id: "14",
+        title: "Divina",
+        descriptions: {
+            en: "Exclusive creation from the Magna Grecia collection.",
+            it: "Creazione esclusiva dalla collezione Magna Grecia.",
+            es: "Creación exclusiva de la colección Magna Grecia.",
+            fr: "Création exclusive de la collection Magna Grecia.",
+            pt: "Criação exclusiva da coleção Magna Grecia."
+        },
+        category: "Magna Grecia",
+        imageUrl: "https://placehold.co/1200x1600.png?text=Divina",
+        price: "2.950€",
+        isVertical: true,
+        rowSpan: 2,
+        colSpan: 1
+    },
+    {
+        id: "15",
+        title: "Silente",
+        descriptions: {
+            en: "Exclusive creation from the Red Carpet collection.",
+            it: "Creazione esclusiva dalla collezione Red Carpet.",
+            es: "Creación exclusiva de la colección Red Carpet.",
+            fr: "Création exclusive de la collection Red Carpet.",
+            pt: "Criação exclusiva da coleção Red Carpet."
+        },
+        category: "Red Carpet",
+        imageUrl: "https://placehold.co/1200x1600.png?text=Silente",
+        price: "3.700€",
+        isVertical: true,
+        rowSpan: 2,
+        colSpan: 1
+    },
+    {
+        id: "16",
+        title: "Elios",
+        descriptions: {
+            en: "Exclusive creation from the Magna Grecia collection.",
+            it: "Creazione esclusiva dalla collezione Magna Grecia.",
+            es: "Creación exclusiva de la colección Magna Grecia.",
+            fr: "Création exclusive de la collection Magna Grecia.",
+            pt: "Criação exclusiva da coleção Magna Grecia."
+        },
+        category: "Magna Grecia",
+        imageUrl: "https://placehold.co/1200x800.png?text=Elios",
+        price: "2.700€",
+        isVertical: false,
+        rowSpan: 1,
+        colSpan: 1
+    },
+    {
+        id: "17",
+        title: "Dorea",
+        descriptions: {
+            en: "Exclusive creation from the Red Carpet collection.",
+            it: "Creazione esclusiva dalla collezione Red Carpet.",
+            es: "Creación exclusiva de la colección Red Carpet.",
+            fr: "Création exclusive de la collection Red Carpet.",
+            pt: "Criação exclusiva da coleção Red Carpet."
+        },
+        category: "Red Carpet",
+        imageUrl: "https://placehold.co/1200x1600.png?text=Dorea",
+        price: "2.800€",
+        isVertical: true,
+        rowSpan: 2,
+        colSpan: 1
+    },
+    {
+        id: "18",
+        title: "Incanto",
+        descriptions: {
+            en: "Exclusive creation from the Magna Grecia collection.",
+            it: "Creazione esclusiva dalla collezione Magna Grecia.",
+            es: "Creación exclusiva de la colección Magna Grecia.",
+            fr: "Création exclusive de la collection Magna Grecia.",
+            pt: "Criação exclusiva da coleção Magna Grecia."
+        },
+        category: "Magna Grecia",
+        imageUrl: "https://placehold.co/1200x1600.png?text=Incanto",
+        price: "2.950€",
+        isVertical: true,
+        rowSpan: 2,
+        colSpan: 1
     }
 ];

@@ -6,6 +6,7 @@ export interface GalleryItem {
   posterImage?: string;
   category: string;
   collection: string;
+  price?: string;
   featured?: boolean;
 }
 

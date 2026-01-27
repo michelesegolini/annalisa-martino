@@ -10,7 +10,8 @@ export async function fetchGalleryItems(locale: string = 'it'): Promise<GalleryI
         category: item.category,
         videoUrl: item.videoUrl || '',
         posterImage: item.imageUrl,
-        collection: 'Collection',
+        collection: item.category, // Use category as collection until specified otherwise
+        price: item.price,
         featured: true
     }));
 }
