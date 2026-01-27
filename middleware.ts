@@ -7,11 +7,7 @@ const routing = {
     localePrefix: 'always' as const
 };
 
-const intlMiddleware = createMiddleware(routing);
-
-export default function proxy(request: NextRequest) {
-    return intlMiddleware(request);
-}
+export default createMiddleware(routing);
 
 export const config = {
     matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
