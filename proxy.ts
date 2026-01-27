@@ -1,13 +1,9 @@
 import createMiddleware from 'next-intl/middleware';
-import { NextRequest } from 'next/server';
-import { i18nConfig } from '@/lib/constants';
+import { routing } from './i18n/routing';
 
-const intlMiddleware = createMiddleware(i18nConfig);
-
-export default function proxy(request: NextRequest) {
-    return intlMiddleware(request);
-}
+export default createMiddleware(routing);
 
 export const config = {
+    // Matcher ignoring internal paths and static files
     matcher: ['/((?!api|_next|_vercel|test-static|.*\\..*).*)']
 };
