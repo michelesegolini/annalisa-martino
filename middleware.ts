@@ -1,8 +1,11 @@
 import createMiddleware from 'next-intl/middleware';
 import { defineRouting } from 'next-intl/routing';
-import { i18nConfig } from './lib/constants';
 
-const routing = defineRouting(i18nConfig);
+const routing = defineRouting({
+    locales: ['en', 'it', 'es', 'pt', 'fr'],
+    defaultLocale: 'it',
+    localePrefix: 'always'
+});
 
 export default createMiddleware(routing);
 
