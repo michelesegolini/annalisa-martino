@@ -1,13 +1,10 @@
-import createMiddleware from 'next-intl/middleware';
-const i18nConfig = {
-    locales: ['en', 'it', 'es', 'pt', 'fr'],
-    defaultLocale: 'it',
-    localePrefix: 'always' as const
-};
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
-export default createMiddleware(i18nConfig);
+export function middleware(request: NextRequest) {
+    return NextResponse.next();
+}
 
 export const config = {
-    // Match only internationalized pathnames
-    matcher: ['/((?!api|_next|_vercel|.*\\..*).*)']
+    matcher: '/:path*',
 };
