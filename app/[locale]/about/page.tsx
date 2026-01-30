@@ -212,6 +212,7 @@ export default async function AboutPage({
               lineHeight: 2,
               fontSize: { xs: '1rem', md: '1.125rem' },
               mb: 4,
+              whiteSpace: 'pre-line',
             }}
           >
             {t('philosophy.content')}
