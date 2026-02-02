@@ -190,7 +190,8 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, enableABTest = f
                                             lineHeight: 1.8,
                                             textShadow: '0 2px 8px rgba(0, 0, 0, 0.9)',
                                             opacity: 0,
-                                            animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards'
+                                            animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards',
+                                            whiteSpace: 'pre-line'
                                         }}
                                     >
                                         {item.description}
