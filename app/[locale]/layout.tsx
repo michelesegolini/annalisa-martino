@@ -12,7 +12,6 @@ import Navigation from '@/components/layout/Navigation';
 import { Locale, i18nConfig } from '@/lib/constants';
 import { ABTestProvider } from '@/components/ABTestProvider';
 import { getABVariant, AB_TEST_COOKIE_NAME } from '@/lib/ab-testing';
-import ABTestDebug from '@/components/ABTestDebug';
 
 
 const cormorant = Cormorant_Garamond({
@@ -179,7 +178,6 @@ export default async function RootLayout({
                 <CssBaseline />
                 <Navigation />
                 {children}
-                <ABTestDebug />
               </ThemeProvider>
             </AppRouterCacheProvider>
           </ABTestProvider>

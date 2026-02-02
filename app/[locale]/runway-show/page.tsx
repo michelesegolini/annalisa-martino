@@ -17,7 +17,7 @@ export default async function RunwayShowPage({ params: { locale } }: { params: {
 
     // Construct the video item just like in the A/B test logic, but as a standalone item
     const videoItem: GalleryItem = {
-        id: 'runway-show-video',
+        id: 'ab-video-slide',
         title: t('videoSlide.title'),
         description: t('videoSlide.description'),
         category: 'Collection',
