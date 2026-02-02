@@ -10,9 +10,10 @@ import { VARIANT_A } from '@/lib/ab-testing';
 
 interface VirtualGalleryProps {
     items: GalleryItem[];
+    enableABTest?: boolean;
 }
 
-const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
+const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, enableABTest = false }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
     const t = useTranslations('gallery');
@@ -21,7 +22,7 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
     const abVariant = useABVariant();
 
     const displayItems = React.useMemo(() => {
-        if (abVariant === VARIANT_A) {
+        if (enableABTest && abVariant === VARIANT_A) {
             const videoItem: GalleryItem = {
                 id: 'ab-video-slide',
                 title: t('videoSlide.title'),
@@ -35,7 +36,7 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
             return [videoItem, ...items];
         }
         return items;
-    }, [abVariant, items, t]);
+    }, [abVariant, items, t, enableABTest]);
 
     const handleInquire = (item: GalleryItem) => {
         setSelectedItem(item);

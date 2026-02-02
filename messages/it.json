@@ -4,6 +4,7 @@
         "about": "Chi Sono",
         "collections": "Collezioni",
         "contact": "Contatti",
+        "runwayShow": "Sfilata",
         "language": "Lingua"
     },
     "contact": {
@@ -18,8 +19,8 @@
         "filterAll": "Tutti",
         "viewCollection": "Vedi Collezione",
         "videoSlide": {
-            "title": "Collezione Annalisa Martino",
-            "description": "La collezione Annalisa Martino unisce design esclusivo e alta sartorialità. Ogni abito nasce per valorizzare l’unicità di chi lo indossa. Richiedi ora i prezzi degli abiti.",
+            "title": "Annalisa Martino Collection",
+            "description": "Annalisa Martino Collection unisce design esclusivo e alta sartorialità. Ogni abito nasce per valorizzare l’unicità di chi lo indossa. Richiedi ora i prezzi degli abiti.",
             "cta": "Richiedi Prezzi"
         }
     },

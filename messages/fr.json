@@ -4,6 +4,7 @@
     "about": "À Propos",
     "collections": "Collections",
     "contact": "Contact",
+    "runwayShow": "Défilé",
     "language": "Langue"
   },
   "contact": {
@@ -18,8 +19,8 @@
     "filterAll": "Tout",
     "viewCollection": "Voir la Collection",
     "videoSlide": {
-      "title": "Collection Annalisa Martino",
-      "description": "La collection Annalisa Martino allie design exclusif et haute couture. Chaque robe est créée pour valoriser l'unicité de celle qui la porte. Demandez maintenant les prix des robes.",
+      "title": "Annalisa Martino Collection",
+      "description": "Annalisa Martino Collection allie design exclusif et haute couture. Chaque robe est créée pour valoriser l'unicité de celle qui la porte. Demandez maintenant les prix des robes.",
       "cta": "Demander les Prix"
     }
   },

@@ -7,21 +7,23 @@ export default function ABTestDebug() {
     const variant = useABVariant();
 
     if (process.env.NODE_ENV === 'production') {
-        return null; // Hide in production usually, or keep behind a flag
+        return null;
     }
 
     return (
         <Box
             sx={{
                 position: 'fixed',
-                bottom: 10,
-                right: 10,
-                backgroundColor: 'rgba(0,0,0,0.7)',
-                color: 'white',
-                padding: 1,
-                borderRadius: 1,
+                bottom: 16,
+                right: 16,
                 zIndex: 9999,
-                pointerEvents: 'none',
+                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                color: 'white',
+                padding: '8px 12px',
+                borderRadius: '4px',
+                fontSize: '12px',
+                fontFamily: 'monospace',
+                pointerEvents: 'none'
             }}
         >
             <Typography variant="caption">

@@ -28,7 +28,7 @@ export default async function Home({
 
   return (
     <main>
-      <VirtualGallery items={galleryItems} />
+      <VirtualGallery items={galleryItems} enableABTest={true} />
     </main>
   );
 }

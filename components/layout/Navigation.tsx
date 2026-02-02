@@ -6,6 +6,8 @@ import { useParams } from 'next/navigation';
 import { useRouter, usePathname, Link } from '@/i18n/routing';
 import { Locale, locales } from '@/lib/constants';
 import { useTranslations } from 'next-intl';
+import { useABVariant } from '@/components/ABTestProvider';
+import { VARIANT_B } from '@/lib/ab-testing';
 
 const languageFlags: Record<string, string> = {
     en: '🇬🇧',
@@ -32,8 +34,11 @@ const Navigation: React.FC = () => {
         setDrawerOpen(open);
     };
 
+    const abVariant = useABVariant();
+
     const menuItems = [
         { label: t('gallery'), href: '/' },
+        ...(abVariant === VARIANT_B ? [{ label: t('runwayShow'), href: '/runway-show' }] : []),
         { label: t('about'), href: '/about' },
         { label: t('collections'), href: '/collections' },
         { label: t('contact'), href: '/contact' },

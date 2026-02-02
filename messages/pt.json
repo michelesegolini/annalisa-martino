@@ -4,6 +4,7 @@
     "about": "Sobre",
     "collections": "Coleções",
     "contact": "Contato",
+    "runwayShow": "Desfile",
     "language": "Idioma"
   },
   "contact": {
@@ -18,8 +19,8 @@
     "filterAll": "Tudo",
     "viewCollection": "Ver Coleção",
     "videoSlide": {
-      "title": "Coleção Annalisa Martino",
-      "description": "A coleção Annalisa Martino combina design exclusivo e alta costura. Cada vestido nasce para valorizar a unicidade de quem o veste. Solicite agora os preços dos vestidos.",
+      "title": "Annalisa Martino Collection",
+      "description": "Annalisa Martino Collection combina design exclusivo e alta costura. Cada vestido nasce para valorizar a unicidade de quem o veste. Solicite agora os preços dos vestidos.",
       "cta": "Solicitar Preços"
     }
   },
