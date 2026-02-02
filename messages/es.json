@@ -16,7 +16,12 @@
     "scroll": "DESPLAZAR",
     "inquirePrice": "Consultar Precio",
     "filterAll": "Todo",
-    "viewCollection": "Ver Colección"
+    "viewCollection": "Ver Colección",
+    "videoSlide": {
+      "title": "Colección Annalisa Martino",
+      "description": "La colección Annalisa Martino combina diseño exclusivo y alta costura. Cada vestido nace para realzar la singularidad de quien lo lleva. Solicita ahora los precios de los vestidos.",
+      "cta": "Solicitar Precios"
+    }
   },
   "modal": {
     "title": "Consultar sobre el Precio",

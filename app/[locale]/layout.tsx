@@ -6,9 +6,13 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { cookies } from 'next/headers';
 import theme from '@/lib/theme';
 import Navigation from '@/components/layout/Navigation';
 import { Locale, i18nConfig } from '@/lib/constants';
+import { ABTestProvider } from '@/components/ABTestProvider';
+import { getABVariant, AB_TEST_COOKIE_NAME } from '@/lib/ab-testing';
+import ABTestDebug from '@/components/ABTestDebug';
 
 
 const cormorant = Cormorant_Garamond({
@@ -135,6 +139,8 @@ export default async function RootLayout({
   // side is the easiest way to get started
   const messages = await getMessages();
   const t = await getTranslations({ locale, namespace: 'seo' });
+  const cookieStore = await cookies();
+  const variant = getABVariant(cookieStore.get(AB_TEST_COOKIE_NAME)?.value);
 
   return (
     <html lang={locale} className={`${cormorant.variable} ${inter.variable}`}>
@@ -167,13 +173,16 @@ export default async function RootLayout({
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>
-          <AppRouterCacheProvider>
-            <ThemeProvider theme={theme}>
-              <CssBaseline />
-              <Navigation />
-              {children}
-            </ThemeProvider>
-          </AppRouterCacheProvider>
+          <ABTestProvider variant={variant}>
+            <AppRouterCacheProvider>
+              <ThemeProvider theme={theme}>
+                <CssBaseline />
+                <Navigation />
+                {children}
+                <ABTestDebug />
+              </ThemeProvider>
+            </AppRouterCacheProvider>
+          </ABTestProvider>
         </NextIntlClientProvider>
       </body>
     </html>

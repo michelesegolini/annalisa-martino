@@ -1,10 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import { useTranslations } from 'next-intl';
 import { GalleryItem } from '@/types';
 import InquireModal from './InquireModal';
+import { useABVariant } from '@/components/ABTestProvider';
+import { VARIANT_A } from '@/lib/ab-testing';
 
 interface VirtualGalleryProps {
     items: GalleryItem[];
@@ -14,6 +16,26 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
     const t = useTranslations('gallery');
+
+    // A/B Test Logic
+    const abVariant = useABVariant();
+
+    const displayItems = React.useMemo(() => {
+        if (abVariant === VARIANT_A) {
+            const videoItem: GalleryItem = {
+                id: 'ab-video-slide',
+                title: t('videoSlide.title'),
+                description: t('videoSlide.description'),
+                category: 'Collection',
+                collection: 'Main',
+                videoUrl: 'https://res.cloudinary.com/dfdbbgsja/video/upload/v1769992104/Sfilate_qaspeu.mp4',
+                posterImage: '/images/fashion-item-1.png',
+                price: ''
+            };
+            return [videoItem, ...items];
+        }
+        return items;
+    }, [abVariant, items, t]);
 
     const handleInquire = (item: GalleryItem) => {
         setSelectedItem(item);
@@ -45,7 +67,7 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                     scrollbarWidth: 'none',
                     msOverflowStyle: 'none'
                 }}>
-                    {items.map((item, index) => (
+                    {displayItems.map((item, index) => (
                         <Box key={item.id} sx={{
                             position: 'relative',
                             minWidth: '100vw',
@@ -195,11 +217,12 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                                             }
                                         }}
                                     >
-                                        {t('inquirePrice')}
+                                        {item.id === 'ab-video-slide' ? t('videoSlide.cta') : t('inquirePrice')}
                                     </Button>
 
                                     {/* Scroll Indicator (only on first item) */}
-                                    {index === 0 && (
+                                    {/* Scroll Indicator (on all items except the last one) */}
+                                    {index < displayItems.length - 1 && (
                                         <Box sx={{
                                             position: 'absolute',
                                             bottom: { xs: '2rem', md: '3rem' },
