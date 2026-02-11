@@ -35,24 +35,26 @@ export async function POST(request: NextRequest) {
             from: process.env.GMAIL_USER,
             to: 'annalisamartino.fashiondesigner@gmail.com',
             replyTo: data.email,
-            subject: `New Inquiry: ${data.itemReference || 'General Inquiry'}`,
+            subject: `Richiesta per ${data.itemReference} (${data.price || 'Prezzo su richiesta'}) da annalisamartino.com`,
             text: `
-Name: ${data.name}
+Nome: ${data.name}
 Email: ${data.email}
-Phone: ${data.phone || 'N/A'}
-Item: ${data.itemReference || 'N/A'}
+Telefono: ${data.phone || 'N/A'}
+Articolo: ${data.itemReference || 'N/A'}
+Prezzo Indicativo: ${data.price || 'Su richiesta'}
 
-Message:
+Messaggio:
 ${data.message}
             `,
             html: `
-<h3>New Inquiry Received</h3>
-<p><strong>Name:</strong> ${data.name}</p>
+<h3>Nuova Richiesta Ricevuta</h3>
+<p><strong>Nome:</strong> ${data.name}</p>
 <p><strong>Email:</strong> ${data.email}</p>
-<p><strong>Phone:</strong> ${data.phone || 'N/A'}</p>
-<p><strong>Item of Interest:</strong> ${data.itemReference || 'N/A'}</p>
+<p><strong>Telefono:</strong> ${data.phone || 'N/A'}</p>
+<p><strong>Articolo:</strong> ${data.itemReference || 'N/A'}</p>
+<p><strong>Prezzo Indicativo:</strong> ${data.price || 'Su richiesta'}</p>
 <br/>
-<p><strong>Message:</strong></p>
+<p><strong>Messaggio:</strong></p>
 <p>${data.message.replace(/\n/g, '<br/>')}</p>
             `,
         };

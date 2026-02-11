@@ -33,6 +33,7 @@ const InquireModal: React.FC<InquireModalProps> = ({ open, onClose, item }) => {
         phone: '',
         message: '',
         itemReference: '',
+        price: '',
     });
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
@@ -44,6 +45,7 @@ const InquireModal: React.FC<InquireModalProps> = ({ open, onClose, item }) => {
             setFormData((prev) => ({
                 ...prev,
                 itemReference: item.title,
+                price: item.price || '',
                 message: `${t('interestedIn')} "${item.title}".`,
             }));
             setSuccess(false);
@@ -88,6 +90,7 @@ const InquireModal: React.FC<InquireModalProps> = ({ open, onClose, item }) => {
                 phone: '',
                 message: '',
                 itemReference: '',
+                price: '',
             });
             setSuccess(false); // Reset success state for next open
 

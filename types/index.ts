@@ -17,4 +17,5 @@ export interface ContactFormData {
   phone?: string;
   message: string;
   itemReference?: string;
+  price?: string;
 }
