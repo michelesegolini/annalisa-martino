@@ -10,8 +10,7 @@ import { cookies } from 'next/headers';
 import theme from '@/lib/theme';
 import Navigation from '@/components/layout/Navigation';
 import { Locale, i18nConfig } from '@/lib/constants';
-import { ABTestProvider } from '@/components/ABTestProvider';
-import { getABVariant, AB_TEST_COOKIE_NAME } from '@/lib/ab-testing';
+
 
 
 const cormorant = Cormorant_Garamond({
@@ -138,8 +137,6 @@ export default async function RootLayout({
   // side is the easiest way to get started
   const messages = await getMessages();
   const t = await getTranslations({ locale, namespace: 'seo' });
-  const cookieStore = await cookies();
-  const variant = getABVariant(cookieStore.get(AB_TEST_COOKIE_NAME)?.value);
 
   return (
     <html lang={locale} className={`${cormorant.variable} ${inter.variable}`}>
@@ -172,15 +169,13 @@ export default async function RootLayout({
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>
-          <ABTestProvider variant={variant}>
-            <AppRouterCacheProvider>
-              <ThemeProvider theme={theme}>
-                <CssBaseline />
-                <Navigation />
-                {children}
-              </ThemeProvider>
-            </AppRouterCacheProvider>
-          </ABTestProvider>
+          <AppRouterCacheProvider>
+            <ThemeProvider theme={theme}>
+              <CssBaseline />
+              <Navigation />
+              {children}
+            </ThemeProvider>
+          </AppRouterCacheProvider>
         </NextIntlClientProvider>
       </body>
     </html>

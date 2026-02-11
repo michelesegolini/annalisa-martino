@@ -5,38 +5,18 @@ import { Box, Typography, Button, Container } from '@mui/material';
 import { useTranslations } from 'next-intl';
 import { GalleryItem } from '@/types';
 import InquireModal from './InquireModal';
-import { useABVariant } from '@/components/ABTestProvider';
-import { VARIANT_A } from '@/lib/ab-testing';
-
 interface VirtualGalleryProps {
     items: GalleryItem[];
-    enableABTest?: boolean;
 }
 
-const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, enableABTest = false }) => {
+const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
     const t = useTranslations('gallery');
 
-    // A/B Test Logic
-    const abVariant = useABVariant();
+    // A/B Test Logic removed - Runway Show is now a separate page permanently
 
-    const displayItems = React.useMemo(() => {
-        if (enableABTest && abVariant === VARIANT_A) {
-            const videoItem: GalleryItem = {
-                id: 'ab-video-slide',
-                title: t('videoSlide.title'),
-                description: t('videoSlide.description'),
-                category: 'Collection',
-                collection: 'Main',
-                videoUrl: 'https://res.cloudinary.com/dfdbbgsja/video/upload/v1769992104/Sfilate_qaspeu.mp4',
-                posterImage: '/images/fashion-item-1.png',
-                price: ''
-            };
-            return [videoItem, ...items];
-        }
-        return items;
-    }, [abVariant, items, t, enableABTest]);
+    const displayItems = items;
 
     const handleInquire = (item: GalleryItem) => {
         setSelectedItem(item);
