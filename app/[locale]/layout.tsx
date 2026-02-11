@@ -10,6 +10,8 @@ import { cookies } from 'next/headers';
 import theme from '@/lib/theme';
 import Navigation from '@/components/layout/Navigation';
 import { Locale, i18nConfig } from '@/lib/constants';
+import { GoogleTagManager } from '@next/third-parties/google';
+import ContentSquare from '@/components/ContentSquare';
 
 
 
@@ -140,6 +142,8 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className={`${cormorant.variable} ${inter.variable}`}>
+      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
+      <ContentSquare />
       <head>
         {/* Structured Data for Fashion Designer */}
         <script
