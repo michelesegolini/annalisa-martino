@@ -4,6 +4,7 @@ export interface GalleryItem {
   description: string;
   videoUrl: string;
   posterImage?: string;
+  images?: string[];
   category: string;
   collection: string;
   price?: string;

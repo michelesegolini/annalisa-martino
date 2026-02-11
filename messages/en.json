@@ -10,6 +10,7 @@
   "contact": {
     "title": "Contact",
     "subtitle": "Get in touch for bespoke inquiries",
+    "description": "Get in touch with Annalisa Martino for bespoke fashion inquiries, appointments, and more.",
     "instagram": "Follow on Instagram",
     "email": "Email Us"
   },
@@ -48,6 +49,7 @@
   },
   "collections": {
     "title": "Collections",
+    "description": "Explore the Annalisa Martino demi-couture collections. Handcrafted Italian fashion.",
     "modaMediterranea": {
       "title": "Mediterranean Fashion",
       "description": "Inspired by the colors and textures of the Mediterranean coast, this collection embodies effortless elegance."

@@ -10,6 +10,7 @@
     "contact": {
         "title": "Contatti",
         "subtitle": "Contattaci per richieste su misura",
+        "description": "Contatta Annalisa Martino per richieste su misura, appuntamenti e altro.",
         "instagram": "Segui su Instagram",
         "email": "Scrivici"
     },
@@ -48,6 +49,7 @@
     },
     "collections": {
         "title": "Collezioni",
+        "description": "Esplora le collezioni demi-couture di Annalisa Martino. Moda italiana artigianale.",
         "modaMediterranea": {
             "title": "Moda Mediterranea",
             "description": "Ispirata ai colori e alle texture della costa mediterranea, questa collezione incarna un'eleganza disinvolta."

@@ -9,6 +9,67 @@ interface VirtualGalleryProps {
     items: GalleryItem[];
 }
 
+const GallerySlideshow = ({ mainImage, images, title }: { mainImage: string, images?: string[], title: string }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    // Combine main image with additional images for the full slideshow list
+    // Ensure we don't have duplicates if mainImage is also in images (though normally they are distinct fields)
+    const allImages = images && images.length > 0 ? [mainImage, ...images] : [mainImage];
+    const hasMultiple = allImages.length > 1;
+
+    useEffect(() => {
+        if (!hasMultiple) return;
+
+        const interval = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % allImages.length);
+        }, 4000); // Change every 4 seconds
+
+        return () => clearInterval(interval);
+    }, [hasMultiple, allImages.length]);
+
+    if (!hasMultiple) {
+        return (
+            <Box
+                component="img"
+                src={mainImage}
+                alt={title}
+                sx={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    zIndex: 0
+                }}
+            />
+        );
+    }
+
+    return (
+        <Box sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
+            {allImages.map((img, index) => (
+                <Box
+                    key={`${img}-${index}`}
+                    component="img"
+                    src={img}
+                    alt={`${title} - view ${index + 1}`}
+                    sx={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        opacity: index === currentIndex ? 1 : 0,
+                        transition: 'opacity 1.5s ease-in-out', // Smooth crossfade
+                        zIndex: index === currentIndex ? 1 : 0
+                    }}
+                />
+            ))}
+        </Box>
+    );
+};
+
 const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
@@ -60,7 +121,7 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                             alignItems: 'center',
                             justifyContent: 'center'
                         }}>
-                            {/* Media Background (Video or Image) */}
+                            {/* Media Background (Video or Image/Slideshow) */}
                             {item.videoUrl ? (
                                 <Box
                                     component="video"
@@ -86,19 +147,10 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                                     Your browser does not support the video tag.
                                 </Box>
                             ) : (
-                                <Box
-                                    component="img"
-                                    src={item.posterImage || '/images/fashion-item-1.png'}
-                                    alt={item.title}
-                                    sx={{
-                                        position: 'absolute',
-                                        top: 0,
-                                        left: 0,
-                                        width: '100%',
-                                        height: '100%',
-                                        objectFit: 'cover',
-                                        zIndex: 0
-                                    }}
+                                <GallerySlideshow
+                                    mainImage={item.posterImage || '/images/fashion-item-1.png'}
+                                    images={item.images}
+                                    title={item.title}
                                 />
                             )}
 

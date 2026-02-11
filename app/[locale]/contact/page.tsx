@@ -1,6 +1,21 @@
 import React from 'react';
 import { Container, Typography, Box, Button } from '@mui/material';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import type { Metadata } from 'next';
+
+export async function generateMetadata({
+    params
+}: {
+    params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: 'contact' });
+
+    return {
+        title: t('title'),
+        description: t('description'),
+    };
+}
 
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
@@ -45,7 +60,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                             </Typography>
                             <Button
                                 component="a"
-                                href="https://instagram.com/annalisamartino"
+                                href="https://www.instagram.com/annalisamartinocollection?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 variant="outlined"
@@ -62,7 +77,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                                     }
                                 }}
                             >
-                                @annalisamartino
+                                @annalisamartinocollection
                             </Button>
                         </Box>
 
@@ -73,7 +88,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                             </Typography>
                             <Typography
                                 component="a"
-                                href="mailto:info@annalisamartino.it"
+                                href="mailto:annalisamartino.fashiondesigner@gmail.com"
                                 sx={{
                                     fontSize: '1.5rem',
                                     fontFamily: '"Cormorant Garamond", serif',
@@ -87,7 +102,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                                     }
                                 }}
                             >
-                                info@annalisamartino.it
+                                annalisamartino.fashiondesigner@gmail.com
                             </Typography>
                         </Box>
                     </Box>

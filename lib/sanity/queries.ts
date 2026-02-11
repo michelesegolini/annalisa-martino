@@ -1,86 +1,47 @@
 import { GalleryItem } from '@/types';
-import { fetchGalleryItems as fetchFromGallery } from '@/lib/gallery';
+import { client, urlFor } from './client';
 
 export async function getGalleryItems(locale: string = 'en'): Promise<GalleryItem[]> {
-    return await fetchFromGallery(locale);
-}
+    const query = `*[_type == "galleryItem"] | order(order asc) {
+    _id,
+    title,
+    titles,
+    descriptions,
+    "category": category->title,
+    mainImage,
+    gallery,
+    video,
+    videoUrl,
+    price,
+    isVertical,
+    featured
+  }`;
 
-// Mock data for development/demo purposes
-export function getMockGalleryItems(locale: string = 'en'): GalleryItem[] {
-    // In a real app, this would come from Sanity with locale-specific fields
-    // For now, we'll use the translation keys to get localized content
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const messages = require(`../../messages/${locale}.json`);
+    const items = await client.fetch(query);
 
-    // Sample video
-    const SAMPLE_VIDEO = 'https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4';
+    return items.map((item: any) => {
+        // Fallback for title/description if specific locale is missing
+        const localizedTitle = item.titles?.[locale] || item.title;
+        const localizedDescription = item.descriptions?.[locale] || item.descriptions?.en || '';
 
-    return [
-        // Red Carpet Collection
-        {
-            id: '1',
-            title: messages.items.silkElegance.title,
-            description: messages.items.silkElegance.description,
-            videoUrl: SAMPLE_VIDEO,
-            posterImage: '/images/fashion-item-1.png',
-            category: messages.categories.eveningWear,
-            collection: messages.collections.redCarpet.title,
-            featured: true,
-        },
-        {
-            id: '2',
-            title: messages.items.velvetDreams.title,
-            description: messages.items.velvetDreams.description,
-            videoUrl: SAMPLE_VIDEO,
-            posterImage: '/images/fashion-item-2.png',
-            category: messages.categories.cocktail,
-            collection: messages.collections.redCarpet.title,
-            featured: true,
-        },
+        let videoUrl = item.videoUrl || '';
+        // If a video file is uploaded to Sanity (not just URL)
+        // We'd typically use getFileAsset(item.video).url but for simplicity check if it's an object with asset
+        // For now, assuming videoUrl usage or simple file URL handling if needed.
 
-        // Magna Grecia Collection
-        {
-            id: '3',
-            title: messages.items.laceSophistication.title,
-            description: messages.items.laceSophistication.description,
-            videoUrl: SAMPLE_VIDEO,
-            posterImage: '/images/fashion-item-3.png',
-            category: messages.categories.bridal,
-            collection: messages.collections.magnaGrecia.title,
-            featured: false,
-        },
-        {
-            id: '4',
-            title: messages.items.chiffonGrace.title,
-            description: messages.items.chiffonGrace.description,
-            videoUrl: SAMPLE_VIDEO,
-            posterImage: '/images/fashion-item-4.png',
-            category: messages.categories.ceremony,
-            collection: messages.collections.magnaGrecia.title,
-            featured: false,
-        },
-
-        // Moda Mediterranea Collection
-        {
-            id: '5',
-            title: messages.items.azureHorizon.title,
-            description: messages.items.azureHorizon.description,
-            videoUrl: SAMPLE_VIDEO,
-            posterImage: '/images/fashion-item-5.png',
-            category: messages.categories.resort,
-            collection: messages.collections.modaMediterranea.title,
-            featured: true,
-        },
-        {
-            id: '6',
-            title: messages.items.goldenHour.title,
-            description: messages.items.goldenHour.description,
-            videoUrl: SAMPLE_VIDEO,
-            posterImage: '/images/fashion-item-6.png',
-            category: messages.categories.party18,
-            collection: messages.collections.modaMediterranea.title,
-            featured: false,
-        }
-    ];
+        return {
+            id: item._id,
+            title: localizedTitle,
+            description: localizedDescription,
+            category: item.category,
+            collection: item.category, // Using category as collection for now
+            price: item.price || '',
+            videoUrl: videoUrl,
+            posterImage: item.mainImage ? urlFor(item.mainImage).width(800).url() : '',
+            images: item.gallery?.map((img: any) => urlFor(img).width(800).url()) || [],
+            featured: item.featured || false,
+            isVertical: item.isVertical || false,
+        };
+    });
 }
 

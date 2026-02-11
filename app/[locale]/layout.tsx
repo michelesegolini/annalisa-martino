@@ -100,7 +100,7 @@ export async function generateMetadata({
       title: t('ogTitle'),
       description: t('ogDescription'),
       images: ['/annalisa-martino.jpg'],
-      creator: '@annalisamartino',
+      creator: '@annalisamartinocollection',
     },
     robots: {
       index: true,
@@ -158,7 +158,7 @@ export default async function RootLayout({
                 addressLocality: 'Milan',
               },
               sameAs: [
-                'https://instagram.com/annalisamartino',
+                'https://instagram.com/annalisamartinocollection',
                 'https://facebook.com/annalisamartino',
                 'https://pinterest.com/annalisamartino',
               ],

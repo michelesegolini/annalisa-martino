@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ContactFormData } from '@/types';
+import nodemailer from 'nodemailer';
 
 export async function POST(request: NextRequest) {
     try {
@@ -22,29 +23,41 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        // TODO: Integrate with email service (SendGrid, Mailgun, etc.)
-        // For now, just log the inquiry
-        console.log('New inquiry received:', {
-            name: data.name,
-            email: data.email,
-            phone: data.phone || 'N/A',
-            itemReference: data.itemReference || 'N/A',
-            message: data.message,
-            timestamp: new Date().toISOString(),
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.GMAIL_USER,
+                pass: process.env.GMAIL_PASS,
+            },
         });
 
-        // In production, you would send an email here
-        // Example with SendGrid:
-        // const sgMail = require('@sendgrid/mail');
-        // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-        // const msg = {
-        //   to: 'info@annalisamartino.com',
-        //   from: 'website@annalisamartino.com',
-        //   subject: `New Inquiry: ${data.itemReference}`,
-        //   text: `Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\n\nMessage:\n${data.message}`,
-        //   html: `<p><strong>Name:</strong> ${data.name}</p>...`,
-        // };
-        // await sgMail.send(msg);
+        const mailOptions = {
+            from: process.env.GMAIL_USER,
+            to: 'annalisamartino.fashiondesigner@gmail.com',
+            replyTo: data.email,
+            subject: `New Inquiry: ${data.itemReference || 'General Inquiry'}`,
+            text: `
+Name: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone || 'N/A'}
+Item: ${data.itemReference || 'N/A'}
+
+Message:
+${data.message}
+            `,
+            html: `
+<h3>New Inquiry Received</h3>
+<p><strong>Name:</strong> ${data.name}</p>
+<p><strong>Email:</strong> ${data.email}</p>
+<p><strong>Phone:</strong> ${data.phone || 'N/A'}</p>
+<p><strong>Item of Interest:</strong> ${data.itemReference || 'N/A'}</p>
+<br/>
+<p><strong>Message:</strong></p>
+<p>${data.message.replace(/\n/g, '<br/>')}</p>
+            `,
+        };
+
+        await transporter.sendMail(mailOptions);
 
         return NextResponse.json(
             {
@@ -56,7 +69,7 @@ export async function POST(request: NextRequest) {
     } catch (error) {
         console.error('Contact form error:', error);
         return NextResponse.json(
-            { error: 'Internal server error' },
+            { error: 'Internal server error', details: error instanceof Error ? error.message : 'Unknown error' },
             { status: 500 }
         );
     }

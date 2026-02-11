@@ -1,9 +1,24 @@
 import React from 'react';
 import { Container, Typography, Box } from '@mui/material';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import type { Metadata } from 'next';
 import CollectionCard from '@/components/collections/CollectionCard';
 import { getGalleryItems } from '@/lib/sanity/queries';
 import { GalleryItem } from '@/types';
+
+export async function generateMetadata({
+    params
+}: {
+    params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: 'collections' });
+
+    return {
+        title: t('title'),
+        description: t('description'),
+    };
+}
 
 export default async function CollectionsPage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;

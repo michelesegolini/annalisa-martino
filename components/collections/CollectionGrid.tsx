@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Box, Typography, Card, CardMedia, CardContent } from '@mui/material';
+import NextImage from 'next/image';
 import { GalleryItem } from '@/types';
 
 interface CollectionGridProps {
@@ -37,10 +38,7 @@ const CollectionGrid: React.FC<CollectionGridProps> = ({ items, onItemClick }) =
                         onClick={() => onItemClick(item)}
                     >
                         <Box sx={{ overflow: 'hidden', position: 'relative', paddingTop: '150%' /* 2:3 aspect ratio */ }}>
-                            <CardMedia
-                                component="img"
-                                image={item.posterImage || '/images/fashion-item-1.png'}
-                                alt={item.title}
+                            <Box
                                 className="item-image"
                                 sx={{
                                     position: 'absolute',
@@ -48,10 +46,16 @@ const CollectionGrid: React.FC<CollectionGridProps> = ({ items, onItemClick }) =
                                     left: 0,
                                     width: '100%',
                                     height: '100%',
-                                    objectFit: 'cover',
                                     transition: 'transform 0.6s ease',
                                 }}
-                            />
+                            >
+                                <NextImage
+                                    src={item.posterImage || '/images/fashion-item-1.png'}
+                                    alt={item.title}
+                                    fill
+                                    style={{ objectFit: 'cover' }}
+                                />
+                            </Box>
                         </Box>
                         <CardContent sx={{ px: 2, py: 2 }}>
                             <Typography

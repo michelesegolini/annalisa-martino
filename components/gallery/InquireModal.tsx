@@ -13,6 +13,7 @@ import {
     IconButton,
     Alert,
     CircularProgress,
+    Snackbar,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useTranslations } from 'next-intl';
@@ -36,6 +37,7 @@ const InquireModal: React.FC<InquireModalProps> = ({ open, onClose, item }) => {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState('');
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
 
     React.useEffect(() => {
         if (item && open) {
@@ -60,7 +62,6 @@ const InquireModal: React.FC<InquireModalProps> = ({ open, onClose, item }) => {
         setError('');
 
         try {
-            // TODO: Replace with actual API endpoint
             const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: {
@@ -73,18 +74,23 @@ const InquireModal: React.FC<InquireModalProps> = ({ open, onClose, item }) => {
                 throw new Error('Failed to send inquiry');
             }
 
+            // Success handling
             setSuccess(true);
-            setTimeout(() => {
-                onClose();
-                setFormData({
-                    name: '',
-                    email: '',
-                    phone: '',
-                    message: '',
-                    itemReference: '',
-                });
-                setSuccess(false);
-            }, 2000);
+            setSnackbarOpen(true);
+
+            // Close modal immediately
+            onClose();
+
+            // Reset form
+            setFormData({
+                name: '',
+                email: '',
+                phone: '',
+                message: '',
+                itemReference: '',
+            });
+            setSuccess(false); // Reset success state for next open
+
         } catch (err) {
             setError('Failed to send your inquiry. Please try again.');
             console.error('Contact form error:', err);
@@ -101,133 +107,147 @@ const InquireModal: React.FC<InquireModalProps> = ({ open, onClose, item }) => {
         }
     };
 
+    const handleSnackbarClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setSnackbarOpen(false);
+    };
+
     return (
-        <Dialog
-            open={open}
-            onClose={handleClose}
-            maxWidth="sm"
-            fullWidth
-            PaperProps={{
-                sx: {
-                    borderRadius: 1,
-                    p: 2,
-                },
-            }}
-        >
-            <DialogTitle
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    pb: 2,
+        <>
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                maxWidth="sm"
+                fullWidth
+                PaperProps={{
+                    sx: {
+                        borderRadius: 1,
+                        p: 2,
+                    },
                 }}
             >
-                <Box>
-                    <Typography variant="h4" component="div" sx={{ mb: 0.5 }}>
-                        {t('title')}
-                    </Typography>
-                    {item && (
-                        <Typography variant="body2" color="text.secondary">
-                            {item.title}
-                        </Typography>
-                    )}
-                </Box>
-                <IconButton
-                    onClick={handleClose}
-                    disabled={loading}
-                    sx={{ color: 'text.secondary' }}
+                <DialogTitle
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        pb: 2,
+                    }}
                 >
-                    <CloseIcon />
-                </IconButton>
-            </DialogTitle>
-
-            <form onSubmit={handleSubmit}>
-                <DialogContent>
-                    {success && (
-                        <Alert severity="success" sx={{ mb: 3 }}>
-                            {t('successMessage')}
-                        </Alert>
-                    )}
-
-                    {error && (
-                        <Alert severity="error" sx={{ mb: 3 }}>
-                            {t('errorMessage')}
-                        </Alert>
-                    )}
-
-                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
-                        <TextField
-                            required
-                            fullWidth
-                            label={t('fullName')}
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            disabled={loading || success}
-                            autoFocus
-                        />
-
-                        <TextField
-                            required
-                            fullWidth
-                            type="email"
-                            label={t('email')}
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            disabled={loading || success}
-                        />
-
-                        <TextField
-                            fullWidth
-                            label={t('phone')}
-                            name="phone"
-                            value={formData.phone}
-                            onChange={handleChange}
-                            disabled={loading || success}
-                        />
-
-                        <TextField
-                            required
-                            fullWidth
-                            multiline
-                            rows={4}
-                            label={t('message')}
-                            name="message"
-                            value={formData.message}
-                            onChange={handleChange}
-                            disabled={loading || success}
-                            helperText={t('messageHelper')}
-                        />
+                    <Box>
+                        <Typography variant="h4" component="div" sx={{ mb: 0.5 }}>
+                            {t('title')}
+                        </Typography>
+                        {item && (
+                            <Typography variant="body2" color="text.secondary">
+                                {item.title}
+                            </Typography>
+                        )}
                     </Box>
-                </DialogContent>
-
-                <DialogActions sx={{ px: 3, pb: 2, pt: 3 }}>
-                    <Button
+                    <IconButton
                         onClick={handleClose}
                         disabled={loading}
-                        sx={{ mr: 1 }}
+                        sx={{ color: 'text.secondary' }}
                     >
-                        {t('cancel')}
-                    </Button>
-                    <Button
-                        type="submit"
-                        variant="contained"
-                        disabled={loading || success}
-                        sx={{
-                            minWidth: 120,
-                            position: 'relative',
-                        }}
-                    >
-                        {loading ? (
-                            <CircularProgress size={24} color="inherit" />
-                        ) : (
-                            t('send')
+                        <CloseIcon />
+                    </IconButton>
+                </DialogTitle>
+
+                <form onSubmit={handleSubmit}>
+                    <DialogContent>
+                        {/* Error Alert kept inside modal */}
+                        {error && (
+                            <Alert severity="error" sx={{ mb: 3 }}>
+                                {t('errorMessage')}
+                            </Alert>
                         )}
-                    </Button>
-                </DialogActions>
-            </form>
-        </Dialog>
+
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
+                            <TextField
+                                required
+                                fullWidth
+                                label={t('fullName')}
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                disabled={loading}
+                                autoFocus
+                            />
+
+                            <TextField
+                                required
+                                fullWidth
+                                type="email"
+                                label={t('email')}
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                disabled={loading}
+                            />
+
+                            <TextField
+                                fullWidth
+                                label={t('phone')}
+                                name="phone"
+                                value={formData.phone}
+                                onChange={handleChange}
+                                disabled={loading}
+                            />
+
+                            <TextField
+                                required
+                                fullWidth
+                                multiline
+                                rows={4}
+                                label={t('message')}
+                                name="message"
+                                value={formData.message}
+                                onChange={handleChange}
+                                disabled={loading}
+                                helperText={t('messageHelper')}
+                            />
+                        </Box>
+                    </DialogContent>
+
+                    <DialogActions sx={{ px: 3, pb: 2, pt: 3 }}>
+                        <Button
+                            onClick={handleClose}
+                            disabled={loading}
+                            sx={{ mr: 1 }}
+                        >
+                            {t('cancel')}
+                        </Button>
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            disabled={loading}
+                            sx={{
+                                minWidth: 120,
+                                position: 'relative',
+                            }}
+                        >
+                            {loading ? (
+                                <CircularProgress size={24} color="inherit" />
+                            ) : (
+                                t('send')
+                            )}
+                        </Button>
+                    </DialogActions>
+                </form>
+            </Dialog>
+            <Snackbar
+                open={snackbarOpen}
+                autoHideDuration={6000}
+                onClose={handleSnackbarClose}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+            >
+                <Alert onClose={handleSnackbarClose} severity="success" sx={{ width: '100%' }}>
+                    {t('successMessage')}
+                </Alert>
+            </Snackbar>
+        </>
     );
 };
 
