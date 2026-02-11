@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
         });
 
         const mailOptions = {
-            from: process.env.GMAIL_USER,
+            from: `"${data.name} - ${data.email}" <${process.env.GMAIL_USER}>`,
             to: 'annalisamartino.fashiondesigner@gmail.com',
             replyTo: data.email,
             subject: `Richiesta per ${data.itemReference} (${data.price || 'Prezzo su richiesta'}) da annalisamartino.com`,
