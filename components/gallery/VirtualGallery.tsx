@@ -256,95 +256,105 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                                 <Box sx={{
                                     width: '100%',
                                     maxWidth: { md: '900px' },
-                                    padding: { xs: '1rem 0', md: '2rem 0' },
-                                    animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards',
                                     opacity: isCleanView ? 0 : 1,
                                     transition: 'opacity 0.6s ease-in-out',
                                     pointerEvents: isCleanView ? 'none' : 'auto'
                                 }}>
-                                    {/* Title */}
-                                    <Typography
-                                        variant="h2"
-                                        sx={{
-                                            mb: 3,
-                                            fontWeight: 600,
-                                            textShadow: '0 4px 12px rgba(0, 0, 0, 0.8)',
-                                            fontSize: { xs: '2rem', md: '3.5rem' },
-                                            opacity: 0,
-                                            animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards'
-                                        }}
-                                    >
-                                        {item.title}
-                                    </Typography>
+                                    <Box sx={{
+                                        padding: { xs: '1rem 0', md: '2rem 0' },
+                                        animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards'
+                                    }}>
+                                        {/* Title */}
+                                        <Typography
+                                            variant="h2"
+                                            sx={{
+                                                mb: 3,
+                                                fontWeight: 600,
+                                                textShadow: '0 4px 12px rgba(0, 0, 0, 0.8)',
+                                                fontSize: { xs: '2rem', md: '3.5rem' },
+                                                opacity: 0,
+                                                animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards'
+                                            }}
+                                        >
+                                            {item.title}
+                                        </Typography>
 
-                                    {/* Description */}
-                                    <Typography
-                                        variant="body1"
-                                        sx={{
-                                            mb: 4,
-                                            maxWidth: '600px',
-                                            fontSize: { xs: '0.9rem', md: '1.1rem' },
-                                            lineHeight: 1.8,
-                                            textShadow: '0 2px 8px rgba(0, 0, 0, 0.9)',
-                                            opacity: 0,
-                                            animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards',
-                                            whiteSpace: 'pre-line'
-                                        }}
-                                    >
-                                        {item.description}
-                                    </Typography>
+                                        {/* Description */}
+                                        <Typography
+                                            variant="body1"
+                                            sx={{
+                                                mb: 4,
+                                                maxWidth: '600px',
+                                                fontSize: { xs: '0.9rem', md: '1.1rem' },
+                                                lineHeight: 1.8,
+                                                textShadow: '0 2px 8px rgba(0, 0, 0, 0.9)',
+                                                opacity: 0,
+                                                animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards',
+                                                whiteSpace: 'pre-line'
+                                            }}
+                                        >
+                                            {item.description}
+                                        </Typography>
 
-                                    {/* CTA Button */}
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        size="large"
-                                        onClick={() => handleInquire(item)}
-                                        sx={{
-                                            px: 4,
-                                            py: 1.5,
-                                            fontSize: '0.9rem',
-                                            fontWeight: 600,
-                                            backgroundColor: 'primary.main',
-                                            color: 'background.default',
-                                            position: 'relative',
-                                            overflow: 'hidden',
-                                            opacity: 0,
-                                            animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards',
-                                            '&:hover': {
-                                                backgroundColor: 'primary.light',
-                                            }
-                                        }}
-                                    >
-                                        {item.id === 'ab-video-slide' ? t('videoSlide.cta') : t('inquirePrice')}
-                                    </Button>
+                                        {/* Buttons Container */}
+                                        <Box sx={{
+                                            display: 'flex',
+                                            flexDirection: { xs: 'column', md: 'row' },
+                                            gap: { xs: 2, md: 2 },
+                                            alignItems: { xs: 'stretch', md: 'flex-start' }
+                                        }}>
+                                            {/* CTA Button */}
+                                            <Button
+                                                variant="contained"
+                                                color="primary"
+                                                size="large"
+                                                onClick={() => handleInquire(item)}
+                                                sx={{
+                                                    px: 4,
+                                                    py: 1.5,
+                                                    fontSize: '0.9rem',
+                                                    fontWeight: 600,
+                                                    backgroundColor: 'primary.main',
+                                                    color: 'background.default',
+                                                    position: 'relative',
+                                                    overflow: 'hidden',
+                                                    opacity: 0,
+                                                    animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards',
+                                                    '&:hover': {
+                                                        backgroundColor: 'primary.light',
+                                                    }
+                                                }}
+                                            >
+                                                {item.id === 'ab-video-slide' ? t('videoSlide.cta') : t('inquirePrice')}
+                                            </Button>
 
-                                    {/* Clean View Button */}
-                                    <Button
-                                        variant="outlined"
-                                        size="large"
-                                        onClick={() => setIsCleanView(true)}
-                                        sx={{
-                                            px: 4,
-                                            py: 1.5,
-                                            ml: 2,
-                                            fontSize: '0.9rem',
-                                            fontWeight: 600,
-                                            borderColor: 'rgba(255, 255, 255, 0.5)',
-                                            color: 'white',
-                                            position: 'relative',
-                                            overflow: 'hidden',
-                                            opacity: 0,
-                                            animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards',
-                                            '&:hover': {
-                                                borderColor: 'primary.main',
-                                                color: 'primary.main',
-                                                backgroundColor: 'rgba(0,0,0,0.2)'
-                                            }
-                                        }}
-                                    >
-                                        {t('viewFullScreen')}
-                                    </Button>
+                                            {/* Clean View Button */}
+                                            <Button
+                                                variant="outlined"
+                                                size="large"
+                                                onClick={() => setIsCleanView(true)}
+                                                sx={{
+                                                    px: 4,
+                                                    py: 1.5,
+                                                    fontSize: '0.9rem',
+                                                    fontWeight: 600,
+                                                    borderColor: 'rgba(255, 255, 255, 0.5)',
+                                                    color: 'white',
+                                                    position: 'relative',
+                                                    overflow: 'hidden',
+                                                    opacity: 0,
+                                                    animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards',
+                                                    '&:hover': {
+                                                        borderColor: 'primary.main',
+                                                        color: 'primary.main',
+                                                        backgroundColor: 'rgba(0,0,0,0.2)'
+                                                    }
+                                                }}
+                                            >
+                                                {t('viewFullScreen')}
+                                            </Button>
+                                        </Box>
+                                    </Box>
 
                                     {/* Scroll Indicator (on all items except the last one) */}
                                     {index < displayItems.length - 1 && (
