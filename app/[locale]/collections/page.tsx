@@ -48,7 +48,7 @@ export default async function CollectionsPage({ params }: { params: Promise<{ lo
                 id: slug,
                 title: collectionName, // Use raw name from sheet as title
                 description: '', // Description not in sheet, leaving empty or could use a generic one
-                image: item.posterImage || '', // Use first item's image as cover
+                image: item.posterImage || item.images?.[0] || '', // Use first item's image as cover
                 href: `/collections/${slug}`,
             });
         }

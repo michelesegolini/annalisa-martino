@@ -4,7 +4,18 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // Current Next.js 16 configuration
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'cdn.sanity.io',
+            },
+            {
+                protocol: 'https',
+                hostname: 'res.cloudinary.com',
+            }
+        ],
+    },
 };
 
 export default withNextIntl(nextConfig);

@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Button, Container } from '@mui/material';
+import { Box, Typography, Button, Container, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import { useTranslations } from 'next-intl';
 import { GalleryItem } from '@/types';
 import InquireModal from './InquireModal';
@@ -138,6 +139,7 @@ const SequentialVideoPlayer = ({ videoUrls, poster }: { videoUrls: string[], pos
 
 const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
     const [modalOpen, setModalOpen] = useState(false);
+    const [isCleanView, setIsCleanView] = useState(false);
     const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
     const t = useTranslations('gallery');
 
@@ -236,7 +238,10 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                                 width: '100%',
                                 height: '100%',
                                 background: 'linear-gradient(to bottom, rgba(10, 10, 10, 0.3) 0%, rgba(10, 10, 10, 0.5) 50%, rgba(10, 10, 10, 0.8) 100%)',
-                                zIndex: 1
+                                zIndex: 1,
+                                opacity: isCleanView ? 0 : 1,
+                                transition: 'opacity 0.6s ease-in-out',
+                                pointerEvents: 'none'
                             }} />
 
                             {/* Content */}
@@ -252,7 +257,10 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                                     width: '100%',
                                     maxWidth: { md: '900px' },
                                     padding: { xs: '1rem 0', md: '2rem 0' },
-                                    animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards'
+                                    animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards',
+                                    opacity: isCleanView ? 0 : 1,
+                                    transition: 'opacity 0.6s ease-in-out',
+                                    pointerEvents: isCleanView ? 'none' : 'auto'
                                 }}>
                                     {/* Title */}
                                     <Typography
@@ -311,6 +319,33 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                                         {item.id === 'ab-video-slide' ? t('videoSlide.cta') : t('inquirePrice')}
                                     </Button>
 
+                                    {/* Clean View Button */}
+                                    <Button
+                                        variant="outlined"
+                                        size="large"
+                                        onClick={() => setIsCleanView(true)}
+                                        sx={{
+                                            px: 4,
+                                            py: 1.5,
+                                            ml: 2,
+                                            fontSize: '0.9rem',
+                                            fontWeight: 600,
+                                            borderColor: 'rgba(255, 255, 255, 0.5)',
+                                            color: 'white',
+                                            position: 'relative',
+                                            overflow: 'hidden',
+                                            opacity: 0,
+                                            animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards',
+                                            '&:hover': {
+                                                borderColor: 'primary.main',
+                                                color: 'primary.main',
+                                                backgroundColor: 'rgba(0,0,0,0.2)'
+                                            }
+                                        }}
+                                    >
+                                        {t('viewFullScreen')}
+                                    </Button>
+
                                     {/* Scroll Indicator (on all items except the last one) */}
                                     {index < displayItems.length - 1 && (
                                         <Box sx={{
@@ -346,6 +381,33 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                         </Box>
                     ))}
                 </Box>
+            </Box>
+
+            {/* Close Clean View Button */}
+            <Box
+                sx={{
+                    position: 'fixed',
+                    top: { xs: '1rem', md: '2rem' },
+                    right: { xs: '1rem', md: '2rem' },
+                    zIndex: 100,
+                    opacity: isCleanView ? 1 : 0,
+                    visibility: isCleanView ? 'visible' : 'hidden',
+                    transition: 'opacity 0.3s ease-in-out, visibility 0.3s ease-in-out'
+                }}
+            >
+                <IconButton
+                    onClick={() => setIsCleanView(false)}
+                    sx={{
+                        color: 'white',
+                        backgroundColor: 'rgba(0,0,0,0.3)',
+                        backdropFilter: 'blur(4px)',
+                        '&:hover': {
+                            backgroundColor: 'rgba(0,0,0,0.5)',
+                        }
+                    }}
+                >
+                    <CloseIcon />
+                </IconButton>
             </Box>
 
             {/* Inquire Modal */}
