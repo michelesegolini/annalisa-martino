@@ -16,7 +16,53 @@ interface VirtualGalleryProps {
 const GallerySlideshow = ({ mainImage, images, title, isCleanView }: { mainImage: string, images?: string[], title: string, isCleanView: boolean }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const allImages = images && images.length > 0 ? [mainImage, ...images] : [mainImage];
+    const [touchStart, setTouchStart] = useState<number | null>(null);
+    const [touchEnd, setTouchEnd] = useState<number | null>(null);
     const hasMultiple = allImages.length > 1;
+
+    // Minimum swipe distance (in px)
+    const minSwipeDistance = 50;
+
+    const onTouchStart = (e: React.TouchEvent) => {
+        if (!isCleanView || !hasMultiple) return;
+        setTouchEnd(null);
+        setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    const onTouchMove = (e: React.TouchEvent) => {
+        if (!isCleanView || !hasMultiple) return;
+        setTouchEnd(e.targetTouches[0].clientX);
+    };
+
+    const onTouchEnd = () => {
+        if (!touchStart || !touchEnd || !isCleanView || !hasMultiple) return;
+
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > minSwipeDistance;
+        const isRightSwipe = distance < -minSwipeDistance;
+
+        if (isLeftSwipe) {
+            // Next image
+            setCurrentIndex((prev) => (prev + 1) % allImages.length);
+        } else if (isRightSwipe) {
+            // Previous image
+            setCurrentIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
+        }
+    };
+
+    const onWheel = (e: React.WheelEvent) => {
+        if (!isCleanView || !hasMultiple) return;
+        // Simple debounce could be added here if needed, but for now specific threshold
+        if (Math.abs(e.deltaX) > 50) {
+            if (e.deltaX > 0) {
+                // Next (scrolling right)
+                setCurrentIndex((prev) => (prev + 1) % allImages.length);
+            } else {
+                // Prev (scrolling left)
+                setCurrentIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
+            }
+        }
+    };
 
     useEffect(() => {
         if (!hasMultiple || isCleanView) return;
@@ -48,7 +94,13 @@ const GallerySlideshow = ({ mainImage, images, title, isCleanView }: { mainImage
     }
 
     return (
-        <Box sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
+        <Box
+            sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+            onWheel={onWheel}
+        >
             {allImages.map((img, index) => (
                 <Box
                     key={`${img}-${index}`}
@@ -85,7 +137,8 @@ const GallerySlideshow = ({ mainImage, images, title, isCleanView }: { mainImage
                             transform: 'translateY(-50%)',
                             color: 'white',
                             backgroundColor: 'rgba(0,0,0,0.3)',
-                            zIndex: 10,
+                            zIndex: 20, // Increased z-index
+                            pointerEvents: 'auto', // Ensure clickability
                             '&:hover': { backgroundColor: 'rgba(0,0,0,0.5)' }
                         }}
                     >
@@ -105,7 +158,8 @@ const GallerySlideshow = ({ mainImage, images, title, isCleanView }: { mainImage
                             transform: 'translateY(-50%)',
                             color: 'white',
                             backgroundColor: 'rgba(0,0,0,0.3)',
-                            zIndex: 10,
+                            zIndex: 20, // Increased z-index
+                            pointerEvents: 'auto', // Ensure clickability
                             '&:hover': { backgroundColor: 'rgba(0,0,0,0.5)' }
                         }}
                     >
