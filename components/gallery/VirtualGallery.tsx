@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button, Container, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useTranslations } from 'next-intl';
 import { GalleryItem } from '@/types';
 import InquireModal from './InquireModal';
@@ -11,20 +13,20 @@ interface VirtualGalleryProps {
     items: GalleryItem[];
 }
 
-const GallerySlideshow = ({ mainImage, images, title }: { mainImage: string, images?: string[], title: string }) => {
+const GallerySlideshow = ({ mainImage, images, title, isCleanView }: { mainImage: string, images?: string[], title: string, isCleanView: boolean }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const allImages = images && images.length > 0 ? [mainImage, ...images] : [mainImage];
     const hasMultiple = allImages.length > 1;
 
     useEffect(() => {
-        if (!hasMultiple) return;
+        if (!hasMultiple || isCleanView) return;
 
         const interval = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % allImages.length);
         }, 4000); // Change every 4 seconds
 
         return () => clearInterval(interval);
-    }, [hasMultiple, allImages.length]);
+    }, [hasMultiple, allImages.length, isCleanView]);
 
     if (!hasMultiple) {
         return (
@@ -66,6 +68,69 @@ const GallerySlideshow = ({ mainImage, images, title }: { mainImage: string, ima
                     }}
                 />
             ))}
+
+            {/* Manual Navigation Controls (Only in Clean View) */}
+            {isCleanView && (
+                <>
+                    {/* Previous Button */}
+                    <IconButton
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setCurrentIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
+                        }}
+                        sx={{
+                            position: 'absolute',
+                            left: { xs: 10, md: 30 },
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                            color: 'white',
+                            backgroundColor: 'rgba(0,0,0,0.3)',
+                            zIndex: 10,
+                            '&:hover': { backgroundColor: 'rgba(0,0,0,0.5)' }
+                        }}
+                    >
+                        <ArrowBackIosNewIcon />
+                    </IconButton>
+
+                    {/* Next Button */}
+                    <IconButton
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setCurrentIndex((prev) => (prev + 1) % allImages.length);
+                        }}
+                        sx={{
+                            position: 'absolute',
+                            right: { xs: 10, md: 30 },
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                            color: 'white',
+                            backgroundColor: 'rgba(0,0,0,0.3)',
+                            zIndex: 10,
+                            '&:hover': { backgroundColor: 'rgba(0,0,0,0.5)' }
+                        }}
+                    >
+                        <ArrowForwardIosIcon />
+                    </IconButton>
+
+                    {/* Image Counter */}
+                    <Box
+                        sx={{
+                            position: 'absolute',
+                            bottom: 30,
+                            left: '50%',
+                            transform: 'translateX(-50%)',
+                            color: 'white',
+                            backgroundColor: 'rgba(0,0,0,0.5)',
+                            padding: '4px 12px',
+                            borderRadius: '12px',
+                            fontSize: '0.9rem',
+                            zIndex: 10
+                        }}
+                    >
+                        {currentIndex + 1} / {allImages.length}
+                    </Box>
+                </>
+            )}
         </Box>
     );
 };
@@ -166,12 +231,13 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                 width: '100%',
                 height: '100vh',
                 overflow: 'hidden',
-                position: 'relative'
+                position: 'relative',
+                zIndex: isCleanView ? 1200 : 1 // Higher z-index to cover navigation when in clean view
             }}>
                 <Box sx={{
                     display: 'flex',
                     height: '100vh',
-                    overflowX: 'auto',
+                    overflowX: isCleanView ? 'hidden' : 'auto', // Disable scrolling when in clean view
                     overflowY: 'hidden',
                     scrollSnapType: 'x mandatory',
                     scrollBehavior: 'smooth',
@@ -227,6 +293,7 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                                     mainImage={item.posterImage || ''}
                                     images={item.images}
                                     title={item.title}
+                                    isCleanView={isCleanView && !item.videoUrl} // Only pass true if not a video item (Video handles itself or doesn't support clean view nav yet)
                                 />
                             )}
 
@@ -399,7 +466,7 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                     position: 'fixed',
                     top: { xs: '1rem', md: '2rem' },
                     right: { xs: '1rem', md: '2rem' },
-                    zIndex: 100,
+                    zIndex: 1300, // Ensure it's above everything including the high z-index container
                     opacity: isCleanView ? 1 : 0,
                     visibility: isCleanView ? 'visible' : 'hidden',
                     transition: 'opacity 0.3s ease-in-out, visibility 0.3s ease-in-out'
