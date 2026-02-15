@@ -77,6 +77,21 @@ const SequentialVideoPlayer = ({ videoUrls, poster }: { videoUrls: string[], pos
         videoRefs.current = videoRefs.current.slice(0, videoUrls.length);
     }, [videoUrls]);
 
+    useEffect(() => {
+        const currentVideo = videoRefs.current[currentIndex];
+        if (currentVideo) {
+            // Ensure the video is ready to play
+            if (currentVideo.readyState >= 3) {
+                currentVideo.play().catch(e => console.error("Autoplay prevented:", e));
+            } else {
+                currentVideo.oncanplay = () => {
+                    currentVideo.play().catch(e => console.error("Autoplay prevented:", e));
+                    currentVideo.oncanplay = null;
+                };
+            }
+        }
+    }, [currentIndex]);
+
     const handleEnded = (index: number) => {
         const nextIndex = (index + 1) % videoUrls.length;
         const nextVideo = videoRefs.current[nextIndex];
