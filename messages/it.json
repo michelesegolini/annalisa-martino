@@ -49,7 +49,7 @@
     },
     "collections": {
         "title": "Collezioni",
-        "description": "Esplora le collezioni demi-couture di Annalisa Martino. Moda italiana artigianale.",
+        "description": "Esplora le collezioni haute-couture di Annalisa Martino. Moda italiana artigianale.",
         "modaMediterranea": {
             "title": "Moda Mediterranea",
             "description": "Ispirata ai colori e alle texture della costa mediterranea, questa collezione incarna un'eleganza disinvolta."
@@ -90,15 +90,15 @@
         }
     },
     "seo": {
-        "title": "Annalisa Martino | Stilista Italiana Demi-Couture",
-        "description": "Scopri la moda esclusiva demi-couture italiana di Annalisa Martino. Capi di lusso fatti a mano, sartoria su misura ed eleganza senza tempo da Milano.",
-        "ogTitle": "Annalisa Martino | Stilista Italiana Demi-Couture",
-        "ogDescription": "Moda esclusiva demi-couture italiana. Capi di lusso fatti a mano e sartoria su misura da Milano.",
-        "schemaDescription": "Stilista Italiana di Moda Demi-Couture"
+        "title": "Annalisa Martino | Stilista Italiana Haute-Couture",
+        "description": "Scopri la moda esclusiva haute-couture italiana di Annalisa Martino. Capi di lusso fatti a mano, sartoria su misura ed eleganza senza tempo da Milano.",
+        "ogTitle": "Annalisa Martino | Stilista Italiana Haute-Couture",
+        "ogDescription": "Moda esclusiva haute-couture italiana. Capi di lusso fatti a mano e sartoria su misura da Milano.",
+        "schemaDescription": "Stilista Italiana di Moda Haute-Couture"
     },
     "about": {
-        "title": "Su Annalisa Martino | Stilista Italiana Demi-Couture",
-        "description": "Scopri la storia di Annalisa Martino, stilista di moda demi-couture italiana di Milano. Scopri la sua filosofia di design, l'artigianato e la passione per la moda di lusso fatta a mano.",
+        "title": "Su Annalisa Martino | Stilista Italiana Haute-Couture",
+        "description": "Scopri la storia di Annalisa Martino, stilista di moda haute-couture italiana di Milano. Scopri la sua filosofia di design, l'artigianato e la passione per la moda di lusso fatta a mano.",
         "hero": {
             "title": "Annalisa Martino Collection",
             "subtitle": "Alta Moda Made in Italy, anima mediterranea"

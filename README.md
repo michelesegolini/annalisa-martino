@@ -88,7 +88,7 @@ Update the video URLs in \`lib/sanity/queries.ts\` or configure them in your San
 
 ## SEO Configuration
 
-The website is optimized for ranking as an "Italian Demi-Couture Designer" with:
+The website is optimized for ranking as an "Italian Haute-Couture Designer" with:
 - Comprehensive meta-tags
 - Open Graph and Twitter Card support
 - Structured data (Schema.org FashionDesigner)

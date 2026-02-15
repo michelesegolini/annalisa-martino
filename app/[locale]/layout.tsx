@@ -53,7 +53,7 @@ export async function generateMetadata({
     description: t('description'),
     keywords: [
       'Italian fashion designer',
-      'demi-couture',
+      'haute-couture',
       'luxury fashion',
       'bespoke tailoring',
       'made in Italy',
@@ -166,7 +166,7 @@ export default async function RootLayout({
                 'https://facebook.com/annalisamartino',
                 'https://pinterest.com/annalisamartino',
               ],
-              knowsAbout: ['Demi-Couture', 'Haute Couture', 'Bespoke Fashion', 'Italian Fashion'],
+              knowsAbout: ['Haute-Couture', 'Haute Couture', 'Bespoke Fashion', 'Italian Fashion'],
             }),
           }}
         />

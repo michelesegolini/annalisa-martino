@@ -49,7 +49,7 @@
   },
   "collections": {
     "title": "Coleções",
-    "description": "Descubra as coleções demi-couture de Annalisa Martino. Moda italiana artesanal.",
+    "description": "Descubra as coleções haute-couture de Annalisa Martino. Moda italiana artesanal.",
     "modaMediterranea": {
       "title": "Moda Mediterrânea",
       "description": "Inspirada nas cores e texturas da costa mediterrânea, esta coleção incorpora uma elegância sem esforço."
@@ -90,15 +90,15 @@
     }
   },
   "seo": {
-    "title": "Annalisa Martino | Designer Italiana de Demi-Couture",
-    "description": "Explore a moda exclusiva demi-couture italiana de Annalisa Martino. Peças de luxo feitas à mão, alfaiataria sob medida e elegância atemporal de Milão.",
-    "ogTitle": "Annalisa Martino | Designer Italiana de Demi-Couture",
-    "ogDescription": "Moda exclusiva demi-couture italiana. Peças de luxo feitas à mão e alfaiataria sob medida de Milão.",
-    "schemaDescription": "Designer Italiana de Moda Demi-Couture"
+    "title": "Annalisa Martino | Designer Italiana de Haute-Couture",
+    "description": "Explore a moda exclusiva haute-couture italiana de Annalisa Martino. Peças de luxo feitas à mão, alfaiataria sob medida e elegância atemporal de Milão.",
+    "ogTitle": "Annalisa Martino | Designer Italiana de Haute-Couture",
+    "ogDescription": "Moda exclusiva haute-couture italiana. Peças de luxo feitas à mão e alfaiataria sob medida de Milão.",
+    "schemaDescription": "Designer Italiana de Moda Haute-Couture"
   },
   "about": {
-    "title": "Sobre Annalisa Martino | Designer Italiana Demi-Couture",
-    "description": "Descubra a história de Annalisa Martino, uma designer de moda demi-couture italiana de Milão. Conheça sua filosofia de design, artesanato e paixão pela moda de luxo feita à mão.",
+    "title": "Sobre Annalisa Martino | Designer Italiana Haute-Couture",
+    "description": "Descubra a história de Annalisa Martino, uma designer de moda haute-couture italiana de Milão. Conheça sua filosofia de design, artesanato e paixão pela moda de luxo feita à mão.",
     "hero": {
       "title": "Annalisa Martino Collection",
       "subtitle": "Alta Costura Made in Italy, alma mediterrânica"

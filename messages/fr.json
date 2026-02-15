@@ -49,7 +49,7 @@
   },
   "collections": {
     "title": "Collections",
-    "description": "Découvrez les collections demi-couture d'Annalisa Martino. Mode italienne artisanale.",
+    "description": "Découvrez les collections haute-couture d'Annalisa Martino. Mode italienne artisanale.",
     "modaMediterranea": {
       "title": "Mode Méditerranéenne",
       "description": "Inspirée par les couleurs et les textures de la côte méditerranéenne, cette collection incarne une élégance sans effort."
@@ -90,15 +90,15 @@
     }
   },
   "seo": {
-    "title": "Annalisa Martino | Créatrice Italienne de Demi-Couture",
-    "description": "Découvrez la mode exclusive demi-couture italienne d'Annalisa Martino. Vêtements de luxe faits à la main, couture sur mesure et élégance intemporelle de Milan.",
-    "ogTitle": "Annalisa Martino | Créatrice Italienne de Demi-Couture",
-    "ogDescription": "Mode exclusive demi-couture italienne. Vêtements de luxe faits à la main et couture sur mesure de Milan.",
-    "schemaDescription": "Créatrice Italienne de Mode Demi-Couture"
+    "title": "Annalisa Martino | Créatrice Italienne de Haute-Couture",
+    "description": "Découvrez la mode exclusive haute-couture italienne d'Annalisa Martino. Vêtements de luxe faits à la main, couture sur mesure et élégance intemporelle de Milan.",
+    "ogTitle": "Annalisa Martino | Créatrice Italienne de Haute-Couture",
+    "ogDescription": "Mode exclusive haute-couture italienne. Vêtements de luxe faits à la main et couture sur mesure de Milan.",
+    "schemaDescription": "Créatrice Italienne de Mode Haute-Couture"
   },
   "about": {
-    "title": "À Propos d'Annalisa Martino | Créatrice Italienne Demi-Couture",
-    "description": "Découvrez l'histoire d'Annalisa Martino, une créatrice de mode demi-couture italienne de Milan. Découvrez sa philosophie de design, son artisanat et sa passion pour la mode de luxe faite à la main.",
+    "title": "À Propos d'Annalisa Martino | Créatrice Italienne Haute-Couture",
+    "description": "Découvrez l'histoire d'Annalisa Martino, une créatrice de mode haute-couture italienne de Milan. Découvrez sa philosophie de design, son artisanat et sa passion pour la mode de luxe faite à la main.",
     "hero": {
       "title": "Annalisa Martino Collection",
       "subtitle": "Haute Couture Made in Italy, âme méditerranéenne"

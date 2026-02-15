@@ -49,7 +49,7 @@
   },
   "collections": {
     "title": "Collections",
-    "description": "Explore the Annalisa Martino demi-couture collections. Handcrafted Italian fashion.",
+    "description": "Explore the Annalisa Martino haute-couture collections. Handcrafted Italian fashion.",
     "modaMediterranea": {
       "title": "Mediterranean Fashion",
       "description": "Inspired by the colors and textures of the Mediterranean coast, this collection embodies effortless elegance."
@@ -90,15 +90,15 @@
     }
   },
   "seo": {
-    "title": "Annalisa Martino | Italian Demi-Couture Designer",
-    "description": "Explore exclusive Italian demi-couture fashion by Annalisa Martino. Handcrafted luxury garments, bespoke tailoring, and timeless elegance from Milan.",
-    "ogTitle": "Annalisa Martino | Italian Demi-Couture Designer",
-    "ogDescription": "Exclusive Italian demi-couture fashion. Handcrafted luxury garments and bespoke tailoring from Milan.",
-    "schemaDescription": "Italian Demi-Couture Fashion Designer"
+    "title": "Annalisa Martino | Italian Haute-Couture Designer",
+    "description": "Explore exclusive Italian haute-couture fashion by Annalisa Martino. Handcrafted luxury garments, bespoke tailoring, and timeless elegance from Milan.",
+    "ogTitle": "Annalisa Martino | Italian Haute-Couture Designer",
+    "ogDescription": "Exclusive Italian haute-couture fashion. Handcrafted luxury garments and bespoke tailoring from Milan.",
+    "schemaDescription": "Italian Haute-Couture Fashion Designer"
   },
   "about": {
-    "title": "About Annalisa Martino | Italian Demi-Couture Designer",
-    "description": "Discover the story of Annalisa Martino, an Italian demi-couture fashion designer from Milan. Learn about her design philosophy, craftsmanship, and passion for handcrafted luxury fashion.",
+    "title": "About Annalisa Martino | Italian Haute-Couture Designer",
+    "description": "Discover the story of Annalisa Martino, an Italian haute-couture fashion designer from Milan. Learn about her design philosophy, craftsmanship, and passion for handcrafted luxury fashion.",
     "hero": {
       "title": "Annalisa Martino Collection",
       "subtitle": "High Fashion Made in Italy, Mediterranean Soul"

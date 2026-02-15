@@ -116,7 +116,7 @@ const Navigation: React.FC = () => {
                                 margin: 0,
                             }}
                         >
-                            Demi-Couture
+                            Haute-Couture
                         </Box>
                     </Box>
 
