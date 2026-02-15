@@ -132,8 +132,6 @@ export default async function RootLayout({
     notFound();
   }
 
-  // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages();
   const t = await getTranslations({ locale, namespace: 'seo' });
 
@@ -142,8 +140,6 @@ export default async function RootLayout({
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
       <ContentSquare />
       <head>
-        {/* Google Verification Meta Tag - Fallback if Metadata object doesn't handle it well or for strict control */}
-        {/* <meta name="google-site-verification" content="YOUR_CODE_HERE" /> */}
 
         {/* Structured Data for Fashion Designer */}
         <script

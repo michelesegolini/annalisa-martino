@@ -5,13 +5,13 @@ import { Box, Typography, Button, Container } from '@mui/material';
 import { useTranslations } from 'next-intl';
 import { GalleryItem } from '@/types';
 import InquireModal from './InquireModal';
+import { trackEvent } from '@/lib/analytics';
 interface VirtualGalleryProps {
     items: GalleryItem[];
 }
 
 const GallerySlideshow = ({ mainImage, images, title }: { mainImage: string, images?: string[], title: string }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    // Combine main image with additional images for the full slideshow list
     const allImages = images && images.length > 0 ? [mainImage, ...images] : [mainImage];
     const hasMultiple = allImages.length > 1;
 
@@ -69,47 +69,55 @@ const GallerySlideshow = ({ mainImage, images, title }: { mainImage: string, ima
     );
 };
 
-const SequentialVideoPlayer = ({ videoUrls, poster }: { videoUrls: string[], poster: string }) => {
+const SequentialVideoPlayer = ({ videoUrls, poster }: { videoUrls: string[], poster?: string }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const videoRef = React.useRef<HTMLVideoElement>(null);
+    const videoRefs = React.useRef<(HTMLVideoElement | null)[]>([]);
 
-    const handleEnded = () => {
-        const nextIndex = (currentIndex + 1) % videoUrls.length;
+    useEffect(() => {
+        videoRefs.current = videoRefs.current.slice(0, videoUrls.length);
+    }, [videoUrls]);
+
+    const handleEnded = (index: number) => {
+        const nextIndex = (index + 1) % videoUrls.length;
+        const nextVideo = videoRefs.current[nextIndex];
+
+        if (nextVideo) {
+            nextVideo.currentTime = 0;
+            nextVideo.play().catch(e => console.error("Play error:", e));
+        }
         setCurrentIndex(nextIndex);
     };
 
-    useEffect(() => {
-        if (videoRef.current) {
-            videoRef.current.load();
-            videoRef.current.play().catch(e => console.log("Autoplay prevented:", e));
-        }
-    }, [currentIndex]);
-
     return (
-        <Box
-            component="video"
-            ref={videoRef}
-            autoPlay
-            muted
-            playsInline
-            poster={poster}
-            onEnded={handleEnded}
-            onError={(e) => {
-                console.error("Video error:", e);
-            }}
-            sx={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                zIndex: 0
-            }}
-        >
-            <source src={videoUrls[currentIndex]} type="video/mp4" />
-            Your browser does not support the video tag.
-        </Box>
+        <>
+            {videoUrls.map((url, index) => (
+                <Box
+                    key={url}
+                    component="video"
+                    ref={(el: HTMLVideoElement | null) => { videoRefs.current[index] = el; }}
+                    src={url}
+                    muted
+                    playsInline
+                    preload="auto"
+                    poster={index === 0 ? poster : undefined}
+                    onEnded={() => handleEnded(index)}
+                    className="sequential-video"
+                    sx={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        zIndex: 0,
+                        opacity: currentIndex === index ? 1 : 0,
+
+                        visibility: currentIndex === index ? 'visible' : 'hidden',
+                        pointerEvents: 'none'
+                    }}
+                />
+            ))}
+        </>
     );
 };
 
@@ -121,6 +129,11 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
     const displayItems = items;
 
     const handleInquire = (item: GalleryItem) => {
+        trackEvent('open_inquire_modal', {
+            item_id: item.id,
+            item_title: item.title,
+            item_price: item.price || 'N/A'
+        });
         setSelectedItem(item);
         setModalOpen(true);
     };
@@ -166,7 +179,7 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                             {item.videoUrls && item.videoUrls.length > 0 ? (
                                 <SequentialVideoPlayer
                                     videoUrls={item.videoUrls}
-                                    poster={item.posterImage || '/images/fashion-item-1.png'}
+                                    poster={item.posterImage}
                                 />
                             ) : item.videoUrl ? (
                                 <Box
@@ -175,7 +188,7 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                                     muted
                                     loop
                                     playsInline
-                                    poster={item.posterImage || '/images/fashion-item-1.png'}
+                                    poster={item.posterImage}
                                     onError={(e) => {
                                         (e.target as HTMLVideoElement).style.display = 'none';
                                     }}
@@ -194,7 +207,7 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                                 </Box>
                             ) : (
                                 <GallerySlideshow
-                                    mainImage={item.posterImage || '/images/fashion-item-1.png'}
+                                    mainImage={item.posterImage || ''}
                                     images={item.images}
                                     title={item.title}
                                 />

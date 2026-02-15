@@ -27,7 +27,7 @@ export default async function RunwayShowPage({ params: { locale } }: { params: {
             'https://res.cloudinary.com/dfdbbgsja/video/upload/v1771177994/Sfilata_1_q2fnn8.mp4',
             'https://res.cloudinary.com/dfdbbgsja/video/upload/v1771177983/Sfilata_2_uhfloh.mp4'
         ],
-        posterImage: '/images/fashion-item-1.png',
+
         price: ''
     };
 

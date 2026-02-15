@@ -18,6 +18,7 @@ import {
 import CloseIcon from '@mui/icons-material/Close';
 import { useTranslations } from 'next-intl';
 import { GalleryItem, ContactFormData } from '@/types';
+import { trackEvent } from '@/lib/analytics';
 
 interface InquireModalProps {
     open: boolean;
@@ -80,6 +81,11 @@ const InquireModal: React.FC<InquireModalProps> = ({ open, onClose, item }) => {
             setSuccess(true);
             setSnackbarOpen(true);
 
+            trackEvent('inquire_form_submit', {
+                item_reference: formData.itemReference || '',
+                item_price: formData.price || ''
+            });
+
             // Close modal immediately
             onClose();
 
@@ -97,6 +103,11 @@ const InquireModal: React.FC<InquireModalProps> = ({ open, onClose, item }) => {
         } catch (err) {
             setError('Failed to send your inquiry. Please try again.');
             console.error('Contact form error:', err);
+
+            trackEvent('inquire_form_error', {
+                error_message: err instanceof Error ? err.message : 'Unknown error',
+                item_reference: formData.itemReference || ''
+            });
         } finally {
             setLoading(false);
         }
