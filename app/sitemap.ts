@@ -4,7 +4,7 @@ import { locales, SITE_URL } from '@/lib/constants';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = SITE_URL;
-    let sitemap: MetadataRoute.Sitemap = [];
+    const sitemap: MetadataRoute.Sitemap = [];
 
     const staticPages = ['', 'about', 'contact', 'collections'];
 

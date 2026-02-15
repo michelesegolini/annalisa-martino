@@ -58,13 +58,13 @@ export async function generateMetadata({
       'bespoke tailoring',
       'made in Italy',
       'Annalisa Martino',
-      'haute couture',
       'custom fashion',
       'Milan designer',
       'Italian couture',
       'luxury dresses',
       'evening gowns',
       'handcrafted fashion',
+      ...(t.raw('keywords').split(', ')),
     ],
     authors: [{ name: 'Annalisa Martino' }],
     creator: 'Annalisa Martino',
@@ -116,7 +116,7 @@ export async function generateMetadata({
       },
     },
     verification: {
-      google: 'your-google-verification-code',
+      google: 'ADD_YOUR_GOOGLE_VERIFICATION_CODE_HERE', // TODO: User to provide verification code
     },
   };
 }
@@ -131,7 +131,7 @@ export default async function RootLayout({
   const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid
-  if (!i18nConfig.locales.includes(locale as any)) {
+  if (!i18nConfig.locales.includes(locale as Locale)) {
     notFound();
   }
 
@@ -145,6 +145,9 @@ export default async function RootLayout({
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
       <ContentSquare />
       <head>
+        {/* Google Verification Meta Tag - Fallback if Metadata object doesn't handle it well or for strict control */}
+        {/* <meta name="google-site-verification" content="YOUR_CODE_HERE" /> */}
+
         {/* Structured Data for Fashion Designer */}
         <script
           type="application/ld+json"
@@ -166,7 +169,7 @@ export default async function RootLayout({
                 'https://facebook.com/annalisamartino',
                 'https://pinterest.com/annalisamartino',
               ],
-              knowsAbout: ['Haute-Couture', 'Haute Couture', 'Bespoke Fashion', 'Italian Fashion'],
+              knowsAbout: ['Haute-Couture', 'Haute Couture', 'Bespoke Fashion', 'Italian Fashion', 'Moda Italiana'],
             }),
           }}
         />

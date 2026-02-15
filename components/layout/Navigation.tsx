@@ -92,7 +92,7 @@ const Navigation: React.FC = () => {
                     {/* Logo/Brand */}
                     <Box sx={{ mb: 6, px: 2 }}>
                         <Box
-                            component="h2"
+                            component="h1"
                             sx={{
                                 fontFamily: '"Cormorant Garamond", serif',
                                 fontSize: '1.75rem',

@@ -12,7 +12,6 @@ interface VirtualGalleryProps {
 const GallerySlideshow = ({ mainImage, images, title }: { mainImage: string, images?: string[], title: string }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     // Combine main image with additional images for the full slideshow list
-    // Ensure we don't have duplicates if mainImage is also in images (though normally they are distinct fields)
     const allImages = images && images.length > 0 ? [mainImage, ...images] : [mainImage];
     const hasMultiple = allImages.length > 1;
 
@@ -70,12 +69,54 @@ const GallerySlideshow = ({ mainImage, images, title }: { mainImage: string, ima
     );
 };
 
+const SequentialVideoPlayer = ({ videoUrls, poster }: { videoUrls: string[], poster: string }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const videoRef = React.useRef<HTMLVideoElement>(null);
+
+    const handleEnded = () => {
+        const nextIndex = (currentIndex + 1) % videoUrls.length;
+        setCurrentIndex(nextIndex);
+    };
+
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.load();
+            videoRef.current.play().catch(e => console.log("Autoplay prevented:", e));
+        }
+    }, [currentIndex]);
+
+    return (
+        <Box
+            component="video"
+            ref={videoRef}
+            autoPlay
+            muted
+            playsInline
+            poster={poster}
+            onEnded={handleEnded}
+            onError={(e) => {
+                console.error("Video error:", e);
+            }}
+            sx={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                zIndex: 0
+            }}
+        >
+            <source src={videoUrls[currentIndex]} type="video/mp4" />
+            Your browser does not support the video tag.
+        </Box>
+    );
+};
+
 const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
     const t = useTranslations('gallery');
-
-    // A/B Test Logic removed - Runway Show is now a separate page permanently
 
     const displayItems = items;
 
@@ -122,7 +163,12 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                             justifyContent: 'center'
                         }}>
                             {/* Media Background (Video or Image/Slideshow) */}
-                            {item.videoUrl ? (
+                            {item.videoUrls && item.videoUrls.length > 0 ? (
+                                <SequentialVideoPlayer
+                                    videoUrls={item.videoUrls}
+                                    poster={item.posterImage || '/images/fashion-item-1.png'}
+                                />
+                            ) : item.videoUrl ? (
                                 <Box
                                     component="video"
                                     autoPlay
@@ -180,23 +226,6 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                                     padding: { xs: '1rem 0', md: '2rem 0' },
                                     animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards'
                                 }}>
-                                    {/* Category Label */}
-                                    {/* Category Label - Hidden per user request */}
-                                    {/* <Typography
-                                        variant="overline"
-                                        sx={{
-                                            color: 'primary.main',
-                                            fontSize: '0.75rem',
-                                            letterSpacing: '0.15em',
-                                            mb: 2,
-                                            display: 'block',
-                                            opacity: 0,
-                                            animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards'
-                                        }}
-                                    >
-                                        {item.category}
-                                    </Typography> */}
-
                                     {/* Title */}
                                     <Typography
                                         variant="h2"
@@ -254,7 +283,6 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                                         {item.id === 'ab-video-slide' ? t('videoSlide.cta') : t('inquirePrice')}
                                     </Button>
 
-                                    {/* Scroll Indicator (only on first item) */}
                                     {/* Scroll Indicator (on all items except the last one) */}
                                     {index < displayItems.length - 1 && (
                                         <Box sx={{
