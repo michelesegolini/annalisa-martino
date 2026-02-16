@@ -50,10 +50,16 @@ const GallerySlideshow = ({ mainImage, images, title, isCleanView }: { mainImage
         }
     };
 
+    const lastScrollTime = React.useRef(0);
+
     const onWheel = (e: React.WheelEvent) => {
         if (!isCleanView || !hasMultiple) return;
-        // Simple debounce could be added here if needed, but for now specific threshold
-        if (Math.abs(e.deltaX) > 50) {
+
+        const now = Date.now();
+        if (now - lastScrollTime.current < 500) return; // Throttle scroll events
+
+        if (Math.abs(e.deltaX) > 30) { // Reduced threshold slightly
+            lastScrollTime.current = now;
             if (e.deltaX > 0) {
                 // Next (scrolling right)
                 setCurrentIndex((prev) => (prev + 1) % allImages.length);
@@ -283,14 +289,14 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
         <>
             <Box sx={{
                 width: '100%',
-                height: '100vh',
+                height: '100dvh', // Use dvh for mobile viewport
                 overflow: 'hidden',
                 position: 'relative',
                 zIndex: isCleanView ? 1200 : 1 // Higher z-index to cover navigation when in clean view
             }}>
                 <Box sx={{
                     display: 'flex',
-                    height: '100vh',
+                    height: '100dvh', // Use dvh
                     overflowX: isCleanView ? 'hidden' : 'auto', // Disable scrolling when in clean view
                     overflowY: 'hidden',
                     scrollSnapType: 'x mandatory',
@@ -305,7 +311,7 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                             position: 'relative',
                             minWidth: '100vw',
                             width: '100vw',
-                            height: '100vh',
+                            height: '100dvh', // Use dvh
                             scrollSnapAlign: 'start',
                             scrollSnapStop: 'always',
                             display: 'flex',
@@ -372,7 +378,8 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                                 width: '100%',
                                 height: '100%',
                                 display: 'flex',
-                                alignItems: 'center'
+                                alignItems: 'center',
+                                pointerEvents: isCleanView ? 'none' : 'auto' // Allow clicks to pass through when in clean view
                             }}>
                                 <Box sx={{
                                     width: '100%',
