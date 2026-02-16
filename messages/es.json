@@ -37,7 +37,8 @@
     "send": "Enviar Consulta",
     "successMessage": "¡Gracias por tu consulta! Nos pondremos en contacto pronto.",
     "errorMessage": "Error al enviar tu consulta. Por favor, inténtalo de nuevo.",
-    "interestedIn": "Estoy interesado/a en obtener más información sobre"
+    "interestedIn": "Estoy interesado/a en obtener más información sobre",
+    "emailSubject": "Consulta sobre {item} ({price}) de {name}"
   },
   "categories": {
     "eveningWear": "Vestidos de Noche",

@@ -37,7 +37,8 @@
     "send": "Send Inquiry",
     "successMessage": "Thank you for your inquiry! We'll be in touch soon.",
     "errorMessage": "Failed to send your inquiry. Please try again.",
-    "interestedIn": "I am interested in learning more about"
+    "interestedIn": "I am interested in learning more about",
+    "emailSubject": "Inquiry for {item} ({price}) from {name}"
   },
   "categories": {
     "eveningWear": "Evening Wear",

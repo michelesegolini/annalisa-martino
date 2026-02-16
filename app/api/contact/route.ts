@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
             from: `"Annalisa Martino fashion designer" <${process.env.GMAIL_USER}>`,
             to: 'annalisamartino.fashiondesigner@gmail.com',
             replyTo: data.email,
-            subject: `Richiesta informazioni per ${data.itemReference} (${data.price || 'Prezzo su richiesta'}) da ${data.name} - ${data.email}`,
+            subject: data.subject || `Richiesta informazioni per ${data.itemReference} (${data.price || 'Prezzo su richiesta'}) da ${data.name} - ${data.email}`,
             text: `
 Nome: ${data.name}
 Email: ${data.email}

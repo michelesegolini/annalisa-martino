@@ -82,22 +82,61 @@ const GallerySlideshow = ({ mainImage, images, title, isCleanView }: { mainImage
         return () => clearInterval(interval);
     }, [hasMultiple, allImages.length, isCleanView]);
 
-    if (!hasMultiple) {
-        return (
+    const renderImage = (img: string, index: number, isSingle: boolean = false) => (
+        <Box
+            key={`${img}-${index}`}
+            sx={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                opacity: isSingle ? 1 : (index === currentIndex ? 1 : 0),
+                transition: isSingle ? 'none' : 'opacity 1.5s ease-in-out',
+                zIndex: isSingle ? 0 : (index === currentIndex ? 1 : 0),
+                overflow: 'hidden'
+            }}
+        >
+            {/* Blurred Background - Only visible on desktop where main image is contained */}
             <Box
                 component="img"
-                src={mainImage}
-                alt={title}
+                src={img}
+                alt=""
+                sx={{
+                    position: 'absolute',
+                    top: '-10%',
+                    left: '-10%',
+                    width: '120%',
+                    height: '120%',
+                    objectFit: 'cover',
+                    filter: 'blur(30px) brightness(0.6)',
+                    transform: 'scale(1.1)',
+                    display: { xs: 'none', md: 'block' }
+                }}
+            />
+            {/* Main Image */}
+            <Box
+                component="img"
+                src={img}
+                alt={isSingle ? title : `${title} - view ${index + 1}`}
                 sx={{
                     position: 'absolute',
                     top: 0,
                     left: 0,
                     width: '100%',
                     height: '100%',
-                    objectFit: 'cover',
-                    zIndex: 0
+                    objectFit: { xs: 'cover', md: 'contain' }, // Cover on mobile, contain with blur on desktop
+                    zIndex: 1
                 }}
             />
+        </Box>
+    );
+
+    if (!hasMultiple) {
+        return (
+            <Box sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
+                {renderImage(mainImage, 0, true)}
+            </Box>
         );
     }
 
@@ -109,25 +148,7 @@ const GallerySlideshow = ({ mainImage, images, title, isCleanView }: { mainImage
             onTouchEnd={onTouchEnd}
             onWheel={onWheel}
         >
-            {allImages.map((img, index) => (
-                <Box
-                    key={`${img}-${index}`}
-                    component="img"
-                    src={img}
-                    alt={`${title} - view ${index + 1}`}
-                    sx={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        opacity: index === currentIndex ? 1 : 0,
-                        transition: 'opacity 1.5s ease-in-out', // Smooth crossfade
-                        zIndex: index === currentIndex ? 1 : 0
-                    }}
-                />
-            ))}
+            {allImages.map((img, index) => renderImage(img, index))}
 
             {/* Manual Navigation Controls (Only in Clean View) */}
             {isCleanView && (
@@ -145,8 +166,8 @@ const GallerySlideshow = ({ mainImage, images, title, isCleanView }: { mainImage
                             transform: 'translateY(-50%)',
                             color: 'white',
                             backgroundColor: 'rgba(0,0,0,0.3)',
-                            zIndex: 20, // Increased z-index
-                            pointerEvents: 'auto', // Ensure clickability
+                            zIndex: 20,
+                            pointerEvents: 'auto',
                             '&:hover': { backgroundColor: 'rgba(0,0,0,0.5)' }
                         }}
                     >
@@ -166,8 +187,8 @@ const GallerySlideshow = ({ mainImage, images, title, isCleanView }: { mainImage
                             transform: 'translateY(-50%)',
                             color: 'white',
                             backgroundColor: 'rgba(0,0,0,0.3)',
-                            zIndex: 20, // Increased z-index
-                            pointerEvents: 'auto', // Ensure clickability
+                            zIndex: 20,
+                            pointerEvents: 'auto',
                             '&:hover': { backgroundColor: 'rgba(0,0,0,0.5)' }
                         }}
                     >
@@ -394,6 +415,23 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, onBack }) => {
                                         padding: { xs: '1rem 0', md: '2rem 0' },
                                         animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards'
                                     }}>
+                                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1, opacity: 0, animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards' }}>
+                                            <Typography
+                                                variant="caption"
+                                                sx={{
+                                                    fontSize: '0.8rem',
+                                                    letterSpacing: '0.2em',
+                                                    textTransform: 'uppercase',
+                                                    color: 'rgba(255,255,255,0.7)',
+                                                    border: '1px solid rgba(255,255,255,0.3)',
+                                                    padding: '4px 12px',
+                                                    borderRadius: '4px'
+                                                }}
+                                            >
+                                                {item.category}
+                                            </Typography>
+                                        </Box>
+
                                         {/* Title */}
                                         <Typography
                                             variant="h2"

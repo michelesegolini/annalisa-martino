@@ -65,12 +65,18 @@ const InquireModal: React.FC<InquireModalProps> = ({ open, onClose, item }) => {
         setError('');
 
         try {
+            const subject = t('emailSubject', {
+                item: formData.itemReference || 'Item',
+                price: formData.price || 'N/A',
+                name: formData.name
+            });
+
             const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({ ...formData, subject }),
             });
 
             if (!response.ok) {
