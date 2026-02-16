@@ -5,12 +5,14 @@ import { Box, Typography, Button, Container, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'; // Import Back Icon
 import { useTranslations } from 'next-intl';
 import { GalleryItem } from '@/types';
 import InquireModal from './InquireModal';
 import { trackEvent } from '@/lib/analytics';
 interface VirtualGalleryProps {
     items: GalleryItem[];
+    onBack?: () => void;
 }
 
 const GallerySlideshow = ({ mainImage, images, title, isCleanView }: { mainImage: string, images?: string[], title: string, isCleanView: boolean }) => {
@@ -262,7 +264,7 @@ const SequentialVideoPlayer = ({ videoUrls, poster }: { videoUrls: string[], pos
     );
 };
 
-const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
+const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, onBack }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [isCleanView, setIsCleanView] = useState(false);
     const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
@@ -547,6 +549,34 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items }) => {
                     <CloseIcon />
                 </IconButton>
             </Box>
+
+            {/* Back Button (for Collection View) */}
+            {onBack && !isCleanView && (
+                <Box
+                    sx={{
+                        position: 'fixed',
+                        top: { xs: '1rem', md: '2rem' },
+                        left: { xs: '1rem', md: '2rem' },
+                        zIndex: 1100, // Above normal content, below clean view z-index (1200+)
+                        transition: 'opacity 0.3s ease-in-out'
+                    }}
+                >
+                    <IconButton
+                        onClick={onBack}
+                        sx={{
+                            color: 'white',
+                            backgroundColor: 'rgba(0,0,0,0.3)',
+                            backdropFilter: 'blur(4px)',
+                            padding: '12px',
+                            '&:hover': {
+                                backgroundColor: 'rgba(0,0,0,0.5)',
+                            }
+                        }}
+                    >
+                        <ArrowBackIcon />
+                    </IconButton>
+                </Box>
+            )}
 
             {/* Inquire Modal */}
             <InquireModal
