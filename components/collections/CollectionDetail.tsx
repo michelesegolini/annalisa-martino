@@ -34,7 +34,7 @@ const CollectionDetail: React.FC<CollectionDetailProps> = ({ title, description,
                     left: 0,
                     width: '100vw',
                     height: '100dvh',
-                    zIndex: 9999, // Highest priority
+                    zIndex: 1200, // Cover the navigation but remain below modals (MUI Dialog zIndex: 1300)
                     backgroundColor: 'background.default',
                 }}>
                     <VirtualGallery
