@@ -141,6 +141,20 @@ export default async function RootLayout({
       <ContentSquare />
       <head>
 
+        {/* Structured Data for WebSite (Site Name) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'Annalisa Martino',
+              alternateName: 'Annalisa Martino Haute-Couture',
+              url: 'https://annalisamartino.com/',
+            }),
+          }}
+        />
+
         {/* Structured Data for Fashion Designer */}
         <script
           type="application/ld+json"
