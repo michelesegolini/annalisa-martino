@@ -387,7 +387,7 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, onBack }) => {
                                 left: 0,
                                 width: '100%',
                                 height: '100%',
-                                background: 'linear-gradient(to bottom, rgba(10, 10, 10, 0.3) 0%, rgba(10, 10, 10, 0.5) 50%, rgba(10, 10, 10, 0.8) 100%)',
+                                background: 'linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(10, 10, 10, 0.6) 80%, rgba(10, 10, 10, 0.9) 100%)',
                                 zIndex: 1,
                                 opacity: isCleanView ? 0 : 1,
                                 transition: 'opacity 0.6s ease-in-out',
@@ -401,7 +401,8 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, onBack }) => {
                                 width: '100%',
                                 height: '100%',
                                 display: 'flex',
-                                alignItems: 'center',
+                                alignItems: 'flex-end',
+                                pb: { xs: '2rem', md: '3rem' },
                                 pointerEvents: isCleanView ? 'none' : 'auto' // Allow clicks to pass through when in clean view
                             }}>
                                 <Box sx={{
@@ -436,7 +437,7 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, onBack }) => {
                                         <Typography
                                             variant="h2"
                                             sx={{
-                                                mb: 3,
+                                                mb: 4,
                                                 fontWeight: 600,
                                                 textShadow: '0 4px 12px rgba(0, 0, 0, 0.8)',
                                                 fontSize: { xs: '2rem', md: '3.5rem' },
@@ -445,23 +446,6 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, onBack }) => {
                                             }}
                                         >
                                             {item.title}
-                                        </Typography>
-
-                                        {/* Description */}
-                                        <Typography
-                                            variant="body1"
-                                            sx={{
-                                                mb: 4,
-                                                maxWidth: '600px',
-                                                fontSize: { xs: '0.9rem', md: '1.1rem' },
-                                                lineHeight: 1.8,
-                                                textShadow: '0 2px 8px rgba(0, 0, 0, 0.9)',
-                                                opacity: 0,
-                                                animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards',
-                                                whiteSpace: 'pre-line'
-                                            }}
-                                        >
-                                            {item.description}
                                         </Typography>
 
                                         {/* Buttons Container */}
@@ -495,32 +479,6 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, onBack }) => {
                                             >
                                                 {item.id === 'ab-video-slide' ? t('videoSlide.cta') : t('inquirePrice')}
                                             </Button>
-
-                                            {/* Clean View Button */}
-                                            <Button
-                                                variant="outlined"
-                                                size="large"
-                                                onClick={() => setIsCleanView(true)}
-                                                sx={{
-                                                    px: 4,
-                                                    py: 1.5,
-                                                    fontSize: '0.9rem',
-                                                    fontWeight: 600,
-                                                    borderColor: 'rgba(255, 255, 255, 0.5)',
-                                                    color: 'white',
-                                                    position: 'relative',
-                                                    overflow: 'hidden',
-                                                    opacity: 0,
-                                                    animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards',
-                                                    '&:hover': {
-                                                        borderColor: 'primary.main',
-                                                        color: 'primary.main',
-                                                        backgroundColor: 'rgba(0,0,0,0.2)'
-                                                    }
-                                                }}
-                                            >
-                                                {t('viewFullScreen')}
-                                            </Button>
                                         </Box>
                                     </Box>
 
@@ -528,29 +486,39 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, onBack }) => {
                                     {index < displayItems.length - 1 && (
                                         <Box sx={{
                                             position: 'absolute',
-                                            bottom: { xs: '2rem', md: '3rem' },
+                                            top: '50%',
+                                            transform: 'translateY(-50%)',
                                             right: { xs: '1rem', md: '2rem' },
-                                            textAlign: 'center',
-                                            opacity: 0,
-                                            animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards, pulse 2s ease-in-out 1.5s infinite'
+                                            zIndex: 10
                                         }}>
-                                            <Typography
-                                                variant="caption"
-                                                sx={{
-                                                    color: 'primary.main',
-                                                    letterSpacing: '0.1em',
-                                                    display: 'block',
-                                                    mb: 1,
-                                                }}
-                                            >
-                                                {t('scroll')}
-                                            </Typography>
                                             <Box sx={{
-                                                color: 'primary.main',
-                                                fontSize: '1.5rem',
-                                                animation: 'slideRight 1.5s ease-in-out infinite'
+                                                textAlign: 'center',
+                                                opacity: 0,
+                                                animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards, pulse 2s ease-in-out 1.5s infinite',
+                                                backgroundColor: 'rgba(0, 0, 0, 0.4)',
+                                                backdropFilter: 'blur(4px)',
+                                                borderRadius: '16px',
+                                                padding: '12px',
+                                                boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
                                             }}>
-                                                →
+                                                <Typography
+                                                    variant="caption"
+                                                    sx={{
+                                                        color: 'primary.main',
+                                                        letterSpacing: '0.1em',
+                                                        display: 'block',
+                                                        mb: 1,
+                                                    }}
+                                                >
+                                                    {t('scroll')}
+                                                </Typography>
+                                                <Box sx={{
+                                                    color: 'primary.main',
+                                                    fontSize: '1.5rem',
+                                                    animation: 'slideRight 1.5s ease-in-out infinite'
+                                                }}>
+                                                    →
+                                                </Box>
                                             </Box>
                                         </Box>
                                     )}

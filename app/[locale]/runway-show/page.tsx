@@ -20,7 +20,7 @@ export default async function RunwayShowPage({ params: { locale } }: { params: {
         id: 'ab-video-slide',
         title: t('videoSlide.title'),
         description: t('videoSlide.description'),
-        category: 'Collection',
+        category: '',
         collection: 'Main',
 
         videoUrls: [
