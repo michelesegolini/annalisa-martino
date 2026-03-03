@@ -565,11 +565,15 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, onBack }) => {
                         transform: 'translateX(-50%)',
                         display: 'flex',
                         flexDirection: 'row',
-                        gap: 2,
+                        gap: { xs: 1, md: 2 },
+                        maxWidth: 'calc(100vw - 48px)', // Prevent bleeding off edge
+                        overflowX: 'auto', // Enable elegant horizontal scroll if needed
+                        scrollbarWidth: 'none', // Hide scrollbar Firefox
+                        '&::-webkit-scrollbar': { display: 'none' }, // Hide scrollbar Chrome/Safari/Edge
                         zIndex: 1100, // Above content, below modals
                         backgroundColor: 'rgba(0, 0, 0, 0.4)',
                         backdropFilter: 'blur(4px)',
-                        padding: '8px 12px',
+                        padding: { xs: '6px 8px', md: '8px 12px' },
                         borderRadius: '24px',
                         boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
                     }}
@@ -581,8 +585,9 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, onBack }) => {
                                 itemRefs.current[idx]?.scrollIntoView({ behavior: 'smooth' });
                             }}
                             sx={{
-                                width: 8,
-                                height: 8,
+                                flexShrink: 0, // Prevent dots from squishing
+                                width: { xs: 6, md: 8 },
+                                height: { xs: 6, md: 8 },
                                 borderRadius: '50%',
                                 backgroundColor: activeIndex === idx ? 'primary.main' : 'rgba(255, 255, 255, 0.4)',
                                 transition: 'all 0.3s ease',
