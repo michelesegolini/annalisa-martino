@@ -6,6 +6,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'; // Import Back Icon
+import FullscreenIcon from '@mui/icons-material/Fullscreen'; // Import Fullscreen Icon
 import { useTranslations } from 'next-intl';
 import { GalleryItem } from '@/types';
 import InquireModal from './InquireModal';
@@ -289,9 +290,43 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, onBack }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [isCleanView, setIsCleanView] = useState(false);
     const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
+    const [activeIndex, setActiveIndex] = useState(0); // State for dot indicator
     const t = useTranslations('gallery');
 
+    // Refs for Intersection Observer
+    const itemRefs = React.useRef<(HTMLDivElement | null)[]>([]);
+
     const displayItems = items;
+
+    // Setup intersection observer to detect the currently visible slide
+    useEffect(() => {
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5, // Trigger when 50% of the item is visible
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const index = itemRefs.current.findIndex(ref => ref === entry.target);
+                    if (index !== -1) {
+                        setActiveIndex(index);
+                    }
+                }
+            });
+        }, options);
+
+        itemRefs.current.forEach((ref) => {
+            if (ref) observer.observe(ref);
+        });
+
+        return () => {
+            itemRefs.current.forEach((ref) => {
+                if (ref) observer.unobserve(ref);
+            });
+        };
+    }, [displayItems]);
 
     const handleInquire = (item: GalleryItem) => {
         trackEvent('open_inquire_modal', {
@@ -330,17 +365,20 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, onBack }) => {
                     msOverflowStyle: 'none'
                 }}>
                     {displayItems.map((item, index) => (
-                        <Box key={item.id} sx={{
-                            position: 'relative',
-                            minWidth: '100vw',
-                            width: '100vw',
-                            height: '100dvh', // Use dvh
-                            scrollSnapAlign: 'start',
-                            scrollSnapStop: 'always',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center'
-                        }}>
+                        <Box
+                            key={item.id}
+                            ref={(el: HTMLDivElement | null) => { itemRefs.current[index] = el; }} // Assign ref
+                            sx={{
+                                position: 'relative',
+                                minWidth: '100vw',
+                                width: '100vw',
+                                height: '100dvh', // Use dvh
+                                scrollSnapAlign: 'start',
+                                scrollSnapStop: 'always',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                            }}>
                             {/* Media Background (Video or Image/Slideshow) */}
                             {item.videoUrls && item.videoUrls.length > 0 ? (
                                 <SequentialVideoPlayer
@@ -394,6 +432,31 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, onBack }) => {
                                 pointerEvents: 'none'
                             }} />
 
+                            {/* Expand to Fullscreen Icon (Discrete) */}
+                            {(!item.videoUrls || item.videoUrls.length === 0) && !item.videoUrl && !isCleanView && (
+                                <IconButton
+                                    onClick={() => setIsCleanView(true)}
+                                    sx={{
+                                        position: 'absolute',
+                                        top: { xs: '1rem', md: '2rem' },
+                                        right: { xs: '1rem', md: '2rem' },
+                                        color: 'white',
+                                        backgroundColor: 'rgba(0,0,0,0.3)',
+                                        backdropFilter: 'blur(4px)',
+                                        width: 44,
+                                        height: 44,
+                                        zIndex: 10,
+                                        transition: 'all 0.3s ease-in-out',
+                                        '&:hover': {
+                                            backgroundColor: 'rgba(0,0,0,0.5)',
+                                        }
+                                    }}
+                                    aria-label="View Fullscreen"
+                                >
+                                    <FullscreenIcon />
+                                </IconButton>
+                            )}
+
                             {/* Content */}
                             <Container sx={{
                                 position: 'relative',
@@ -416,22 +479,24 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, onBack }) => {
                                         padding: { xs: '1rem 0', md: '2rem 0' },
                                         animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards'
                                     }}>
-                                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1, opacity: 0, animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards' }}>
-                                            <Typography
-                                                variant="caption"
-                                                sx={{
-                                                    fontSize: '0.8rem',
-                                                    letterSpacing: '0.2em',
-                                                    textTransform: 'uppercase',
-                                                    color: 'rgba(255,255,255,0.7)',
-                                                    border: '1px solid rgba(255,255,255,0.3)',
-                                                    padding: '4px 12px',
-                                                    borderRadius: '4px'
-                                                }}
-                                            >
-                                                {item.category}
-                                            </Typography>
-                                        </Box>
+                                        {item.category && (
+                                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1, opacity: 0, animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards' }}>
+                                                <Typography
+                                                    variant="caption"
+                                                    sx={{
+                                                        fontSize: '0.8rem',
+                                                        letterSpacing: '0.2em',
+                                                        textTransform: 'uppercase',
+                                                        color: 'rgba(255,255,255,0.7)',
+                                                        border: '1px solid rgba(255,255,255,0.3)',
+                                                        padding: '4px 12px',
+                                                        borderRadius: '4px'
+                                                    }}
+                                                >
+                                                    {item.category}
+                                                </Typography>
+                                            </Box>
+                                        )}
 
                                         {/* Title */}
                                         <Typography
@@ -482,52 +547,54 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, onBack }) => {
                                         </Box>
                                     </Box>
 
-                                    {/* Scroll Indicator (on all items except the last one) */}
-                                    {index < displayItems.length - 1 && (
-                                        <Box sx={{
-                                            position: 'absolute',
-                                            top: '50%',
-                                            transform: 'translateY(-50%)',
-                                            right: { xs: '1rem', md: '2rem' },
-                                            zIndex: 10
-                                        }}>
-                                            <Box sx={{
-                                                textAlign: 'center',
-                                                opacity: 0,
-                                                animation: 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards, pulse 2s ease-in-out 1.5s infinite',
-                                                backgroundColor: 'rgba(0, 0, 0, 0.4)',
-                                                backdropFilter: 'blur(4px)',
-                                                borderRadius: '16px',
-                                                padding: '12px',
-                                                boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-                                            }}>
-                                                <Typography
-                                                    variant="caption"
-                                                    sx={{
-                                                        color: 'primary.main',
-                                                        letterSpacing: '0.1em',
-                                                        display: 'block',
-                                                        mb: 1,
-                                                    }}
-                                                >
-                                                    {t('scroll')}
-                                                </Typography>
-                                                <Box sx={{
-                                                    color: 'primary.main',
-                                                    fontSize: '1.5rem',
-                                                    animation: 'slideRight 1.5s ease-in-out infinite'
-                                                }}>
-                                                    →
-                                                </Box>
-                                            </Box>
-                                        </Box>
-                                    )}
+                                    {/* Scroll Indicator REMOVED */}
                                 </Box>
                             </Container>
                         </Box>
                     ))}
                 </Box>
             </Box>
+
+            {/* Carousel Dot Indicator */}
+            {displayItems.length > 1 && !isCleanView && (
+                <Box
+                    sx={{
+                        position: 'fixed',
+                        bottom: { xs: '1rem', md: '2rem' },
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        display: 'flex',
+                        flexDirection: 'row',
+                        gap: 2,
+                        zIndex: 1100, // Above content, below modals
+                        backgroundColor: 'rgba(0, 0, 0, 0.4)',
+                        backdropFilter: 'blur(4px)',
+                        padding: '8px 12px',
+                        borderRadius: '24px',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                    }}
+                >
+                    {displayItems.map((_, idx) => (
+                        <Box
+                            key={`dot-${idx}`}
+                            onClick={() => {
+                                itemRefs.current[idx]?.scrollIntoView({ behavior: 'smooth' });
+                            }}
+                            sx={{
+                                width: 8,
+                                height: 8,
+                                borderRadius: '50%',
+                                backgroundColor: activeIndex === idx ? 'primary.main' : 'rgba(255, 255, 255, 0.4)',
+                                transition: 'all 0.3s ease',
+                                cursor: 'pointer',
+                                '&:hover': {
+                                    backgroundColor: activeIndex === idx ? 'primary.main' : 'rgba(255, 255, 255, 0.8)',
+                                }
+                            }}
+                        />
+                    ))}
+                </Box>
+            )}
 
             {/* Close Clean View Button */}
             <Box
@@ -547,6 +614,8 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, onBack }) => {
                         color: 'white',
                         backgroundColor: 'rgba(0,0,0,0.3)',
                         backdropFilter: 'blur(4px)',
+                        width: 44,
+                        height: 44,
                         '&:hover': {
                             backgroundColor: 'rgba(0,0,0,0.5)',
                         }
@@ -573,7 +642,8 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, onBack }) => {
                             color: 'white',
                             backgroundColor: 'rgba(0,0,0,0.3)',
                             backdropFilter: 'blur(4px)',
-                            padding: '12px',
+                            width: 44,
+                            height: 44,
                             '&:hover': {
                                 backgroundColor: 'rgba(0,0,0,0.5)',
                             }
