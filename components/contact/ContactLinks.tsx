@@ -17,7 +17,7 @@ export default function ContactLinks() {
     return (
         <Box sx={{ mt: 8, display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
             {/* Instagram */}
-            <Box>
+            <Box sx={{ width: '100%', maxWidth: '350px', textAlign: 'center' }}>
                 <Typography variant="h6" sx={{ mb: 2, fontFamily: 'Inter', fontWeight: 300 }}>
                     INSTAGRAM
                 </Typography>
@@ -30,9 +30,11 @@ export default function ContactLinks() {
                     size="large"
                     onClick={handleSocialClick}
                     sx={{
-                        fontSize: '1.2rem',
-                        px: 6,
+                        fontSize: { xs: '0.9rem', sm: '1.2rem' }, // Shrink text on mobile
+                        px: { xs: 2, sm: 6 }, // Reduce padding on mobile
                         py: 2,
+                        width: { xs: '100%', sm: 'auto' }, // Full width on small screens
+                        maxWidth: '100%',
                         borderColor: 'primary.main',
                         borderWidth: '1px',
                         '&:hover': {
@@ -41,7 +43,18 @@ export default function ContactLinks() {
                         }
                     }}
                 >
-                    @annalisamartinocollection
+                    <Typography
+                        component="span"
+                        sx={{
+                            whiteSpace: 'nowrap',
+                            overflow: { xs: 'hidden', sm: 'visible' },
+                            textOverflow: { xs: 'ellipsis', sm: 'clip' },
+                            maxWidth: { xs: '100%', sm: 'none' },
+                            display: 'inline-block'
+                        }}
+                    >
+                        @annalisamartinocollection
+                    </Typography>
                 </Button>
             </Box>
 
