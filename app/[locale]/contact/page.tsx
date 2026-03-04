@@ -25,13 +25,14 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
     return (
         <Box sx={{
-            pt: { xs: 12, md: 20 },
-            pb: 12,
-            minHeight: '100vh',
+            pt: 0,
+            pb: 0,
+            minHeight: '100dvh',
             backgroundColor: 'background.default',
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            alignItems: 'center'
         }}>
             <Container maxWidth="md">
                 <Box sx={{ textAlign: 'center' }}>
