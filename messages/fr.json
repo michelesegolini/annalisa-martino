@@ -38,7 +38,7 @@
     "successMessage": "Merci pour votre demande ! Nous vous contacterons bientôt.",
     "errorMessage": "Échec de l'envoi de votre demande. Veuillez réessayer.",
     "interestedIn": "Je suis intéressé(e) d'en savoir plus sur",
-    "emailSubject": "Demande d'informations pour {item} ({price}) de {name}"
+    "emailSubject": "Demande d'informations pour {item} - Annalisa Martino Collection"
   },
   "categories": {
     "eveningWear": "Robes de Soirée",

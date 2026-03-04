@@ -9,6 +9,7 @@ import { notFound } from 'next/navigation';
 import { cookies } from 'next/headers';
 import theme from '@/lib/theme';
 import Navigation from '@/components/layout/Navigation';
+import Script from 'next/script';
 import { Locale, i18nConfig } from '@/lib/constants';
 import { GoogleTagManager } from '@next/third-parties/google';
 import ContentSquare from '@/components/ContentSquare';
@@ -142,7 +143,8 @@ export default async function RootLayout({
       <head>
 
         {/* Structured Data for WebSite (Site Name) */}
-        <script
+        <Script
+          id="website-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -156,7 +158,8 @@ export default async function RootLayout({
         />
 
         {/* Structured Data for Fashion Designer */}
-        <script
+        <Script
+          id="fashion-designer-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({

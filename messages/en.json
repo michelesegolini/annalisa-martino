@@ -38,7 +38,7 @@
     "successMessage": "Thank you for your inquiry! We'll be in touch soon.",
     "errorMessage": "Failed to send your inquiry. Please try again.",
     "interestedIn": "I am interested in learning more about",
-    "emailSubject": "Inquiry for {item} ({price}) from {name}"
+    "emailSubject": "Inquiry for {item} - Annalisa Martino Collection"
   },
   "categories": {
     "eveningWear": "Evening Wear",

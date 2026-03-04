@@ -5,6 +5,7 @@ import { getGalleryItems } from '@/lib/sanity/queries';
 import { setRequestLocale } from 'next-intl/server';
 import CollectionDetail from '@/components/collections/CollectionDetail';
 import { i18nConfig, Locale } from '@/lib/constants';
+import Script from 'next/script';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
@@ -108,7 +109,8 @@ export default async function CollectionPage({ params }: Props) {
 
     return (
         <>
-            <script
+            <Script
+                id="collection-schema"
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />

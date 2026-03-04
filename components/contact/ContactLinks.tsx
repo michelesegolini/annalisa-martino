@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
+import EmailIcon from '@mui/icons-material/Email';
 import { trackEvent } from '@/lib/analytics';
 
 export default function ContactLinks() {
@@ -51,22 +52,29 @@ export default function ContactLinks() {
                 </Typography>
                 <Typography
                     component="a"
-                    href="mailto:annalisamartino.fashiondesigner@gmail.com"
-                    onClick={handleContactClick}
+                    href="mailto:atelier@annalisamartino.com"
+                    onClick={handleContactClick} // Retained onClick as it was not explicitly removed in the instruction's diff
                     sx={{
-                        fontSize: '1.5rem',
-                        fontFamily: '"Cormorant Garamond", serif',
-                        color: 'text.primary',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 2,
+                        color: 'text.secondary',
                         textDecoration: 'none',
-                        borderBottom: '1px solid transparent',
-                        transition: 'all 0.3s',
+                        transition: 'all 0.3s ease',
                         '&:hover': {
                             color: 'primary.main',
-                            borderColor: 'primary.main'
+                            transform: 'translateX(8px)'
                         }
                     }}
                 >
-                    annalisamartino.fashiondesigner@gmail.com
+                    <EmailIcon sx={{ color: 'primary.main' }} />
+                    <Typography sx={{
+                        fontFamily: 'Inter',
+                        letterSpacing: '0.05em',
+                        fontSize: { xs: '0.9rem', md: '1rem' }
+                    }}>
+                        atelier@annalisamartino.com
+                    </Typography>
                 </Typography>
             </Box>
         </Box>

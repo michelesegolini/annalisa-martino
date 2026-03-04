@@ -38,7 +38,7 @@
     "successMessage": "Obrigado pela sua consulta! Entraremos em contato em breve.",
     "errorMessage": "Falha ao enviar sua consulta. Por favor, tente novamente.",
     "interestedIn": "Estou interessado/a em saber mais sobre",
-    "emailSubject": "Consulta sobre {item} ({price}) de {name}"
+    "emailSubject": "Consulta sobre {item} - Annalisa Martino Collection"
   },
   "categories": {
     "eveningWear": "Vestidos de Noite",

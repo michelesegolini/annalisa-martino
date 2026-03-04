@@ -38,7 +38,7 @@
         "successMessage": "Grazie per la tua richiesta! Ti contatteremo presto.",
         "errorMessage": "Impossibile inviare la richiesta. Riprova.",
         "interestedIn": "Sono interessato/a a saperne di più su",
-        "emailSubject": "Richiesta informazioni per {item} ({price}) da {name}"
+        "emailSubject": "Richiesta informazioni per {item} - Annalisa Martino Collection"
     },
     "categories": {
         "eveningWear": "Abiti da Sera",

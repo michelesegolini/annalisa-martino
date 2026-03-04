@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ContactFormData } from '@/types';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
 export async function POST(request: NextRequest) {
     try {
@@ -23,19 +23,14 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.GMAIL_USER,
-                pass: process.env.GMAIL_PASS,
-            },
-        });
+        const resend = new Resend(process.env.RESEND_API_KEY || 'dummy_key_for_build');
+        const targetEmail = process.env.CONTACT_EMAIL || 'atelier@annalisamartino.com';
 
-        const mailOptions = {
-            from: `"Annalisa Martino fashion designer" <${process.env.GMAIL_USER}>`,
-            to: 'annalisamartino.fashiondesigner@gmail.com',
+        await resend.emails.send({
+            from: `Sito Annalisa Martino <${targetEmail}>`,
+            to: [targetEmail],
             replyTo: data.email,
-            subject: data.subject || `Richiesta informazioni per ${data.itemReference} (${data.price || 'Prezzo su richiesta'}) da ${data.name} - ${data.email}`,
+            subject: data.subject || `Richiesta informazioni per ${data.itemReference} - Annalisa Martino Collection`,
             text: `
 Nome: ${data.name}
 Email: ${data.email}
@@ -47,7 +42,7 @@ Messaggio:
 ${data.message}
             `,
             html: `
-<h3>Nuova Richiesta Ricevuta</h3>
+<h3>Nuova Richiesta Ricevuta dal Sito</h3>
 <p><strong>Nome:</strong> ${data.name}</p>
 <p><strong>Email:</strong> ${data.email}</p>
 <p><strong>Telefono:</strong> ${data.phone || 'N/A'}</p>
@@ -57,9 +52,7 @@ ${data.message}
 <p><strong>Messaggio:</strong></p>
 <p>${data.message.replace(/\n/g, '<br/>')}</p>
             `,
-        };
-
-        await transporter.sendMail(mailOptions);
+        });
 
         return NextResponse.json(
             {
