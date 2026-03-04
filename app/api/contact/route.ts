@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
         const targetEmail = process.env.CONTACT_EMAIL || 'atelier@annalisamartino.com';
 
         await resend.emails.send({
-            from: `Sito Annalisa Martino <${targetEmail}>`,
+            from: `Atelier Annalisa Martino <${targetEmail}>`,
             to: [targetEmail],
             replyTo: data.email,
             subject: data.subject || `Richiesta informazioni per ${data.itemReference} - Annalisa Martino Collection`,
