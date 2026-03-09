@@ -21,7 +21,7 @@ interface LookbookFormProps {
     pdfUrl: string | null;
 }
 
-export default function LookbookForm({ pdfUrl }: LookbookFormProps) {
+export default function LookbookForm() {
     const t = useTranslations('lookbook');
 
     const [formData, setFormData] = useState({
