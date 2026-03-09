@@ -133,4 +133,6 @@ export const galleryItem = defineType({
     },
 })
 
-export const schemaTypes = [galleryItem, category]
+import { siteSettings } from './siteSettings'
+
+export const schemaTypes = [siteSettings, galleryItem, category]

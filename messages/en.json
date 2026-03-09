@@ -138,5 +138,22 @@
       "title": "Explore the Collection",
       "button": "View Gallery"
     }
+  },
+  "lookbook": {
+    "title": "Request Lookbook",
+    "subtitle": "Discover the new Annalisa Martino collection. Enter your details to receive our high-definition digital catalog directly in your inbox.",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email Address",
+    "clientType": "Client Type",
+    "buyer": "Buyer / Professional",
+    "privateClient": "Private Client",
+    "submit": "Receive Lookbook",
+    "successMessage": "Thank you! Please check your inbox: we have sent you the link to view and download the Lookbook (check your Spam folder as well).",
+    "successDescription": "While you wait for the email, we invite you to discover our latest creations online.",
+    "exploreGallery": "Explore Gallery",
+    "errorMessage": "An error occurred during submission. Please try again.",
+    "download": "Download Catalog",
+    "viewOnline": "View Online"
   }
 }

@@ -138,5 +138,22 @@
             "title": "Esplora la Collezione",
             "button": "Visualizza Galleria"
         }
+    },
+    "lookbook": {
+        "title": "Richiedi il Lookbook",
+        "subtitle": "Scopri la nuova collezione Annalisa Martino. Inserisci i tuoi dati per ricevere il nostro catalogo digitale in alta definizione direttamente nella tua casella email.",
+        "firstName": "Nome",
+        "lastName": "Cognome",
+        "email": "Indirizzo Email",
+        "clientType": "Tipologia Cliente",
+        "buyer": "Buyer / Professionista",
+        "privateClient": "Cliente Privato",
+        "submit": "Ricevi il Lookbook",
+        "successMessage": "Grazie! Controlla la tua casella di posta elettronica: ti abbiamo inviato il link per visualizzare e scaricare il Lookbook (verifica anche nella cartella Spam).",
+        "successDescription": "Mentre aspetti l'arrivo dell'email, ti invitiamo a scoprire le nostre ultime creazioni online.",
+        "exploreGallery": "Esplora la Galleria",
+        "errorMessage": "Si è verificato un errore durante l'invio. Riprova.",
+        "download": "Scarica il Catalogo",
+        "viewOnline": "Sfoglia Online"
     }
 }
