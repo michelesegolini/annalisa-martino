@@ -3,6 +3,7 @@ import { Container, Typography, Box, Button } from '@mui/material';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import ContactLinks from '@/components/contact/ContactLinks';
+import ContactForm from '@/components/contact/ContactForm';
 
 export async function generateMetadata({
     params
@@ -25,17 +26,13 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
     return (
         <Box sx={{
-            pt: 0,
-            pb: 0,
+            pt: { xs: 8, md: 12 },
+            pb: { xs: 8, md: 12 },
             minHeight: '100dvh',
             backgroundColor: 'background.default',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center'
         }}>
-            <Container maxWidth="md">
-                <Box sx={{ textAlign: 'center' }}>
+            <Container maxWidth="lg">
+                <Box sx={{ textAlign: 'center', mb: 8 }}>
                     <Typography
                         variant="overline"
                         sx={{ color: 'primary.main', letterSpacing: '0.2em', mb: 2, display: 'block' }}
@@ -47,14 +44,30 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                         variant="h2"
                         sx={{
                             fontFamily: '"Cormorant Garamond", serif',
-                            mb: 4,
+                            mb: 2,
                             fontSize: { xs: '2.5rem', md: '3.5rem' },
                         }}
                     >
                         {t('subtitle')}
                     </Typography>
+                    <Typography variant="body1" color="text.secondary" sx={{ maxWidth: '600px', mx: 'auto' }}>
+                        {t('description')}
+                    </Typography>
+                </Box>
 
-                    <ContactLinks />
+                <Box sx={{
+                    display: 'flex',
+                    flexDirection: { xs: 'column-reverse', md: 'row' },
+                    gap: { xs: 8, md: 4 },
+                    alignItems: { xs: 'center', md: 'flex-start' },
+                    justifyContent: 'space-between'
+                }}>
+                    <Box sx={{ flex: 1, width: '100%', maxWidth: { xs: '600px', md: '500px' } }}>
+                        <ContactLinks />
+                    </Box>
+                    <Box sx={{ flex: 1.5, width: '100%', maxWidth: '700px' }}>
+                        <ContactForm />
+                    </Box>
                 </Box>
             </Container>
         </Box>

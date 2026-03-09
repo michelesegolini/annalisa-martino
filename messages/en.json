@@ -14,6 +14,15 @@
     "instagram": "Follow on Instagram",
     "email": "Email Us"
   },
+  "contactForm": {
+    "name": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone (Optional)",
+    "message": "How can we help you?",
+    "submit": "Send Message",
+    "success": "Thank you for getting in touch! Your message has been sent and we will reply as soon as possible.",
+    "error": "An error occurred during submission. Please try again."
+  },
   "gallery": {
     "scroll": "SCROLL",
     "inquirePrice": "Inquire Price",

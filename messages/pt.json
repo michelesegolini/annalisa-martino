@@ -14,6 +14,15 @@
     "instagram": "Siga no Instagram",
     "email": "Envie um e-mail"
   },
+  "contactForm": {
+    "name": "Nome Completo",
+    "email": "Endereço de E-mail",
+    "phone": "Telefone (Opcional)",
+    "message": "Como podemos ajudar?",
+    "submit": "Enviar Mensagem",
+    "success": "Obrigado por nos contatar! Sua mensagem foi enviada e responderemos o mais breve possível.",
+    "error": "Ocorreu um erro ao enviar. Tente novamente."
+  },
   "gallery": {
     "scroll": "ROLAR",
     "inquirePrice": "Consultar Preço",

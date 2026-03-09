@@ -14,6 +14,15 @@
         "instagram": "Segui su Instagram",
         "email": "Scrivici"
     },
+    "contactForm": {
+        "name": "Nome Completo",
+        "email": "Indirizzo Email",
+        "phone": "Telefono (Opzionale)",
+        "message": "Come possiamo aiutarti?",
+        "submit": "Invia Messaggio",
+        "success": "Grazie per averci contattato! Il tuo messaggio è stato inviato e ti risponderemo al più presto.",
+        "error": "Si è verificato un errore durante l'invio. Riprova."
+    },
     "gallery": {
         "scroll": "SCORRI",
         "inquirePrice": "Richiedi Prezzo",
