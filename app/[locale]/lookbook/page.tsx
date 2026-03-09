@@ -40,7 +40,7 @@ export default async function LookbookPage({ params }: { params: Promise<{ local
             alignItems: 'center'
         }}>
             <Container maxWidth="md">
-                <LookbookForm pdfUrl={pdfUrl} />
+                <LookbookForm />
             </Container>
         </Box>
     );
