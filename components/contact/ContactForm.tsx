@@ -129,6 +129,12 @@ export default function ContactForm() {
                     value={formData.message}
                     onChange={handleChange}
                     variant="outlined"
+                    InputLabelProps={{
+                        sx: {
+                            backgroundColor: 'background.default',
+                            px: 0.5,
+                        }
+                    }}
                 />
 
                 {error && <Alert severity="error">{error}</Alert>}

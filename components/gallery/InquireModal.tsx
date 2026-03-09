@@ -227,7 +227,13 @@ const InquireModal: React.FC<InquireModalProps> = ({ open, onClose, item }) => {
                                 value={formData.message}
                                 onChange={handleChange}
                                 disabled={loading}
-                                helperText={t('messageHelper')}
+                                helperText={t('messageHelper') || ''}
+                                InputLabelProps={{
+                                    sx: {
+                                        backgroundColor: 'background.default',
+                                        px: 0.5,
+                                    }
+                                }}
                             />
                         </Box>
                     </DialogContent>

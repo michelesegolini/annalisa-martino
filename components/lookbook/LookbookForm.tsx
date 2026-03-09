@@ -205,6 +205,12 @@ export default function LookbookForm() {
                         onChange={handleChange}
                         variant="outlined"
                         helperText={t('messageHelper') || ''}
+                        InputLabelProps={{
+                            sx: {
+                                backgroundColor: 'background.default',
+                                px: 0.5,
+                            }
+                        }}
                     />
 
                     {error && <Alert severity="error">{error}</Alert>}
