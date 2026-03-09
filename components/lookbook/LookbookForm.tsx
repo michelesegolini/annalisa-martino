@@ -28,7 +28,8 @@ export default function LookbookForm({ pdfUrl }: LookbookFormProps) {
         firstName: '',
         lastName: '',
         email: '',
-        clientType: ''
+        clientType: '',
+        message: ''
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -193,6 +194,18 @@ export default function LookbookForm({ pdfUrl }: LookbookFormProps) {
                             />
                         </RadioGroup>
                     </FormControl>
+
+                    <TextField
+                        fullWidth
+                        name="message"
+                        label={t('optionalMessage')}
+                        multiline
+                        rows={3}
+                        value={formData.message}
+                        onChange={handleChange}
+                        variant="outlined"
+                        helperText={t('messageHelper') || ''}
+                    />
 
                     {error && <Alert severity="error">{error}</Alert>}
 

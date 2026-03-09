@@ -157,6 +157,7 @@
         "clientType": "Tipologia Cliente",
         "buyer": "Buyer / Professionista",
         "privateClient": "Cliente Privato",
+        "optionalMessage": "Messaggio (Opzionale)",
         "submit": "Ricevi il Lookbook",
         "successMessage": "Grazie! Controlla la tua casella di posta elettronica: ti abbiamo inviato il link per visualizzare e scaricare il Lookbook (verifica anche nella cartella Spam).",
         "successDescription": "Mentre aspetti l'arrivo dell'email, ti invitiamo a scoprire le nostre ultime creazioni online.",

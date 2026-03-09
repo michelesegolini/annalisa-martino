@@ -40,6 +40,8 @@ Email: ${data.email}
 Tipologia Cliente: ${data.clientType}
 
 Questa persona ha richiesto il Lookbook dal sito.
+
+${data.message ? `Messaggio opzionale inserito:\n${data.message}` : ''}
             `,
             html: `
 <h3>Nuova richiesta Lookbook dal Sito</h3>
@@ -49,6 +51,7 @@ Questa persona ha richiesto il Lookbook dal sito.
 <p><strong>Tipologia Cliente:</strong> ${data.clientType}</p>
 <br/>
 <p>Questa persona ha completato il form per scaricare o visualizzare il Lookbook.</p>
+${data.message ? `<br/><p><strong>Messaggio opzionale inserito:</strong></p><p>${data.message.replace(/\n/g, '<br/>')}</p>` : ''}
             `,
         });
 
