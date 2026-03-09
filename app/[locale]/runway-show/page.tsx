@@ -2,7 +2,8 @@ import { getTranslations } from 'next-intl/server';
 import VirtualGallery from '@/components/gallery/VirtualGallery';
 import { GalleryItem } from '@/types';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const t = await getTranslations({ locale, namespace: 'gallery' });
     const n = await getTranslations({ locale, namespace: 'navigation' });
 
@@ -12,7 +13,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
     };
 }
 
-export default async function RunwayShowPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function RunwayShowPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const t = await getTranslations({ locale, namespace: 'gallery' });
 
 
