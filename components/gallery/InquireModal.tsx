@@ -16,7 +16,7 @@ import {
     Snackbar,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { GalleryItem, ContactFormData } from '@/types';
 import { trackEvent } from '@/lib/analytics';
 
@@ -28,6 +28,7 @@ interface InquireModalProps {
 
 const InquireModal: React.FC<InquireModalProps> = ({ open, onClose, item }) => {
     const t = useTranslations('modal');
+    const locale = useLocale();
     const [formData, setFormData] = useState<ContactFormData>({
         name: '',
         email: '',
@@ -76,7 +77,7 @@ const InquireModal: React.FC<InquireModalProps> = ({ open, onClose, item }) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ ...formData, subject }),
+                body: JSON.stringify({ ...formData, subject, locale }),
             });
 
             if (!response.ok) {

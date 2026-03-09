@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import {
     TextField,
     Button,
@@ -14,6 +14,7 @@ import {
 
 export default function ContactForm() {
     const t = useTranslations('contactForm');
+    const locale = useLocale();
 
     const [formData, setFormData] = useState({
         name: '',
@@ -48,7 +49,8 @@ export default function ContactForm() {
                     phone: formData.phone,
                     message: formData.message,
                     subject: 'Richiesta di Contatto Generale - Sito Web',
-                    itemReference: 'Contatto Generale' // Fallback for the API
+                    itemReference: 'Contatto Generale', // Fallback for the API
+                    locale: locale
                 }),
             });
 
