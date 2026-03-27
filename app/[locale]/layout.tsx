@@ -89,20 +89,11 @@ export async function generateMetadata({
       title: t('ogTitle'),
       description: t('ogDescription'),
       siteName: 'Annalisa Martino',
-      images: [
-        {
-          url: '/annalisa-martino.jpg',
-          width: 1024,
-          height: 1024,
-          alt: 'Annalisa Martino',
-        },
-      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: t('ogTitle'),
       description: t('ogDescription'),
-      images: ['/annalisa-martino.jpg'],
       creator: '@annalisamartinocollection',
     },
     robots: {
@@ -168,7 +159,7 @@ export default async function RootLayout({
               name: 'Annalisa Martino',
               description: t('schemaDescription'),
               url: 'https://annalisamartino.com',
-              image: `${process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : 'https://annalisamartino.com'}/annalisa-martino.jpg`,
+              image: `${process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : 'https://annalisamartino.com'}/opengraph-image.jpg`,
               address: {
                 '@type': 'PostalAddress',
                 addressCountry: 'IT',
