@@ -70,7 +70,7 @@ export async function generateMetadata({
     authors: [{ name: 'Annalisa Martino' }],
     creator: 'Annalisa Martino',
     publisher: 'Annalisa Martino',
-    metadataBase: new URL(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://annalisamartino.com'),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://annalisamartino.com')),
     alternates: {
       canonical: `/${locale}`,
       languages: {
@@ -167,8 +167,8 @@ export default async function RootLayout({
               '@type': 'FashionDesigner',
               name: 'Annalisa Martino',
               description: t('schemaDescription'),
-              url: 'https://annalisamartino.com',
-              image: `${process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : 'https://annalisamartino.com'}/opengraph-image.jpg`,
+              url: process.env.NEXT_PUBLIC_SITE_URL || 'https://annalisamartino.com',
+              image: `${process.env.NEXT_PUBLIC_SITE_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://annalisamartino.com')}/opengraph-image.jpg`,
               address: {
                 '@type': 'PostalAddress',
                 addressCountry: 'IT',
