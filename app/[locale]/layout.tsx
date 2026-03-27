@@ -89,11 +89,20 @@ export async function generateMetadata({
       title: t('ogTitle'),
       description: t('ogDescription'),
       siteName: 'Annalisa Martino',
+      images: [
+        {
+          url: '/opengraph-image.jpg',
+          width: 1200,
+          height: 630,
+          alt: 'Annalisa Martino',
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: t('ogTitle'),
       description: t('ogDescription'),
+      images: ['/opengraph-image.jpg'],
       creator: '@annalisamartinocollection',
     },
     robots: {
