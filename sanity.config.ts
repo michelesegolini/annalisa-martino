@@ -18,7 +18,8 @@ export default defineConfig({
     },
     plugins: [
         structureTool({
-            structure: (S, context) => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            structure: (S: any, context: any) => {
                 return S.list()
                     .title('Content')
                     .items([
@@ -29,7 +30,8 @@ export default defineConfig({
                             context,
                         }),
                         ...S.documentTypeListItems().filter(
-                            (listItem) => listItem.getId() !== 'galleryItem'
+                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                            (listItem: any) => listItem.getId() !== 'galleryItem'
                         ),
                     ])
             },
