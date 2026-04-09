@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+import { orderRankField } from '@sanity/orderable-document-list'
 
 export const category = defineType({
     name: 'category',
@@ -117,12 +118,7 @@ export const galleryItem = defineType({
             initialValue: false,
             description: 'Show first or highlight?',
         }),
-        defineField({
-            name: 'order',
-            title: 'Order',
-            type: 'number',
-            description: 'Order of appearance',
-        })
+        orderRankField({ type: 'galleryItem' })
     ],
     preview: {
         select: {

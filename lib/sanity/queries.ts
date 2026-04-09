@@ -2,7 +2,7 @@ import { GalleryItem } from '@/types';
 import { client, urlFor } from './client';
 
 export async function getGalleryItems(locale: string = 'en'): Promise<GalleryItem[]> {
-    const query = `*[_type == "galleryItem"] | order(order asc) {
+    const query = `*[_type == "galleryItem"] | order(orderRank) {
     _id,
     title,
     titles,
