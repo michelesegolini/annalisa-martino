@@ -328,6 +328,38 @@ const VirtualGallery: React.FC<VirtualGalleryProps> = ({ items, onBack }) => {
         };
     }, [displayItems]);
 
+    // Handle deep linking via URL parameter
+    useEffect(() => {
+        if (typeof window !== 'undefined' && displayItems.length > 0) {
+            const params = new URLSearchParams(window.location.search);
+            const itemId = params.get('item');
+            if (itemId) {
+                const index = displayItems.findIndex(item => item.id === itemId);
+                if (index !== -1) {
+                    // Small timeout ensures the DOM has fully rendered the refs before scrolling
+                    setTimeout(() => {
+                        itemRefs.current[index]?.scrollIntoView({ behavior: 'auto' });
+                    }, 50);
+                }
+            }
+        }
+    }, [displayItems]);
+
+    // Update URL parameter when sliding to a different item
+    useEffect(() => {
+        if (typeof window !== 'undefined' && displayItems.length > 0) {
+            const currentItem = displayItems[activeIndex];
+            if (currentItem) {
+                const url = new URL(window.location.href);
+                // Only replace state if the param actually changed to avoid too many history updates
+                if (url.searchParams.get('item') !== currentItem.id) {
+                    url.searchParams.set('item', currentItem.id);
+                    window.history.replaceState(null, '', url.toString());
+                }
+            }
+        }
+    }, [activeIndex, displayItems]);
+
     const handleInquire = (item: GalleryItem) => {
         trackEvent('open_inquire_modal', {
             item_id: item.id,

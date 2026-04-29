@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Typography, Box } from '@mui/material';
 import { GalleryItem } from '@/types';
 import CollectionGrid from './CollectionGrid';
@@ -16,12 +16,34 @@ interface CollectionDetailProps {
 const CollectionDetail: React.FC<CollectionDetailProps> = ({ title, description, items }) => {
     const [viewingItem, setViewingItem] = useState<GalleryItem | null>(null);
 
+    // Handle deep linking on initial load
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const params = new URLSearchParams(window.location.search);
+            const itemId = params.get('item');
+            if (itemId) {
+                const itemToView = items.find(item => item.id === itemId);
+                if (itemToView) {
+                    setViewingItem(itemToView);
+                }
+            }
+        }
+    }, [items]);
+
     const handleItemClick = (item: GalleryItem) => {
         setViewingItem(item);
     };
 
     const handleBack = () => {
         setViewingItem(null);
+        // Clear the URL parameter when closing the modal
+        if (typeof window !== 'undefined') {
+            const url = new URL(window.location.href);
+            if (url.searchParams.has('item')) {
+                url.searchParams.delete('item');
+                window.history.replaceState(null, '', url.toString());
+            }
+        }
     };
 
     return (
