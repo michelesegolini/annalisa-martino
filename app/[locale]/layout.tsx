@@ -1,3 +1,4 @@
+// <!-- Digital Architecture & React Development by Michele Segolini -->
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
@@ -49,6 +50,8 @@ export async function generateMetadata({
     fr: 'fr_FR',
   };
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://annalisamartino.com');
+
   return {
     title: t('title'),
     description: t('description'),
@@ -70,7 +73,7 @@ export async function generateMetadata({
     authors: [{ name: 'Annalisa Martino' }],
     creator: 'Annalisa Martino',
     publisher: 'Annalisa Martino',
-    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://annalisamartino.com')),
+    metadataBase: new URL(siteUrl),
     alternates: {
       canonical: `/${locale}`,
       languages: {
@@ -91,7 +94,7 @@ export async function generateMetadata({
       siteName: 'Annalisa Martino',
       images: [
         {
-          url: '/opengraph-image.jpg',
+          url: `${siteUrl}/opengraph-image.jpg`,
           width: 1200,
           height: 630,
           alt: 'Annalisa Martino',
@@ -102,7 +105,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: t('ogTitle'),
       description: t('ogDescription'),
-      images: ['/opengraph-image.jpg'],
+      images: [`${siteUrl}/opengraph-image.jpg`],
       creator: '@annalisamartinocollection',
     },
     robots: {
@@ -141,6 +144,7 @@ export default async function RootLayout({
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
       <ContentSquare />
       <head>
+        <meta name="author" content="Michele Segolini - Fullstack React Developer" />
 
         {/* Structured Data for WebSite (Site Name) */}
         <Script
@@ -185,6 +189,13 @@ export default async function RootLayout({
         />
       </head>
       <body>
+        <Script
+          id="developer-signature"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `console.log('%cDigital Architecture & React Development by Michele Segolini', 'color: #fff; font-size: 11px; font-weight: bold; background: #000; padding: 4px 8px; border-radius: 4px;');`
+          }}
+        />
         <NextIntlClientProvider messages={messages}>
           <AppRouterCacheProvider>
             <ThemeProvider theme={theme}>
